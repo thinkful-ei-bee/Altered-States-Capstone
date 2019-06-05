@@ -8,6 +8,7 @@ import LoginRoute from '../../routes/LoginRoute/LoginRoute'
 import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
+import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
 
 export default class App extends Component {
   state = { hasError: false }
@@ -31,6 +32,11 @@ export default class App extends Component {
               exact
               path={'/'}
               component={DashboardRoute}
+            />
+            <PrivateRoute
+              exact
+              path={'/new'}
+              component={NewEntryRoute}
             />
             <PublicOnlyRoute
               path={'/register'}
