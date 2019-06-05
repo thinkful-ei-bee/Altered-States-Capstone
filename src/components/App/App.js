@@ -33,7 +33,7 @@ export default class App extends Component {
               path={'/'}
               component={DashboardRoute}
             />
-            <PrivateRoute
+            <PublicOnlyRoute //****TODO -  CHANGE THIS BACK BEFORE MERGE */
               exact
               path={'/new'}
               component={NewEntryRoute}

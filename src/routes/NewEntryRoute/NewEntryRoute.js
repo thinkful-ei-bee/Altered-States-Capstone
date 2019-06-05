@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import MoodSelector from '../../components/MoodSelector/moodSelector'
 
 class NewEntryRoute extends Component {
 
@@ -10,7 +10,8 @@ class NewEntryRoute extends Component {
       <div>
         New Entry
 
-       
+
+      <MoodSelector/> 
       </div>
     );
   }
