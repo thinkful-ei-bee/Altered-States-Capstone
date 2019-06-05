@@ -1,19 +1,43 @@
 import React, { Component } from "react";
+import EntryService from '../../services/entry-service'
 
 
-class NewEntryRoute extends Component {
+export default class NewEntryRoute extends Component {
+  // Entries sent to Tone Analyzer need an 'Authorization' header with a base64 encoded 
+  // username and password like so:
+  // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
 
- 
+  handleSubmitEntry(event) {
+    event.preventDefault()
+
+    const { entry, handleEntryTones } = this.props
+    let tones = {}
+
+    EntryService.postEntryToWatson(entry)
+      .then(res => {
+        let toneData = res.document_tone.tones
+        console.log(res.document_tone.tones)
+
+        for (let i in toneData) {
+          tones[toneData[i].tone_name] = Math.floor(toneData[i].score * 50)
+        }
+
+        console.log(tones)
+        handleEntryTones(tones)
+      })
+  }
 
   render() {
+    const { updateEntry, entry } = this.props
     return (
       <div>
-        New Entry
-
-       
+        <form className='entry_form' value={entry} onSubmit={(event) => this.handleSubmitEntry(event)}>
+          <textarea 
+            className='entry_area'
+            onChange={(event) => updateEntry(event.target.value)}></textarea>
+          <button type='submit'>Submit</button>
+        </form>
       </div>
     );
   }
 }
-
-export default NewEntryRoute;
