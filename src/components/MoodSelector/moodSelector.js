@@ -5,15 +5,15 @@ export default class moodSelector extends Component{
     constructor(props){
         super(props)
         this.state={
-            mood_number:null
+            happiness:null
         }
     }
 
-    handleMoodNumClick=(e)=>{ // <------- should come from parent component
+    handleHappinessClick=(e)=>{ // <------- should come from parent component
        
        
         this.setState({
-            moodNumber:Number(e.target.value)
+            happiness:Number(e.target.value)
         },()=>{
             console.log(this.state)
         }
@@ -23,7 +23,7 @@ export default class moodSelector extends Component{
     render(){
         return(
             <div> How are you feeling today?
-                <section className='mood_number'onClick={this.handleMoodNumClick.bind(this)}>
+                <section className='mood_number'onClick={this.handleHappinessClick.bind(this)}>
                     <button className='button button1' value='10'>10</button>
                     <button className='button button2'  value='20'>20</button>
                     <button className='button button3' value='30'>30</button>
