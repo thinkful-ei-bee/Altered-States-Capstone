@@ -14,6 +14,7 @@ export default class App extends Component {
   state = { 
     hasError: false,
     entry: '',
+    entryTones: {}
   }
 
   static getDerivedStateFromError(error) {
@@ -23,6 +24,10 @@ export default class App extends Component {
 
   updateEntry = (entry) => {
     this.setState({ entry })
+  }
+
+  handleEntryTones = (tones) => {
+    this.setState({ entryTones: tones })
   }
 
   render() {
@@ -43,7 +48,10 @@ export default class App extends Component {
             <Route
               exact
               path={'/new'}
-              render={() => <NewEntryRoute updateEntry={this.updateEntry} entry={this.state.entry} />} />
+              render={() => <NewEntryRoute 
+                updateEntry={this.updateEntry} 
+                entry={this.state.entry}
+                handleEntryTones={this.handleEntryTones} />} />
             <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}

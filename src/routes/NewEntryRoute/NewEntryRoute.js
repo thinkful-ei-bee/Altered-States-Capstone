@@ -10,11 +10,20 @@ export default class NewEntryRoute extends Component {
   handleSubmitEntry(event) {
     event.preventDefault()
 
-    const { entry } = this.props
+    const { entry, handleEntryTones } = this.props
+    let tones = {}
 
     EntryService.postEntryToWatson(entry)
       .then(res => {
-        console.log(res)
+        let toneData = res.document_tone.tones
+        console.log(res.document_tone.tones)
+
+        for (let i in toneData) {
+          tones[toneData[i].tone_name] = Math.floor(toneData[i].score * 50)
+        }
+
+        console.log(tones)
+        handleEntryTones(tones)
       })
   }
 
