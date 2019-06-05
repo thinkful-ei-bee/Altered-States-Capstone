@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 
 
 class NewEntryRoute extends Component {
@@ -9,7 +10,7 @@ class NewEntryRoute extends Component {
     return (
       <div>
         New Entry
-
+      <CloudinaryWidget />
        
       </div>
     );
