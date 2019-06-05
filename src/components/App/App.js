@@ -11,11 +11,18 @@ import './App.css'
 import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
 
 export default class App extends Component {
-  state = { hasError: false }
+  state = { 
+    hasError: false,
+    entry: '',
+  }
 
   static getDerivedStateFromError(error) {
     console.error(error)
     return { hasError: true }
+  }
+
+  updateEntry = (entry) => {
+    this.setState({ entry })
   }
 
   render() {
@@ -33,11 +40,10 @@ export default class App extends Component {
               path={'/'}
               component={DashboardRoute}
             />
-            <PrivateRoute
+            <Route
               exact
               path={'/new'}
-              component={NewEntryRoute}
-            />
+              render={() => <NewEntryRoute updateEntry={this.updateEntry} entry={this.state.entry} />} />
             <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}
