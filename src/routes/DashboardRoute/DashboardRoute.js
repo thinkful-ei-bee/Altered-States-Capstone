@@ -4,7 +4,6 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip,
   Legend, AreaChart, Area } from 'recharts'
 import "./DashboardRoute.css";
 
-
 class DashboardRoute extends Component {
   constructor(props) {
     super(props)
@@ -102,12 +101,15 @@ class DashboardRoute extends Component {
             <Area type='monotone' dataKey='c' stackId="1" stroke='#ffc658' fill='#ffc658' />
           </AreaChart>
         </div>
+<<<<<<< HEAD
 
         <div className='happiness-table'>
           <LineChart width={300} height={100} data={happinessData}>
             <Line type='monotone' dataKey='pv' stroke='#8884d8' strokeWidth={2} />
           </LineChart>
         </div>
+=======
+>>>>>>> entry-buttons
 
         <Link to="/new" className="new-entry-button">
             New Entry

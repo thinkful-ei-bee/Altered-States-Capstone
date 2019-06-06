@@ -1,0 +1,10 @@
+.back-btn{
+    border:1px solid black;
+    border-radius:50%;
+    color:white;
+    background-color: black;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    float:left;
+}
