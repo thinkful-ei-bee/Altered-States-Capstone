@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Selfie from "../../components/Selfie/Selfie";
 import JournalInfo from './JournalInfo'
 
 
@@ -15,6 +16,9 @@ export default class EntryRoute extends Component {
   render() {
     return (
       <div>
+        
+        <Selfie publicId='ccmwvjilrkkqge3vb2zx'/>
+      
         <JournalInfo 
           currentEntry={this.state.currentEntry} 
           entryTones={this.state.entryTones} />
