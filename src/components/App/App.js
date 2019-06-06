@@ -9,6 +9,7 @@ import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
 import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
+import EntryRoute from '../../routes/EntryRoute/EntryRoute';
 
 export default class App extends Component {
   state = { 
@@ -34,6 +35,11 @@ export default class App extends Component {
               exact
               path={'/'}
               component={DashboardRoute}
+            />
+            <PrivateRoute
+              exact
+              path={'/entry'}
+              component={EntryRoute}
             />
             <PrivateRoute
               exact
