@@ -17,6 +17,23 @@ const EntryService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     })
+  },
+
+  postSelfieToAzure(url) {
+
+    return fetch(config.FACE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Ocp-Apim-Subscription-Key': config.FACE_KEY
+      },
+      body: JSON.stringify({ url })
+    })
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
   }
 }
 
