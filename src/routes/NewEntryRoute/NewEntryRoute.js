@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
+import './NewEntryRoute.css';
 
 
 export default class NewEntryRoute extends Component {
@@ -10,13 +11,34 @@ export default class NewEntryRoute extends Component {
     this.state = {
       entry: '',
       entryTones: {},
-      happiness: null
+      happiness: null,
+      face_url: '',
+      faceData: {}
     }
   }
+  //faceData structure:
+  // {
+  //   anger: 0-1,
+  //   contempt: 0-1,
+  //   disgust: 0-1,
+  //   fear: 0-1,
+  //   happiness: 0-1,
+  //   neutral: 0-1,
+  //   sadness: 0-1,
+  //   surprise: 0-1,
+  // }
 
   // Entries sent to Tone Analyzer need an 'Authorization' header with a base64 encoded 
   // username and password like so:
   // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
+
+  updateFaceUrl = (url) => {
+    this.setState({face_url: url}, () => console.log('face_url:', this.state.face_url))
+  }
+
+  updateFaceData = (faceData) => {
+    this.setState({ faceData }, () => console.log('faceData:', this.state.faceData))
+  }
 
   updateEntry = (entry) => {
     this.setState({ entry })
@@ -60,7 +82,8 @@ export default class NewEntryRoute extends Component {
   render() {
     return (
       <div>
-        <CloudinaryWidget /> 
+        <CloudinaryWidget updateFaceUrl={this.updateFaceUrl.bind(this)} updateFaceData={this.updateFaceData.bind(this)}/>
+        {this.state.face_url ? <img src={this.state.face_url} alt='uploaded selfie' className='cloudinary-thumb'/> : ''} 
         <MoodSelector handleClick={this.handleHappinessClick}/>
         <form className='entry_form' value={this.state.entry} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 

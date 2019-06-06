@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import UserContext from '../../contexts/UserContext';
-
-// imports for Image component
-// import {Image, Transformation} from 'cloudinary-react';
-
+import EntryService from '../../services/entry-service';
 import './CloudinaryWidget.css'
 
 class CloudinaryWidget extends Component {
   static contextType = UserContext
-  state = {
-    thumbnail: ''
-  }
 
   uploadWidget() {
     let _this = this;
@@ -19,9 +13,21 @@ class CloudinaryWidget extends Component {
         function(error, result) {
             console.log(result);
             console.log(result ? result[0].thumbnail_url : 'empty' )
-            _this.setState({thumbnail: result ? result[0].url : ''})
+            if (result){
+              _this.props.updateFaceUrl(result[0].url)
+              _this.handleAnalysis(result[0].url)
+            }
+            
         });
     }
+
+  handleAnalysis(url) {
+    EntryService.postSelfieToAzure(url)
+      .then(res => {
+        console.log('faceRes:', res)
+        this.props.updateFaceData(res[0].faceAttributes.emotion)
+      })
+  }
 
   
   render() {
@@ -31,14 +37,6 @@ class CloudinaryWidget extends Component {
         <button onClick={this.uploadWidget.bind(this)} className="upload-button">
           Add Selfie
         </button>
-        {this.state.thumbnail ? <img src={this.state.thumbnail} alt='thumb' className='cloudinary-thumb'/> : ''}
-
-        {/* example of Image component */}
-        {/* <Image cloudName='mood-flux' publicId='selfies/zoq4a1ncyywtt8emdjnm' className='cloudinary-thumb'>
-          <Transformation >
-          </Transformation>
-        </Image> */}
-
       </div>
       
     );
