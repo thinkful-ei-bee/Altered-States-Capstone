@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import UserContext from '../../contexts/UserContext';
-import {Image, Transformation} from 'cloudinary-react';
+
+// imports for Image component
+// import {Image, Transformation} from 'cloudinary-react';
 
 import './CloudinaryWidget.css'
 
@@ -31,10 +33,11 @@ class CloudinaryWidget extends Component {
         </button>
         {this.state.thumbnail ? <img src={this.state.thumbnail} alt='thumb' className='cloudinary-thumb'/> : ''}
 
-        <Image cloudName='mood-flux' publicId='selfies/zoq4a1ncyywtt8emdjnm' className='cloudinary-thumb'>
+        {/* example of Image component */}
+        {/* <Image cloudName='mood-flux' publicId='selfies/zoq4a1ncyywtt8emdjnm' className='cloudinary-thumb'>
           <Transformation >
           </Transformation>
-        </Image>
+        </Image> */}
 
       </div>
       
