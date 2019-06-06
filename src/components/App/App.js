@@ -13,21 +13,11 @@ import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
 export default class App extends Component {
   state = { 
     hasError: false,
-    entry: '',
-    entryTones: {}
   }
 
   static getDerivedStateFromError(error) {
     console.error(error)
     return { hasError: true }
-  }
-
-  updateEntry = (entry) => {
-    this.setState({ entry })
-  }
-
-  handleEntryTones = (tones) => {
-    this.setState({ entryTones: tones })
   }
 
   render() {
@@ -45,13 +35,10 @@ export default class App extends Component {
               path={'/'}
               component={DashboardRoute}
             />
-            <Route
+            <PrivateRoute
               exact
               path={'/new'}
-              render={() => <NewEntryRoute 
-                updateEntry={this.updateEntry} 
-                entry={this.state.entry}
-                handleEntryTones={this.handleEntryTones} />} />
+              component={NewEntryRoute} />
             <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}
