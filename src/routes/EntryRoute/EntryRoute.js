@@ -11,7 +11,7 @@ export default class EntryRoute extends Component {
   render() {
     return (
       <div>
-        <Selfie publicId='zoq4a1ncyywtt8emdjnm'/>
+        <Selfie publicId='ccmwvjilrkkqge3vb2zx'/>
       </div>
     );
   }

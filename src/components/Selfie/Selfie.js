@@ -10,7 +10,7 @@ class Selfie extends Component {
     return (
       <div>
 
-        <Image cloudName='mood-flux' publicId={`selfies/${this.props.publicId}`} className='cloudinary-thumb'>
+        <Image cloudName='mood-flux' publicId={`selfies/${this.props.publicId}`} className='selfie'>
           <Transformation >
           </Transformation>
         </Image>
