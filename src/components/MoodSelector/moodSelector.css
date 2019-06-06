@@ -13,4 +13,7 @@
   }
   .mood_number{
       border:1px solid black;
+      max-width: 400px;
+      border-radius: 10px;
+      margin:auto;
   }
