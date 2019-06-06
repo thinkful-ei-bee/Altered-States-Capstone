@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, AreaChart, Area } from 'recharts'
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, 
+  Legend, AreaChart, Area } from 'recharts'
 import "./DashboardRoute.css";
 
 
@@ -24,6 +25,16 @@ class DashboardRoute extends Component {
       {month: '2015.05', a: 1890, b: 4800, c: 2181},
       {month: '2015.06', a: 2390, b: 3800, c: 2500},
       {month: '2015.07', a: 3490, b: 4300, c: 2100},
+    ];
+
+    const happinessData = [
+          {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
+          {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
+          {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
+          {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
+          {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
+          {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
+          {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
     ];
 
     const toPercent = (decimal, fixed = 0) => {
@@ -79,6 +90,12 @@ class DashboardRoute extends Component {
             <Area type='monotone' dataKey='b' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
             <Area type='monotone' dataKey='c' stackId="1" stroke='#ffc658' fill='#ffc658' />
           </AreaChart>
+        </div>
+
+        <div className='happiness-table'>
+          <LineChart width={300} height={100} data={happinessData}>
+            <Line type='monotone' dataKey='pv' stroke='#8884d8' strokeWidth={2} />
+          </LineChart>
         </div>
 
         <Link to="/new" className="new-entry-button">
