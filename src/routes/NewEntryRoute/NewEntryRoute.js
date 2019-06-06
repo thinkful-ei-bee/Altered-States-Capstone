@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
+
 
 export default class NewEntryRoute extends Component {
   constructor(props){
@@ -51,6 +53,7 @@ export default class NewEntryRoute extends Component {
     const { updateEntry, entry } = this.props
     return (
       <div>
+        <CloudinaryWidget /> 
         <MoodSelector handleClick={this.handleHappinessClick}/>
         <form className='entry_form' value={entry} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
