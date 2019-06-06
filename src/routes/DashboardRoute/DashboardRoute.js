@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, AreaChart, Area } from 'recharts'
 import "./DashboardRoute.css";
 
-
 class DashboardRoute extends Component {
 
   render() {

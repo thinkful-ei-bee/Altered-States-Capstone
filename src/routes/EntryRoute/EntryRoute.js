@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Selfie from "../../components/Selfie/Selfie";
 import JournalInfo from './JournalInfo'
 import BackButton from '../../components/Button/Back-button'
-
+import MoodEntry from '../../components/MoodSelector/moodEntry'
 export default class EntryRoute extends Component {
   constructor(props) {
     super(props)
