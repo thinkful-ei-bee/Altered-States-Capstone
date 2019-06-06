@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Selfie from "../../components/Selfie/Selfie";
 import JournalInfo from './JournalInfo'
-
+import BackButton from '../../components/Button/Back-button'
 
 export default class EntryRoute extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class EntryRoute extends Component {
   render() {
     return (
       <div>
-        
+        <BackButton/>
         <Selfie publicId='ccmwvjilrkkqge3vb2zx'/>
       
         <JournalInfo 
