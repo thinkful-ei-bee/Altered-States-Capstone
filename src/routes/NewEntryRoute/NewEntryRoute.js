@@ -5,24 +5,32 @@ import MoodSelector from '../../components/MoodSelector/moodSelector'
 
 
 export default class NewEntryRoute extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state={
-        happiness:null
+    this.state = {
+      entry: '',
+      entryTones: {},
+      happiness: null
     }
-}
+  }
 
   // Entries sent to Tone Analyzer need an 'Authorization' header with a base64 encoded 
   // username and password like so:
   // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
 
+  updateEntry = (entry) => {
+    this.setState({ entry })
+  }
+
+  handleEntryTones = (tones) => {
+    this.setState({ entryTones: tones })
+  }
+
   handleSubmitEntry(event) {
     event.preventDefault()
-
-    const { entry, handleEntryTones } = this.props
     let tones = {}
 
-    EntryService.postEntryToWatson(entry)
+    EntryService.postEntryToWatson(this.state.entry)
       .then(res => {
         let toneData = res.document_tone.tones
         console.log(res.document_tone.tones)
@@ -32,7 +40,7 @@ export default class NewEntryRoute extends Component {
         }
 
         console.log(tones)
-        handleEntryTones(tones)
+        this.handleEntryTones(tones)
       })
   }
 
@@ -50,15 +58,14 @@ export default class NewEntryRoute extends Component {
 
 
   render() {
-    const { updateEntry, entry } = this.props
     return (
       <div>
         <CloudinaryWidget /> 
         <MoodSelector handleClick={this.handleHappinessClick}/>
-        <form className='entry_form' value={entry} onSubmit={(event) => this.handleSubmitEntry(event)}>
+        <form className='entry_form' value={this.state.entry} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
             className='entry_area'
-            onChange={(event) => updateEntry(event.target.value)}></textarea>
+            onChange={(event) => this.updateEntry(event.target.value)}></textarea>
           <button type='submit'>Submit</button>
         </form>
       </div>
