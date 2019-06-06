@@ -9,8 +9,7 @@ class NewEntryRoute extends Component {
   render() {
     return (
       <div>
-        New Entry
-      <CloudinaryWidget />
+        <CloudinaryWidget />
        
       </div>
     );
