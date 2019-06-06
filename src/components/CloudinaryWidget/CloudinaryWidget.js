@@ -5,9 +5,6 @@ import './CloudinaryWidget.css'
 
 class CloudinaryWidget extends Component {
   static contextType = UserContext
-  state = {
-    url: ''
-  }
 
   uploadWidget() {
     let _this = this;
@@ -16,8 +13,11 @@ class CloudinaryWidget extends Component {
         function(error, result) {
             console.log(result);
             console.log(result ? result[0].thumbnail_url : 'empty' )
-            _this.setState({url: result ? result[0].url : ''})
-            _this.handleAnalysis(result[0].url)
+            if (result){
+              _this.props.updateFaceUrl(result[0].url)
+              _this.handleAnalysis(result[0].url)
+            }
+            
         });
     }
 
@@ -25,6 +25,7 @@ class CloudinaryWidget extends Component {
     EntryService.postSelfieToAzure(url)
       .then(res => {
         console.log('faceRes:', res)
+        this.props.updateFaceData(res[0].faceAttributes.emotion)
       })
   }
 
@@ -36,7 +37,6 @@ class CloudinaryWidget extends Component {
         <button onClick={this.uploadWidget.bind(this)} className="upload-button">
           Add Selfie
         </button>
-        {this.state.url ? <img src={this.state.url} alt='thumb' className='cloudinary-thumb'/> : ''}
       </div>
       
     );
