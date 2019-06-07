@@ -25,14 +25,14 @@ class DashboardRoute extends Component {
     if (entries.length >= 5) {
       for (let i = entries.length - 5; i < entries.length; i++) {
         data.push({
-          name: entries[i].date,
-          Joy: entries[i].Joy,
-          Fear: entries[i].Fear,
-          Sadness: entries[i].Sadness,
-          Anger: entries[i].Sadness,
-          Analytical: entries[i].Analytical,
-          Confident: entries[i].Confident,
-          Tentative: entries[i].Tentative
+          name: entries[i].date_created,
+          Joy: entries[i].tone_joy,
+          Fear: entries[i].tone_fear,
+          Sadness: entries[i].tone_sadness,
+          Anger: entries[i].tone_anger,
+          Analytical: entries[i].tone_analytical,
+          Confident: entries[i].tone_confident,
+          Tentative: entries[i].tone_tentative
         })
       }
     }
@@ -40,14 +40,14 @@ class DashboardRoute extends Component {
     else if (entries.length < 5) {
       for (let i = 0; i < entries.length; i++) {
         data.push({
-          name: entries[i].date,
-          Joy: entries[i].Joy,
-          Fear: entries[i].Fear,
-          Sadness: entries[i].Sadness,
-          Anger: entries[i].Sadness,
-          Analytical: entries[i].Analytical,
-          Confident: entries[i].Confident,
-          Tentative: entries[i].Tentative
+          name: entries[i].date_created,
+          Joy: entries[i].tone_joy,
+          Fear: entries[i].tone_fear,
+          Sadness: entries[i].tone_sadness,
+          Anger: entries[i].tone_anger,
+          Analytical: entries[i].tone_analytical,
+          Confident: entries[i].tone_confident,
+          Tentative: entries[i].tone_tentative
         })
       }
     }
