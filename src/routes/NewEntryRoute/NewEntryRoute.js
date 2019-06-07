@@ -27,7 +27,7 @@ export default class NewEntryRoute extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      entry: '',
+      text: '',
       happiness: null,
       face_url: '',
       Anger: 0,
@@ -71,8 +71,8 @@ export default class NewEntryRoute extends Component {
     this.setState({...this.state, ...faceData }, () => console.log('face state:', this.state))
   }
 
-  updateEntry = (entry) => {
-    this.setState({ entry })
+  updateEntry = (text) => {
+    this.setState({ text })
   }
 
   // handleEntryTones = (tones) => {
