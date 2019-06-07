@@ -9,9 +9,12 @@ import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
 import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
+import EntryRoute from '../../routes/EntryRoute/EntryRoute';
 
 export default class App extends Component {
-  state = { hasError: false }
+  state = { 
+    hasError: false,
+  }
 
   static getDerivedStateFromError(error) {
     console.error(error)
@@ -34,10 +37,13 @@ export default class App extends Component {
               component={DashboardRoute}
             />
             <PrivateRoute
+              path={'/entry/:id'}
+              component={EntryRoute}
+            />
+            <PrivateRoute
               exact
               path={'/new'}
-              component={NewEntryRoute}
-            />
+              component={NewEntryRoute} />
             <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}
