@@ -1,11 +1,32 @@
 import React from 'react'
-import {PieChart, Pie, Sector, Cell} from 'recharts'
+import {PieChart, Pie, Sector, Cell, Legend} from 'recharts'
 import './JournalInfo.css'
 
 export default class JournalInfo extends React.Component {
+
+  generateData() {
+    const { joy, fear, sadness, 
+      anger, analytical, confident, 
+      tentative } = this.props;
+
+    const entryTones = { joy, fear, sadness, 
+      anger, analytical, confident, 
+      tentative }
+    if (!entryTones) return
+
+    let data = [];
+
+    for (let key in entryTones) {
+      data.push(
+        { name: key, value: entryTones[key] }
+      )
+    }
+
+    return data
+  }
   
   render() {
-    const { currentEntry, entryTones } = this.props;
+    const { currentEntry } = this.props;
 
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
     const RADIAN = Math.PI / 180;
@@ -22,11 +43,9 @@ export default class JournalInfo extends React.Component {
       );
     };
 
-    const data = [
-      {name: 'Joy', value: 400}, 
-      {name: 'Analytical', value: 300},
-      {name: 'Tentative', value: 300}
-    ];
+    const data = this.generateData()
+    console.log('data: ', data)
+    
     return (
       <section className='journal-feedback'>
         <p>{currentEntry}</p>

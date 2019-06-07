@@ -8,34 +8,154 @@ class DashboardRoute extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      entries: [
-        {date: '02/09/2019'},
-        {date: '02/10/2019'},
-        {date: '02/11/2019'},
-        {date: '02/13/2019'},
-      ]
+      entries: [],
     }
+  }
+
+  generateToneData() {
+    const { entries } = this.state
+
+    let data = []
+
+    // No entries
+    if (entries.length === 0) {
+      return
+    }
+
+    // Shows up to 5 entries (most recent)
+    if (entries.length >= 5) {
+      for (let i = entries.length - 5; i < entries.length; i++) {
+        data.push({
+          name: entries[i].date,
+          Joy: entries[i].Joy,
+          Fear: entries[i].Fear,
+          Sadness: entries[i].Sadness,
+          Anger: entries[i].Sadness,
+          Analytical: entries[i].Analytical,
+          Confident: entries[i].Confident,
+          Tentative: entries[i].Tentative
+        })
+      }
+    }
+
+    else if (entries.length < 5) {
+      for (let i = 0; i < entries.length; i++) {
+        data.push({
+          name: entries[i].date,
+          Joy: entries[i].Joy,
+          Fear: entries[i].Fear,
+          Sadness: entries[i].Sadness,
+          Anger: entries[i].Sadness,
+          Analytical: entries[i].Analytical,
+          Confident: entries[i].Confident,
+          Tentative: entries[i].Tentative
+        })
+      }
+    }
+
+    return data
+
+  }
+
+  generateEmotionData() {
+    const { entries } = this.state
+
+    // Return example data if the user has no entries
+    if (entries.length === 0) {
+      return [{
+        time: 'Example',
+        Anger: 3,
+        Contempt: 3,
+        Disgust: 3,
+        Fear: 3,
+        Happiness: 3,
+        Neutral: 3,
+        Sadness: 3,
+        Surprise: 3,
+      },
+      {
+      time: 'Example',
+      Anger: 2,
+      Contempt: 5,
+      Disgust: 3,
+      Fear: 3,
+      Happiness: 3,
+      Neutral: 1,
+      Sadness: 3,
+      Surprise: 0,
+      }]
+    }
+
+    let data = []
+
+    // Shows up to 5 entries (most recent)
+    if (entries.length >= 5) {
+      for (let i = entries.length - 5; i < entries.length; i++) {
+        data.push({
+          time: entries[i].date_created,
+          Anger: entries[i].face_anger,
+          Contempt: entries[i].face_contempt,
+          Disgust: entries[i].face_disgust,
+          Fear: entries[i].face_fear,
+          Happiness: entries[i].face_happiness,
+          Neutral: entries[i].face_neutral,
+          Sadness: entries[i].face_sadness,
+          Surprise: entries[i].face_surprise
+        })
+      }
+    }
+
+    else if (entries.length < 5) {
+      for (let i = 0; i < entries.length; i++) {
+        data.push({
+          time: entries[i].date_created,
+          Anger: entries[i].face_anger,
+          Contempt: entries[i].face_contempt,
+          Disgust: entries[i].face_disgust,
+          Fear: entries[i].face_fear,
+          Happiness: entries[i].face_happiness,
+          Neutral: entries[i].face_neutral,
+          Sadness: entries[i].face_sadness,
+          Surprise: entries[i].face_surprise
+        })
+      }
+    }
+
+    return data
+  }
+
+  generateHappinessData() {
+    const { entries } = this.state
+    let data = []
+
+    if (!entries) return
+
+    if (entries.length >= 5) {
+      for (let i = entries.length - 5; i < entries.length; i++) {
+        data.push({
+          name: entries[i].date_created,
+          Happiness: entries[i].happiness
+        })
+      }
+    }
+
+    else if (entries.length < 5) {
+      for (let i = 0; i < entries.length; i++) {
+        data.push({
+          name: entries[i].date_created,
+          Happiness: entries[i].happiness
+        })
+      }
+    }
+
+    return data
   }
 
   render() {
 
-    const data = [
-      {name: '05/17', joy: 3.4, sadness: 4.4},
-      {name: '05/18', joy: 1.4, sadness: 5.0},
-      {name: '05/19', joy: 3.2, sadness: 2.1},
-      {name: '05/20', joy: 4.3, sadness: 1.1},
-      {name: '05/21', joy: 3.4, sadness: 1.6},
-    ];
+    const data = this.generateToneData()
 
-    const faceData = [
-      {month: '2015.01', a: 4000, b: 2400, c: 2400},
-      {month: '2015.02', a: 3000, b: 1398, c: 2210},
-      {month: '2015.03', a: 2000, b: 9800, c: 2290},
-      {month: '2015.04', a: 2780, b: 3908, c: 2000},
-      {month: '2015.05', a: 1890, b: 4800, c: 2181},
-      {month: '2015.06', a: 2390, b: 3800, c: 2500},
-      {month: '2015.07', a: 3490, b: 4300, c: 2100},
-    ];
+    const faceData = this.generateEmotionData()
 
     const happinessData = [
       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
@@ -80,10 +200,14 @@ class DashboardRoute extends Component {
         <div className='tone-table'>
           <LineChart width={300} height={200} data={data}
             margin={{top: 5, right: 50, left: 0, bottom: 5,}}>
-            <Line type="monotone" dataKey="joy" stroke="#8884d8" />
-            <Line type='monotone' dataKey='sadness' stroke='#82ca9d' />
+            <Line type="monotone" dataKey="Joy" stroke="#8884d8" />
+            <Line type="monotone" dataKey="Fear" stroke="#8884d8" />
+            <Line type='monotone' dataKey='Sadness' stroke='#82ca9d' />
+            <Line type='monotone' dataKey='Anger' stroke='#82ca9d' />
+            <Line type='monotone' dataKey='Analytical' stroke='#82ca9d' />
+            <Line type='monotone' dataKey='Confident' stroke='#82ca9d' />
+            <Line type='monotone' dataKey='Tentative' stroke='#82ca9d' />
             <Tooltip />
-            <Legend />
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis domain={[1, 5]} />
@@ -93,18 +217,23 @@ class DashboardRoute extends Component {
         <div className='face-table'>
           <AreaChart width={300} height={200} data={faceData} stackOffset="expand"
                 margin={{top: 10, right: 50, left: 0, bottom: 0}} >
-            <XAxis dataKey="month"/>
+            <XAxis dataKey="time"/>
             <YAxis tickFormatter={toPercent}/>
             <Tooltip content={renderTooltipContent}/>
-            <Area type='monotone' dataKey='a' stackId="1" stroke='#8884d8' fill='#8884d8' />
-            <Area type='monotone' dataKey='b' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
-            <Area type='monotone' dataKey='c' stackId="1" stroke='#ffc658' fill='#ffc658' />
+            <Area type='monotone' dataKey='Anger' stackId="1" stroke='#8884d8' fill='#8884d8' />
+            <Area type='monotone' dataKey='Contempt' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
+            <Area type='monotone' dataKey='Disgust' stackId="1" stroke='#ffc658' fill='#ffc658' />
+            <Area type='monotone' dataKey='Fear' stackId="1" stroke='#ffc658' fill='#ffc658' />
+            <Area type='monotone' dataKey='Happiness' stackId="1" stroke='#ffc658' fill='#ffc658' />
+            <Area type='monotone' dataKey='Neutral' stackId="1" stroke='#ffc658' fill='#ffc658' />
+            <Area type='monotone' dataKey='Sadness' stackId="1" stroke='#ffc658' fill='#ffc658' />
+            <Area type='monotone' dataKey='Surprise' stackId="1" stroke='#ffc658' fill='#ffc658' />
           </AreaChart>
         </div>
 
         <div className='happiness-table'>
           <LineChart width={300} height={100} data={happinessData}>
-            <Line type='monotone' dataKey='pv' stroke='#8884d8' strokeWidth={2} />
+            <Line type='monotone' dataKey='Happiness' stroke='#8884d8' strokeWidth={2} />
           </LineChart>
         </div>
 

@@ -8,8 +8,14 @@ export default class EntryRoute extends Component {
     super(props)
     this.state = {
       entries: [],
-      currentEntry: 'This has me thinking, we should remake point B. Joyous day.',
-      entryTones: { joy: 45, analytical: 32 },
+      currentEntry: 'This has me thinking, I should buy less stuff.',
+      Joy: 0,
+      Fear: 0,
+      Sadness: 0,
+      Anger: 0,
+      Analytical: 0,
+      Confident: 0,
+      Tentative: 0,
     }
   }
 
@@ -21,7 +27,13 @@ export default class EntryRoute extends Component {
       
         <JournalInfo 
           currentEntry={this.state.currentEntry} 
-          entryTones={this.state.entryTones} />
+          joy={this.state.Joy}
+          fear={this.state.Fear}
+          sadness={this.state.Sadness}
+          anger={this.state.Anger}
+          analytical={this.state.Analytical}
+          confident={this.state.Analytical}
+          tentative={this.state.Analytical} />
       </div>
     );
   }
