@@ -32,10 +32,21 @@ class CloudinaryWidget extends Component {
     EntryService.postSelfieToAzure(url)
       .then(res => {
         console.log('faceRes:', res)
-        const faceData = res[0].faceAttributes.emotion
+        const faceRes = res[0].faceAttributes.emotion
 
-        for (let i in faceData) {
-          faceData[i] = Math.floor(faceData[i] * 50)
+        for (let i in faceRes) {
+          faceRes[i] = Math.floor(faceRes[i] * 50)
+        }
+
+        const faceData = {
+          face_anger: faceRes.anger,
+          face_contempt: faceRes.contempt,
+          face_disgust: faceRes.disgust,
+          face_fear: faceRes.fear,
+          face_happiness: faceRes.happiness,
+          face_neutral: faceRes.neutral,
+          face_sadness: faceRes.sadness,
+          face_surprise: faceRes.surprise
         }
 
         this.props.updateFaceData(faceData)

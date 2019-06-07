@@ -6,22 +6,45 @@ import './NewEntryRoute.css';
 
 
 export default class NewEntryRoute extends Component {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     entry: '',
+  //     entryTones: {
+  //       Anger: 0,
+  //       Joy: 0,
+  //       Fear: 0,
+  //       Sadness: 0,
+  //       Analytical: 0,
+  //       Confident: 0,
+  //       Tentative: 0
+  //     },
+  //     happiness: null,
+  //     face_url: '',
+  //     faceData: {}
+  //   }
+  // }
   constructor(props) {
     super(props)
     this.state = {
       entry: '',
-      entryTones: {
-        Anger: 0,
-        Joy: 0,
-        Fear: 0,
-        Sadness: 0,
-        Analytical: 0,
-        Confident: 0,
-        Tentative: 0
-      },
       happiness: null,
       face_url: '',
-      faceData: {}
+      Anger: 0,
+      Joy: 0,
+      Fear: 0,
+      Sadness: 0,
+      Analytical: 0,
+      Confident: 0,
+      Tentative: 0,
+      face_anger: 0,
+      face_contempt: 0,
+      face_disgust: 0,
+      face_fear: 0,
+      face_happiness: 0,
+      face_neutral: 0,
+      face_sadness: 0,
+      face_surprise: 0
     }
   }
   //faceData structure:
@@ -45,15 +68,18 @@ export default class NewEntryRoute extends Component {
   }
 
   updateFaceData = (faceData) => {
-    this.setState({ faceData }, () => console.log('faceData:', this.state.faceData))
+    this.setState({...this.state, ...faceData }, () => console.log('face state:', this.state))
   }
 
   updateEntry = (entry) => {
     this.setState({ entry })
   }
 
+  // handleEntryTones = (tones) => {
+  //   this.setState({ entryTones: {...this.state.entryTones, ...tones }}, () => console.log('entryTones:', this.state.entryTones))
+  // }
   handleEntryTones = (tones) => {
-    this.setState({ entryTones: {...this.state.entryTones, ...tones }}, () => console.log('entryTones:', this.state.entryTones))
+    this.setState({...this.state, ...tones }, () => console.log('tones state:', this.state))
   }
 
   handleSubmitEntry(event) {
@@ -80,7 +106,7 @@ export default class NewEntryRoute extends Component {
     if(!isNaN(e.target.value)){
       this.setState({
         happiness:Number(e.target.value)
-      },()=>{console.log(this.state)} // should we send this to database from here or 
+      },()=>{console.log('happiness state:', this.state)} // should we send this to database from here or 
                                       //should we have one submit that will simply send all of State to database?
       )}
     }
