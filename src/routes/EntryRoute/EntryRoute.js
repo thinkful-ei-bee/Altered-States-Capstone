@@ -7,16 +7,38 @@ import EntryService from "../../services/entry-service";
 export default class EntryRoute extends Component {
   constructor(props) {
     super(props)
+    // this.state = {
+    //   entries: [],
+    //   currentEntry: 'This has me thinking, I should buy less stuff.',
+    //   Joy: 0,
+    //   Fear: 0,
+    //   Sadness: 0,
+    //   Anger: 0,
+    //   Analytical: 0,
+    //   Confident: 0,
+    //   Tentative: 0,
+    // }
     this.state = {
-      entries: [],
-      currentEntry: 'This has me thinking, I should buy less stuff.',
-      Joy: 0,
-      Fear: 0,
-      Sadness: 0,
-      Anger: 0,
-      Analytical: 0,
-      Confident: 0,
-      Tentative: 0,
+      id: null,
+      user_id: null,
+      date_created: null,
+      face_url: '',
+      happiness: 0,
+      face_anger: 0,
+      face_contempt: 0,
+      face_disgust: 0,
+      face_fear: 0,
+      face_happiness: 0,
+      face_neutral: 0,
+      face_sadness: 0,
+      face_surprise: 0,
+      tone_analytical: 0,
+      tone_anger: 0,
+      tone_confident: 0,
+      tone_fear: 0,
+      tone_joy: 0,
+      tone_sadness: 0,
+      tone_tentative: 0,
     }
   }
 
@@ -24,24 +46,30 @@ export default class EntryRoute extends Component {
     const { id } = this.props.match.params
 
     EntryService.getEntryById(id)
-      .then(res => console.log('entry res:', res))
+      .then(res => {
+        console.log('entry res:', res)
+        this.setState({...res})
+      })
   }
 
   render() {
     return (
       <div>
         <BackButton/>
-        <Selfie publicId='ccmwvjilrkkqge3vb2zx'/>
+        <h2>{this.state.date_created}</h2>
+        <img src={this.state.face_url} alt='selfie'/>
       
         <JournalInfo 
           currentEntry={this.state.currentEntry} 
-          joy={this.state.Joy}
-          fear={this.state.Fear}
-          sadness={this.state.Sadness}
-          anger={this.state.Anger}
-          analytical={this.state.Analytical}
-          confident={this.state.Analytical}
-          tentative={this.state.Analytical} />
+          joy={this.state.tone_joy}
+          fear={this.state.tone_fear}
+          sadness={this.state.tone_sadness}
+          anger={this.state.tone_anger}
+          analytical={this.state.tone_analytical}
+          confident={this.state.tone_confident}
+          tentative={this.state.tone_tentative} />
+
+        <p>{this.state.text}</p>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Redirect} from 'react-router-dom';
 import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
@@ -6,87 +7,61 @@ import './NewEntryRoute.css';
 
 
 export default class NewEntryRoute extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     entry: '',
-  //     entryTones: {
-  //       Anger: 0,
-  //       Joy: 0,
-  //       Fear: 0,
-  //       Sadness: 0,
-  //       Analytical: 0,
-  //       Confident: 0,
-  //       Tentative: 0
-  //     },
-  //     happiness: null,
-  //     face_url: '',
-  //     faceData: {}
-  //   }
-  // }
+
   constructor(props) {
     super(props)
     this.state = {
-      text: '',
-      happiness: null,
-      face_url: '',
-      Anger: 0,
-      Joy: 0,
-      Fear: 0,
-      Sadness: 0,
-      Analytical: 0,
-      Confident: 0,
-      Tentative: 0,
-      face_anger: 0,
-      face_contempt: 0,
-      face_disgust: 0,
-      face_fear: 0,
-      face_happiness: 0,
-      face_neutral: 0,
-      face_sadness: 0,
-      face_surprise: 0
+      redirect: false,
+      res_id: '',
+      newEntry: {
+        text: '',
+        happiness: null,
+        face_url: '',
+        Anger: 0,
+        Joy: 0,
+        Fear: 0,
+        Sadness: 0,
+        Analytical: 0,
+        Confident: 0,
+        Tentative: 0,
+        face_anger: 0,
+        face_contempt: 0,
+        face_disgust: 0,
+        face_fear: 0,
+        face_happiness: 0,
+        face_neutral: 0,
+        face_sadness: 0,
+        face_surprise: 0
+      }
     }
   }
-  //faceData structure:
-  // {
-  //   anger: 0-1,
-  //   contempt: 0-1,
-  //   disgust: 0-1,
-  //   fear: 0-1,
-  //   happiness: 0-1,
-  //   neutral: 0-1,
-  //   sadness: 0-1,
-  //   surprise: 0-1,
-  // }
+
 
   // Entries sent to Tone Analyzer need an 'Authorization' header with a base64 encoded 
   // username and password like so:
   // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
 
   updateFaceUrl = (url) => {
-    this.setState({face_url: url}, () => console.log('face_url:', this.state.face_url))
+    this.setState({newEntry: {...this.state.newEntry, face_url: url}}, () => console.log('face_url:', this.state.newEntry.face_url))
   }
 
   updateFaceData = (faceData) => {
-    this.setState({...this.state, ...faceData }, () => console.log('face state:', this.state))
+    this.setState({newEntry: {...this.state.newEntry, ...faceData }}, () => console.log('face state:', this.state.newEntry))
   }
 
   updateEntry = (text) => {
-    this.setState({ text })
+    this.setState({ newEntry: {...this.state.newEntry, text }})
   }
 
-  // handleEntryTones = (tones) => {
-  //   this.setState({ entryTones: {...this.state.entryTones, ...tones }}, () => console.log('entryTones:', this.state.entryTones))
-  // }
   handleEntryTones = (tones) => {
-    this.setState({...this.state, ...tones }, () => console.log('tones state:', this.state))
+    this.setState({newEntry: {...this.state.newEntry, ...tones }}, () => console.log('tones state:', this.state.newEntry))
   }
 
   handleSubmitEntry(event) {
     event.preventDefault()
     let tones = {}
 
-    EntryService.postEntryToWatson(this.state.text)
+    EntryService.postEntryToWatson(this.state.newEntry.text)
       .then(res => {
         let toneData = res.document_tone.tones
         console.log(res.document_tone.tones)
@@ -105,8 +80,8 @@ export default class NewEntryRoute extends Component {
 
     if(!isNaN(e.target.value)){
       this.setState({
-        happiness:Number(e.target.value)
-      },()=>{console.log('happiness state:', this.state)} // should we send this to database from here or 
+        newEntry: {...this.state.newEntry, happiness:Number(e.target.value)}
+      },()=>{console.log('happiness state:', this.state.newEntry)} // should we send this to database from here or 
                                       //should we have one submit that will simply send all of State to database?
       )}
     }
@@ -115,7 +90,22 @@ export default class NewEntryRoute extends Component {
     event.preventDefault();
     console.log('newEntry', newEntry)
     EntryService.postEntry(newEntry)
-      .then(res => console.log('postEntry res:',res))
+      .then(res => {
+        console.log('postEntry res:',res)
+        this.setState({res_id: res.id})
+        this.setRedirect()
+      })
+  }
+
+  setRedirect() {
+    this.setState({redirect: true})
+  }
+
+  renderRedirect() {
+    console.log('renderRedirect')
+    if (this.state.redirect) {
+      return <Redirect to={`/entry/${this.state.res_id}`} />
+    }
   }
 
 
@@ -124,17 +114,18 @@ export default class NewEntryRoute extends Component {
     return (
       <div>
         <CloudinaryWidget updateFaceUrl={this.updateFaceUrl.bind(this)} updateFaceData={this.updateFaceData.bind(this)}/>
-        {this.state.face_url ? <img src={this.state.face_url} alt='uploaded selfie' className='cloudinary-thumb'/> : ''} 
+        {this.state.newEntry.face_url ? <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/> : ''} 
         <MoodSelector handleClick={this.handleHappinessClick}/>
-        <form className='entry_form' value={this.state.entry} onSubmit={(event) => this.handleSubmitEntry(event)}>
+        <form className='entry_form' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
             className='entry_area'
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
           <button type='submit'>Submit</button>
         </form>
-        <button onClick={(event) => this.handleFinishedEntry(event, this.state)} >
+        <button onClick={(event) => this.handleFinishedEntry(event, this.state.newEntry)} >
           Submit Entry
         </button>
+        {this.renderRedirect()}
       </div>
     );
   }
