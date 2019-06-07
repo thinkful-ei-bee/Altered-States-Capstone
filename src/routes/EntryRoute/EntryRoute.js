@@ -3,6 +3,7 @@ import Selfie from "../../components/Selfie/Selfie";
 import JournalInfo from './JournalInfo'
 import BackButton from '../../components/Button/Back-button'
 import MoodEntry from '../../components/MoodSelector/moodEntry'
+import EntryService from "../../services/entry-service";
 export default class EntryRoute extends Component {
   constructor(props) {
     super(props)
@@ -17,6 +18,13 @@ export default class EntryRoute extends Component {
       Confident: 0,
       Tentative: 0,
     }
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params
+
+    EntryService.getEntryById(id)
+      .then(res => console.log('entry res:', res))
   }
 
   render() {
