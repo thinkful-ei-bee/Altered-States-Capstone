@@ -21,13 +21,27 @@ class CloudinaryWidget extends Component {
         });
     }
 
+  // handleAnalysis(url) {
+  //   EntryService.postSelfieToAzure(url)
+  //     .then(res => {
+  //       console.log('faceRes:', res)
+  //       this.props.updateFaceData(res[0].faceAttributes.emotion)
+  //     })
+  // }
   handleAnalysis(url) {
     EntryService.postSelfieToAzure(url)
       .then(res => {
         console.log('faceRes:', res)
-        this.props.updateFaceData(res[0].faceAttributes.emotion)
+        const faceData = res[0].faceAttributes.emotion
+
+        for (let i in faceData) {
+          faceData[i] = Math.floor(faceData[i] * 50)
+        }
+
+        this.props.updateFaceData(faceData)
       })
   }
+
 
   
   render() {

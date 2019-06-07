@@ -10,7 +10,15 @@ export default class NewEntryRoute extends Component {
     super(props)
     this.state = {
       entry: '',
-      entryTones: {},
+      entryTones: {
+        Anger: 0,
+        Joy: 0,
+        Fear: 0,
+        Sadness: 0,
+        Analytical: 0,
+        Confident: 0,
+        Tentative: 0
+      },
       happiness: null,
       face_url: '',
       faceData: {}
@@ -45,7 +53,7 @@ export default class NewEntryRoute extends Component {
   }
 
   handleEntryTones = (tones) => {
-    this.setState({ entryTones: tones })
+    this.setState({ entryTones: {...this.state.entryTones, ...tones }}, () => console.log('entryTones:', this.state.entryTones))
   }
 
   handleSubmitEntry(event) {
