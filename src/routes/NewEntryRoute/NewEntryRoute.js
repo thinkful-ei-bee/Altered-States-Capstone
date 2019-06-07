@@ -86,7 +86,7 @@ export default class NewEntryRoute extends Component {
     event.preventDefault()
     let tones = {}
 
-    EntryService.postEntryToWatson(this.state.entry)
+    EntryService.postEntryToWatson(this.state.text)
       .then(res => {
         let toneData = res.document_tone.tones
         console.log(res.document_tone.tones)
@@ -111,6 +111,13 @@ export default class NewEntryRoute extends Component {
       )}
     }
 
+  handleFinishedEntry(event, newEntry) {
+    event.preventDefault();
+    console.log('newEntry', newEntry)
+    EntryService.postEntry(newEntry)
+      .then(res => console.log('postEntry res:',res))
+  }
+
 
 
   render() {
@@ -125,6 +132,9 @@ export default class NewEntryRoute extends Component {
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
           <button type='submit'>Submit</button>
         </form>
+        <button onClick={(event) => this.handleFinishedEntry(event, this.state)} >
+          Submit Entry
+        </button>
       </div>
     );
   }

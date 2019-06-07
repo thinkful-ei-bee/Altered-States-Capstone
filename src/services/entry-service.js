@@ -1,4 +1,5 @@
 import config from '../config'
+import TokenService from '../services/token-service';
 
 const EntryService = {
   postEntryToWatson(entry) {
@@ -34,6 +35,23 @@ const EntryService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     })
+  },
+
+  postEntry(newEntry) {
+
+    return fetch(`${config.API_ENDPOINT}/entry`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(newEntry)
+    })
+      .then(res => 
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
   }
 }
 
