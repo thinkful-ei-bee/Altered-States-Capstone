@@ -197,7 +197,7 @@ class DashboardRoute extends Component {
     return (
       <div>
         <div className='tone-table'>
-          <LineChart width={300} height={200} data={data}
+          <LineChart width={400} height={200} data={data}
             margin={{top: 5, right: 50, left: 0, bottom: 5,}}>
             <Line type="monotone" dataKey="Joy" stroke="#8884d8" />
             <Line type="monotone" dataKey="Fear" stroke="#8884d8" />
