@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, 
-  Legend, AreaChart, Area } from 'recharts'
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, AreaChart, Area } from 'recharts'
 import "./DashboardRoute.css";
 
 class DashboardRoute extends Component {

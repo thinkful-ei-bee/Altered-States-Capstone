@@ -1,5 +1,5 @@
 import React from 'react'
-import {PieChart, Pie, Sector, Cell, Legend} from 'recharts'
+import {PieChart, Pie,  Cell} from 'recharts'
 import './JournalInfo.css'
 
 export default class JournalInfo extends React.Component {
@@ -45,7 +45,7 @@ export default class JournalInfo extends React.Component {
 
     const data = this.generateData()
     console.log('data: ', data)
-    
+
     return (
       <section className='journal-feedback'>
         <p>{currentEntry}</p>
