@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, AreaChart, Area } from 'recharts'
 import "./DashboardRoute.css";
+import EntryService from "../../services/entry-service";
 
 class DashboardRoute extends Component {
   constructor(props) {
@@ -9,6 +10,14 @@ class DashboardRoute extends Component {
     this.state = {
       entries: [],
     }
+  }
+
+  componentDidMount() {
+    EntryService.getUserEntries()
+      .then(res => {
+        console.log('getUserEntries:', res)
+        this.setState({entries: res})
+      })
   }
 
   generateToneData() {
@@ -150,6 +159,7 @@ class DashboardRoute extends Component {
     return data
   }
 
+
   render() {
 
     const data = this.generateToneData()
@@ -244,7 +254,9 @@ class DashboardRoute extends Component {
           {this.state.entries.length > 0 && this.state.entries.map(entry => {
             return (
               <li>
-                <h3>{entry.date}</h3>
+                <Link to={`/entry/${entry.id}`}>
+                <h3>{entry.date_created}</h3>
+                </Link>
               </li>
             )
           })}

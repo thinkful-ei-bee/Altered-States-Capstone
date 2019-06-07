@@ -52,6 +52,32 @@ const EntryService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+  },
+
+  getUserEntries() {
+    return fetch(`${config.API_ENDPOINT}/entry/list`, {
+      headers: {
+        'authorization': `Bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res => 
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+
+  getEntryById(id) {
+    return fetch(`${config.API_ENDPOINT}/entry/id/${id}`, {
+      headers: {
+        'authorization': `Bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res => 
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
   }
 }
 
