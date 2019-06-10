@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Selfie from "../../components/Selfie/Selfie";
 import JournalInfo from './JournalInfo'
+import FaceInfo from './FaceInfo'
 import BackButton from '../../components/Button/Back-button'
 import MoodEntry from '../../components/MoodSelector/moodEntry'
 import EntryService from "../../services/entry-service";
@@ -68,6 +69,17 @@ export default class EntryRoute extends Component {
           analytical={this.state.tone_analytical}
           confident={this.state.tone_confident}
           tentative={this.state.tone_tentative} />
+
+          <FaceInfo 
+            anger={this.state.face_anger}
+            contempt={this.state.contempt}
+            disgust={this.state.disgust}
+            fear={this.state.fear}
+            happiness={this.state.happiness}
+            neutral={this.state.neutral}
+            sadness={this.state.happiness}
+            surprise={this.state.surprise}
+          />
 
         <p>{this.state.text}</p>
       </div>
