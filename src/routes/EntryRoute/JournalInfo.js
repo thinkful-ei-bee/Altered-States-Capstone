@@ -32,6 +32,7 @@ export default class JournalInfo extends React.Component {
 
     return (
       <section className='journal-feedback'>
+        <h2 className='chart-title'>Written Analysis</h2>
         <p>{currentEntry}</p>
         <div className='pie-container'>
           <RadarChart cx={175} cy={200} outerRadius={50} width={350} height={300} data={data}>

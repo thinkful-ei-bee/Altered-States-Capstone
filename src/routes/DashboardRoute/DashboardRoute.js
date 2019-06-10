@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { LineChart, Line, Radar, RadarChart, PolarGrid,
-  PolarAngleAxis } from 'recharts'
+  PolarAngleAxis, YAxis, XAxis } from 'recharts'
 import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
 
@@ -73,7 +73,7 @@ class DashboardRoute extends Component {
       for (let i = entries.length - 5; i < entries.length; i++) {
         data.push({
           name: entries[i].date_created,
-          Happiness: entries[i].happiness
+          Happiness: entries[i].happiness / 10
         })
       }
     }
@@ -82,7 +82,7 @@ class DashboardRoute extends Component {
       for (let i = 0; i < entries.length; i++) {
         data.push({
           name: entries[i].date_created,
-          Happiness: entries[i].happiness
+          Happiness: entries[i].happiness / 10
         })
       }
     }
@@ -101,27 +101,32 @@ class DashboardRoute extends Component {
 
     return (
       <div>
+        <h2 className='chart-title'>Written Analysis</h2>
         <div className='tone-table'>
           <RadarChart cx={175} cy={200} outerRadius={50} width={350} height={300} data={toneData}>
             <PolarGrid />
             <PolarAngleAxis dataKey="name" />
-   
+            
             <Radar name="ToneRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
           </RadarChart>
         </div>
 
+        <h2 className='chart-title'>Face Analysis</h2>
         <div className='face-table'>
           <RadarChart cx={175} cy={200} outerRadius={50} width={350} height={300} data={faceData}>
             <PolarGrid />
             <PolarAngleAxis dataKey="name" />
-            
+        
             <Radar name="FaceRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
           </RadarChart>
         </div>
 
+        <h2>Happiness</h2>
         <div className='happiness-table'>
-          <LineChart width={300} height={100} data={happinessData}>
+          <LineChart width={300} height={175} data={happinessData}>
             <Line type='monotone' dataKey='Happiness' stroke='#8884d8' strokeWidth={2} />
+            <YAxis ticks={[0,1,2,3,4,5]} type='number' domain={[0, 5]} />
+            <XAxis />
           </LineChart>
         </div>
 

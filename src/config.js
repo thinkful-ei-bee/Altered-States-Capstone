@@ -1,4 +1,5 @@
 export default {
+  // ttps://alt-states-mimood.now.sh/login
   API_ENDPOINT: "http://localhost:8000/api",
   TONE_ANALYZER_ENDPOINT: 'https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2017-09-21',
   TOKEN_KEY: "anyOtherToken", // process.env.REACT_APP_API_KEY
