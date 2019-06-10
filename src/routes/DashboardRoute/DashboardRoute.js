@@ -10,6 +10,7 @@ class DashboardRoute extends Component {
     super(props)
     this.state = {
       entries: [],
+      display: null
     }
   }
 
@@ -20,8 +21,31 @@ class DashboardRoute extends Component {
       })
   }
 
+  // generateToneData() {
+  //   const { entries } = this.state
+
+  //   let data = []
+
+  //   // No entries
+  //   if (entries.length === 0) {
+  //     return
+  //   }
+
+  //   for (let key in entries[entries.length - 1]) {
+  //     if (key.split('_')[0] === 'tone') {
+  //       let keyWord = key.split('_')[1]
+  //       data.push({
+  //         name: keyWord,
+  //         amount: entries[entries.length - 1][key] + 10
+  //       })
+  //     }
+  //   }
+    
+  //   return data
+
+  // }
   generateToneData() {
-    const { entries } = this.state
+    const { entries, display } = this.state
 
     let data = []
 
@@ -30,12 +54,14 @@ class DashboardRoute extends Component {
       return
     }
 
-    for (let key in entries[entries.length - 1]) {
+    const target = entries.filter(entry => entry.id === display)
+
+    for (let key in target[0]) {
       if (key.split('_')[0] === 'tone') {
         let keyWord = key.split('_')[1]
         data.push({
           name: keyWord,
-          amount: entries[entries.length - 1][key] + 10
+          amount: target[0][key] + 10
         })
       }
     }
@@ -45,18 +71,20 @@ class DashboardRoute extends Component {
   }
 
   generateEmotionData() {
-    const { entries } = this.state
+    const { entries, display } = this.state
     let data = []
 
     if (entries.length === 0) return
 
-    for (let key in entries[entries.length - 1]) {
+    const target = entries.filter(entry => entry.id === display)
+
+    for (let key in target[0]) {
       if (key.split('_')[0] === 'face' && key.split('_')[1] !== 'url') {
         let keyWord = key.split('_')[1]
 
         data.push({
           name: keyWord,
-          amount: entries[entries.length - 1][key] + 10
+          amount: target[0][key] + 10
         })
       }
     }
@@ -88,6 +116,11 @@ class DashboardRoute extends Component {
     }
 
     return data
+  }
+
+  handleDisplayChange(id) {
+    this.setState({display: id}, () => console.log('display', this.state.display))
+
   }
 
 
@@ -138,9 +171,12 @@ class DashboardRoute extends Component {
           {this.state.entries.length > 0 && this.state.entries.map(entry => {
             return (
               <li>
-                <Link to={`/entry/${entry.id}`}>
+                {/* <Link to={`/entry/${entry.id}`}>
                 <h3>{entry.date_created}</h3>
-                </Link>
+                </Link> */}
+                <div onClick={() => this.handleDisplayChange(entry.id)}>
+                <h3>{entry.date_created}</h3>
+                </div>
               </li>
             )
           })}
