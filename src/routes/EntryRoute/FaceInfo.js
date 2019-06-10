@@ -15,11 +15,20 @@ export default class FaceInfo extends React.Component {
       let data = []
 
       for (let key in entryEmotions) {
+        let amount
+        if (entryEmotions[key]) {
+          amount = entryEmotions[key] + 10
+        }
+
+        else {
+          amount = 10
+        }
         data.push({
-          name: key, amount: entryEmotions[key] + 10
+          name: key, amount
         })
       }
 
+    console.log(data)
     return data
   }
   
