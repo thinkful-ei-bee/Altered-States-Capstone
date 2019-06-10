@@ -4,6 +4,8 @@ import { LineChart, Line, Radar, RadarChart, PolarGrid,
   PolarAngleAxis, YAxis, XAxis } from 'recharts'
 import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
+import EntryTag from './EntryTag'
+
 
 class DashboardRoute extends Component {
   constructor(props) {
@@ -91,8 +93,29 @@ class DashboardRoute extends Component {
   }
 
 
+
+  generateEntryTags(){
+    const {entries} = this.state
+   console.log(entries)
+     if(entries.length > 0){
+       
+      const tags = entries.map(entry=>{
+      
+       return <EntryTag date={entry.date_created}/>
+       
+      
+       })
+    
+      return tags
+     }
+           
+         
+  }
+
+
   render() {
 
+   const entryTags = this.generateEntryTags()
     const toneData = this.generateToneData()
 
     const faceData = this.generateEmotionData()
@@ -145,6 +168,7 @@ class DashboardRoute extends Component {
             )
           })}
         </ul>
+        {entryTags}
       </div>
     );
   }
