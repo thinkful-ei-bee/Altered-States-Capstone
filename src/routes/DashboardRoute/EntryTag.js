@@ -5,12 +5,22 @@ export default class EntryTag extends Component{
 
     formatEntryTag(){
         const {date}=this.props
-        const year = date.slice(0,4)
-        const month = date.slice(5,7)
-        const day = date.slice(8,10)
-        const time = date.slice(11,16)
+       
+
+        const day = new Date(date)
+        const dayStr = day.toString()
+        const weekDay = dayStr.slice(0,3)
+        const dateStr = dayStr.slice(4,15)
+        let time = dayStr.slice(16,21)
+        console.log(time)
+
+
         
-        return <button className='entry-tag' onClick={()=>this.props.handleClick(this.props.id)}>{month}/{day}/{year}<br/>
+        
+        return <button className='entry-tag' onClick={()=>this.props.handleClick(this.props.id)}>
+        
+       {weekDay}<br/>
+       {dateStr}<br/>
         {time}
         </button>
     }
