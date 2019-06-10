@@ -5,6 +5,8 @@ import FaceInfo from './FaceInfo'
 import BackButton from '../../components/Button/Back-button'
 import MoodEntry from '../../components/MoodSelector/moodEntry'
 import EntryService from "../../services/entry-service";
+import './EntryRoute.css'
+
 export default class EntryRoute extends Component {
   constructor(props) {
     super(props)

@@ -27,6 +27,7 @@ export default class FaceInfo extends React.Component {
     const data = this.generateData()
     return (
       <section className='emotion-feedback'>
+        <h2 className='chart-title'>Face Analysis</h2>
         <div>
           <RadarChart cx={175} cy={175} outerRadius={50} width={350} height={300} data={data}>
             <PolarGrid />
