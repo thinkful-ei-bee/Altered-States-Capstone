@@ -9,13 +9,14 @@ export default class EntryTag extends Component{
         const month = date.slice(5,7)
         const day = date.slice(8,10)
         const time = date.slice(11,16)
-        console.log(time)
-        return <button className='entry-tag'>{month}/{day}/{year}<br/>
+        
+        return <button className='entry-tag' onClick={()=>this.props.handleClick(this.props.id)}>{month}/{day}/{year}<br/>
         {time}
         </button>
     }
   
     render(){
+       
         const tags = this.formatEntryTag()
         
         

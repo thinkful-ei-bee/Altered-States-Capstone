@@ -92,24 +92,24 @@ class DashboardRoute extends Component {
     return data
   }
 
+  handleClick=(id)=>{
+    const { entries } = this.state
+    console.log(entries)
+    console.log(id)
+    const selected = entries.filter(item => item.id === id)
+    console.log( selected)
 
+  }
 
   generateEntryTags(){
     const {entries} = this.state
    console.log(entries)
      if(entries.length > 0){
-       
-      const tags = entries.map(entry=>{
-      
-       return <EntryTag date={entry.date_created}/>
-       
-      
+      const tags = entries.map((entry,index)=>{
+       return <EntryTag id={index} date={entry.date_created} handleClick={this.handleClick.bind(this)}/>
        })
-    
       return tags
-     }
-           
-         
+     }     
   }
 
 
