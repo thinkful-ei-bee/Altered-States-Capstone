@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import { LineChart, Line, Radar, RadarChart, PolarGrid, Legend,
-  PolarAngleAxis, PolarRadiusAxis } from 'recharts'
+import { LineChart, Line, Radar, RadarChart, PolarGrid,
+  PolarAngleAxis } from 'recharts'
 import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
 
@@ -16,7 +16,6 @@ class DashboardRoute extends Component {
   componentDidMount() {
     EntryService.getUserEntries()
       .then(res => {
-        console.log('getUserEntries:', res)
         this.setState({entries: res})
       })
   }
@@ -34,7 +33,6 @@ class DashboardRoute extends Component {
     for (let key in entries[entries.length - 1]) {
       if (key.split('_')[0] === 'tone') {
         let keyWord = key.split('_')[1]
-        console.log('key: ', key)
         data.push({
           name: keyWord,
           amount: entries[entries.length - 1][key] + 10
@@ -42,7 +40,6 @@ class DashboardRoute extends Component {
       }
     }
     
-    console.log('TONE DATA: ', data)
     return data
 
   }
@@ -63,8 +60,6 @@ class DashboardRoute extends Component {
         })
       }
     }
-
-    console.log('Face DATA: ', data)
     return data
   }
 
@@ -104,38 +99,10 @@ class DashboardRoute extends Component {
 
     const happinessData = this.generateHappinessData()
 
-    const toPercent = (decimal, fixed = 0) => {
-      return `${(decimal * 100).toFixed(fixed)}%`;
-    };
-
-    const getPercent = (value, total) => {
-	    const ratio = total > 0 ? value / total : 0;
-      return toPercent(ratio, 2);
-    };
-
-    const renderTooltipContent = (o) => {
-      const { payload, label } = o;
-      const total = payload.reduce((result, entry) => (result + entry.value), 0);
-
-      return (
-        <div className="customized-tooltip-content">
-          <p className="total">{`${label} (Total: ${total})`}</p>
-          <ul className="list">
-            {
-              payload.map((entry, index) => (
-                <li key={`item-${index}`} style={{color: entry.color}}>
-                  {`${entry.name}: ${entry.value}(${getPercent(entry.value, total)})`}
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      );
-    };  
     return (
       <div>
         <div className='tone-table'>
-          <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={toneData}>
+          <RadarChart cx={175} cy={200} outerRadius={50} width={350} height={300} data={toneData}>
             <PolarGrid />
             <PolarAngleAxis dataKey="name" />
    
@@ -144,7 +111,7 @@ class DashboardRoute extends Component {
         </div>
 
         <div className='face-table'>
-          <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={faceData}>
+          <RadarChart cx={175} cy={200} outerRadius={50} width={350} height={300} data={faceData}>
             <PolarGrid />
             <PolarAngleAxis dataKey="name" />
             
