@@ -45,6 +45,31 @@ export default class EntryRoute extends Component {
     }
   }
 
+  resetState = () => {
+    this.setState({      
+      id: null,
+      user_id: null,
+      date_created: null,
+      face_url: '',
+      happiness: 0,
+      face_anger: 0,
+      face_contempt: 0,
+      face_disgust: 0,
+      face_fear: 0,
+      face_happiness: 0,
+      face_neutral: 0,
+      face_sadness: 0,
+      face_surprise: 0,
+      tone_analytical: 0,
+      tone_anger: 0,
+      tone_confident: 0,
+      tone_fear: 0,
+      tone_joy: 0,
+      tone_sadness: 0,
+      tone_tentative: 0,
+    })
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params
 
@@ -73,13 +98,13 @@ export default class EntryRoute extends Component {
 
           <FaceInfo 
             anger={this.state.face_anger}
-            contempt={this.state.contempt}
-            disgust={this.state.disgust}
-            fear={this.state.fear}
-            happiness={this.state.happiness}
-            neutral={this.state.neutral}
-            sadness={this.state.happiness}
-            surprise={this.state.surprise}
+            contempt={this.state.face_contempt}
+            disgust={this.state.face_disgust}
+            fear={this.state.face_fear}
+            happiness={this.state.face_happiness}
+            neutral={this.state.face_neutral}
+            sadness={this.state.face_sadness}
+            surprise={this.state.face_surprise}
           />
 
         <p>{this.state.text}</p>

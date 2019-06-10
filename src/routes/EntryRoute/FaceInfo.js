@@ -28,7 +28,6 @@ export default class FaceInfo extends React.Component {
         })
       }
 
-    console.log(data)
     return data
   }
   
