@@ -48,7 +48,6 @@ export default class EntryRoute extends Component {
 
     EntryService.getEntryById(id)
       .then(res => {
-        console.log('entry res:', res)
         this.setState({...res})
       })
   }

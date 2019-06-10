@@ -64,13 +64,11 @@ export default class NewEntryRoute extends Component {
     EntryService.postEntryToWatson(this.state.newEntry.text)
       .then(res => {
         let toneData = res.document_tone.tones
-        console.log(res.document_tone.tones)
 
         for (let i in toneData) {
           tones[toneData[i].tone_name] = Math.floor(toneData[i].score * 50)
         }
 
-        console.log(tones)
         this.handleEntryTones(tones)
       })
   }
@@ -88,10 +86,8 @@ export default class NewEntryRoute extends Component {
 
   handleFinishedEntry(event, newEntry) {
     event.preventDefault();
-    console.log('newEntry', newEntry)
     EntryService.postEntry(newEntry)
       .then(res => {
-        console.log('postEntry res:',res)
         this.setState({res_id: res.id})
         this.setRedirect()
       })
@@ -102,7 +98,6 @@ export default class NewEntryRoute extends Component {
   }
 
   renderRedirect() {
-    console.log('renderRedirect')
     if (this.state.redirect) {
       return <Redirect to={`/entry/${this.state.res_id}`} />
     }

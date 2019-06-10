@@ -29,7 +29,6 @@ export default class JournalInfo extends React.Component {
     const { currentEntry } = this.props;
 
     const data = this.generateData()
-    console.log('data: ', data)
 
     return (
       <section className='journal-feedback'>
