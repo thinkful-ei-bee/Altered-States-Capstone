@@ -17,33 +17,13 @@ class DashboardRoute extends Component {
   componentDidMount() {
     EntryService.getUserEntries()
       .then(res => {
-        this.setState({entries: res})
+        this.setState({entries: res}, () => {
+          if (this.state.entries.length === 0) return;
+          this.setState({display: this.state.entries[-1]})
+        })
       })
   }
 
-  // generateToneData() {
-  //   const { entries } = this.state
-
-  //   let data = []
-
-  //   // No entries
-  //   if (entries.length === 0) {
-  //     return
-  //   }
-
-  //   for (let key in entries[entries.length - 1]) {
-  //     if (key.split('_')[0] === 'tone') {
-  //       let keyWord = key.split('_')[1]
-  //       data.push({
-  //         name: keyWord,
-  //         amount: entries[entries.length - 1][key] + 10
-  //       })
-  //     }
-  //   }
-    
-  //   return data
-
-  // }
   generateToneData() {
     const { entries, display } = this.state
 
@@ -54,14 +34,16 @@ class DashboardRoute extends Component {
       return
     }
 
-    const target = entries.filter(entry => entry.id === display)
+    const selected = entries.filter(entry => entry.id === display)
 
-    for (let key in target[0]) {
+    const target = selected.length > 0 ? selected[0] : entries[entries.length - 1]
+
+    for (let key in target) {
       if (key.split('_')[0] === 'tone') {
         let keyWord = key.split('_')[1]
         data.push({
           name: keyWord,
-          amount: target[0][key] + 10
+          amount: target[key] + 10
         })
       }
     }
@@ -76,15 +58,17 @@ class DashboardRoute extends Component {
 
     if (entries.length === 0) return
 
-    const target = entries.filter(entry => entry.id === display)
+    const selected = entries.filter(entry => entry.id === display)
 
-    for (let key in target[0]) {
+    const target = selected.length > 0 ? selected[0] : entries[entries.length - 1]
+
+    for (let key in target) {
       if (key.split('_')[0] === 'face' && key.split('_')[1] !== 'url') {
         let keyWord = key.split('_')[1]
 
         data.push({
           name: keyWord,
-          amount: target[0][key] + 10
+          amount: target[key] + 10
         })
       }
     }
@@ -119,7 +103,7 @@ class DashboardRoute extends Component {
   }
 
   handleDisplayChange(id) {
-    this.setState({display: id}, () => console.log('display', this.state.display))
+    this.setState({display: id})
 
   }
 
