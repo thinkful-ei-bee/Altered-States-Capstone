@@ -7,21 +7,19 @@ export default class EntryTag extends Component{
         const {date}=this.props
        
 
-        const day = new Date(date)
-        const dayStr = day.toString()
-        const weekDay = dayStr.slice(0,3)
-        const dateStr = dayStr.slice(4,15)
-        let time = dayStr.slice(16,21)
-        console.log(time)
+        const day = new Date(date).toLocaleString([], { hour12: true});
+        
+        const newDate = day.slice(0,-6) + day.slice(-3)     
+        console.log(day)
+        
 
 
         
         
         return <button className='entry-tag' onClick={()=>this.props.handleClick(this.props.id)}>
         
-       {weekDay}<br/>
-       {dateStr}<br/>
-        {time}
+       {newDate}
+       
         </button>
     }
   
