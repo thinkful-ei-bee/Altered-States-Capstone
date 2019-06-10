@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "alias": "alt-states-mimood",
+  "name": "miMood",
+  "routes": [
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    }
+  ]
+}
