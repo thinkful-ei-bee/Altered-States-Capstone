@@ -1,6 +1,31 @@
 /* testing, not important */
 .cloudinary-thumb {
-  width: 300px;
+  width: 360px;
+}
+
+#parallax {
+  min-height: 500px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: initial;
+  width: 80%;
+  margin: auto;
+}
+
+.entry_form {
+  background-color: lightgray;
+  padding: 12px 12px;
+  display: inline-block;
+  margin: auto;
+}
+
+.entry_form button {
+  display: block;
+  margin: auto;
+  border: 1px solid darkgray;
+  background-color: white;
+  font-size: 16px;
 }
 
 textarea {
@@ -8,6 +33,19 @@ textarea {
   display: block;
   margin: auto;
   border: 1px solid darkgray;
-  width: 322px;
-  height: 300px;
+  width: 312px;
+  height: 430px;
+  padding: 10px;
+}
+
+.upload-button {
+  border: 1px solid darkgray;
+  background-color: white;
+  height: 120px;
+  width: 120px;
+  transition: 300ms;
+}
+
+.upload-button:hover {
+  background-color: lightgray;
 }

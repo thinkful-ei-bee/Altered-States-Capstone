@@ -41,8 +41,9 @@ export default class NewEntryRoute extends Component {
   // username and password like so:
   // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
 
-  updateFaceUrl = (url) => {
-    this.setState({newEntry: {...this.state.newEntry, face_url: url}}, () => console.log('face_url:', this.state.newEntry.face_url))
+  updateFaceUrl = async (url) => {
+    await this.setState({newEntry: {...this.state.newEntry, face_url: url}}, () => console.log('face_url:', this.state.newEntry.face_url))
+    document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url})`
   }
 
   updateFaceData = (faceData) => {
@@ -110,23 +111,30 @@ export default class NewEntryRoute extends Component {
     }
   }
 
-
+// <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/>
 
   render() {
     return (
       <div>
-        <CloudinaryWidget updateFaceUrl={this.updateFaceUrl.bind(this)} updateFaceData={this.updateFaceData.bind(this)}/>
-        {this.state.newEntry.face_url ? <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/> : ''} 
+
+        <div id='parallax'></div>
+
+        {!this.state.newEntry.face_url && 
+          <CloudinaryWidget 
+            updateFaceUrl={this.updateFaceUrl.bind(this)} 
+            updateFaceData={this.updateFaceData.bind(this)} />}
+
         <MoodSelector handleClick={this.handleHappinessClick}/>
+
         <form className='entry_form' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
             className='entry_area'
             maxLength='5000'
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
           <button type='submit'>Submit</button>
+          <Link to='/'>Cancel</Link>
         </form>
 
-        <Link to='/'>Cancel</Link>
         {this.renderRedirect()}
       </div>
     );
