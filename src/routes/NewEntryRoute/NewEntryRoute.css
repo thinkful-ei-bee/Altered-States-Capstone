@@ -2,3 +2,12 @@
 .cloudinary-thumb {
   width: 300px;
 }
+
+textarea {
+  resize: none;
+  display: block;
+  margin: auto;
+  border: 1px solid darkgray;
+  width: 322px;
+  height: 300px;
+}

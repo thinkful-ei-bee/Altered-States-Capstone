@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Redirect} from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
@@ -71,6 +71,13 @@ export default class NewEntryRoute extends Component {
 
         this.handleEntryTones(tones)
       })
+      .then(() => {
+        EntryService.postEntry(this.state.newEntry)
+          .then(res => {
+            this.setState({ res_id: res.id })
+            this.setRedirect()
+          })
+      })
   }
 
 
@@ -114,12 +121,12 @@ export default class NewEntryRoute extends Component {
         <form className='entry_form' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
             className='entry_area'
+            maxLength='5000'
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
           <button type='submit'>Submit</button>
         </form>
-        <button onClick={(event) => this.handleFinishedEntry(event, this.state.newEntry)} >
-          Submit Entry
-        </button>
+
+        <Link to='/'>Cancel</Link>
         {this.renderRedirect()}
       </div>
     );
