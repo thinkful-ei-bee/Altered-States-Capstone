@@ -117,7 +117,7 @@ export default class NewEntryRoute extends Component {
     return (
       <div>
 
-        <div id='parallax'></div>
+        {this.state.newEntry.face_url && <div id='parallax'></div>}
 
         {!this.state.newEntry.face_url && 
           <CloudinaryWidget 
@@ -131,8 +131,8 @@ export default class NewEntryRoute extends Component {
             className='entry_area'
             maxLength='5000'
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
-          <button type='submit'>Submit</button>
-          <Link to='/'>Cancel</Link>
+          <Link to='/'>CANCEL</Link>
+          <button type='submit'>SUBMIT</button>
         </form>
 
         {this.renderRedirect()}
