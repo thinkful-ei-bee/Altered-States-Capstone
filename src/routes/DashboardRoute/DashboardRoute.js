@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { LineChart, Line, Radar, RadarChart, PolarGrid,
-  PolarAngleAxis, YAxis, XAxis } from 'recharts'
+  PolarAngleAxis, YAxis, XAxis, ResponsiveContainer } from 'recharts'
 import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
 
@@ -107,6 +107,18 @@ class DashboardRoute extends Component {
 
   }
 
+  renderSelectedEntryDate() {
+    const { entries, display } = this.state
+
+    if (entries.length === 0) return <p>No Entries</p>
+
+    const selected = entries.filter(entry => entry.id === display)
+
+    const target = selected.length > 0 ? selected[0] : entries[entries.length - 1]
+
+    return <Link to={`/entry/${target.id}`} ><h3>{target.date_created}</h3></Link>
+  }
+
 
   render() {
 
@@ -116,48 +128,77 @@ class DashboardRoute extends Component {
 
     const happinessData = this.generateHappinessData()
 
+    // const screenWidth = window.innerWidth; 760
+    const isMobile = window.innerWidth < 760;
+    const radius = isMobile ? 45 : 80;
+
     return (
       <div>
-        <h2 className='chart-title'>Written Analysis</h2>
-        <div className='tone-table'>
-          <RadarChart cx={175} cy={200} outerRadius={50} width={350} height={300} data={toneData}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="name" />
+        <div className='radar-charts'>
+          <div className='entry-label'>{this.renderSelectedEntryDate()}</div>
+          <h3 className='chart-title-tone'>Written Analysis</h3>
+          <div className='tone-table'>
+            <ResponsiveContainer width='100%' height='100%'>
+              <RadarChart 
+                  // cx={175} 
+                  // cy={200} 
+                  cx='50%' 
+                  cy='50%' 
+                  outerRadius={radius} 
+                  width={350} 
+                  height={300} 
+                  data={toneData}
+              >
+                <PolarGrid />
+                <PolarAngleAxis dataKey="name" />
+                
+                <Radar name="ToneRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
+          <h3 className='chart-title-face'>Face Analysis</h3>
+          <div className='face-table'>
+            <ResponsiveContainer width='100%' height='100%'>
+              <RadarChart 
+                // cx={175} 
+                // cy={200}
+                cx='50%' 
+                cy='50%'  
+                outerRadius={radius} 
+                width={350} 
+                height={300} 
+                data={faceData}
+              >
+                <PolarGrid />
+                <PolarAngleAxis dataKey="name" />
             
-            <Radar name="ToneRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
-          </RadarChart>
+                <Radar name="FaceRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
-
-        <h2 className='chart-title'>Face Analysis</h2>
-        <div className='face-table'>
-          <RadarChart cx={175} cy={200} outerRadius={50} width={350} height={300} data={faceData}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="name" />
-        
-            <Radar name="FaceRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
-          </RadarChart>
-        </div>
-
-        <h2>Happiness</h2>
+        {/* <h3>Happiness</h3>
         <div className='happiness-table'>
           <LineChart width={300} height={175} data={happinessData}>
             <Line type='monotone' dataKey='Happiness' stroke='#8884d8' strokeWidth={2} />
             <YAxis ticks={[0,1,2,3,4,5]} type='number' domain={[0, 5]} />
             <XAxis />
           </LineChart>
-        </div>
+        </div> */}
 
-        <Link to="/new" className="new-entry-button">
+        {/* <Link to="/new" className="new-entry-button">
             New Entry
-        </Link>
+        </Link> */}
 
         <ul className='past-entries'>
+          <li>
+            <Link to="/new" className="new-entry-button">
+                <h3>New Entry</h3>
+            </Link>
+          </li>
           {this.state.entries.length > 0 && this.state.entries.map(entry => {
             return (
               <li>
-                {/* <Link to={`/entry/${entry.id}`}>
-                <h3>{entry.date_created}</h3>
-                </Link> */}
                 <div onClick={() => this.handleDisplayChange(entry.id)}>
                 <h3>{entry.date_created}</h3>
                 </div>
