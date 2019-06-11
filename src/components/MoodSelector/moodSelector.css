@@ -12,10 +12,9 @@
     margin: 4px 2px;
   }
   .mood_number{
-      border:1px solid black;
-      max-width: 400px;
+      width: 322px;
       border-radius: 10px;
-      margin:auto;
+      margin: auto;
   }
 
   .mood-entry{
