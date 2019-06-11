@@ -4,7 +4,7 @@ import { LineChart, Line, Radar, RadarChart, PolarGrid,
   PolarAngleAxis, YAxis, XAxis, ResponsiveContainer } from 'recharts'
 import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
-import EntryTag from './EntryTag'
+import EntryTag from '../../components/EntryTag/EntryTag'
 
 
 class DashboardRoute extends Component {
@@ -104,25 +104,25 @@ class DashboardRoute extends Component {
     return data
   }
 
-  handleClick=(id)=>{
-    const { entries } = this.state
-    console.log(entries)
-    console.log(id)
-    const selected = entries.filter(item => item.id === id)
-    console.log( selected)
+  // handleClick=(id)=>{
+  //   const { entries } = this.state
+  //   console.log(entries)
+  //   console.log(id)
+  //   const selected = entries.filter(item => item.id === id)
+  //   console.log( selected)
 
-  }
+  // }
 
-  generateEntryTags(){
-    const {entries} = this.state
-   console.log(entries)
-     if(entries.length > 0){
-      const tags = entries.map((entry,index)=>{
-       return <EntryTag id={index} date={entry.date_created} handleClick={this.handleClick.bind(this)}/>
-       })
-      return tags
-     }
-  }
+  // generateEntryTags(){
+  //   const {entries} = this.state
+  //  console.log(entries)
+  //    if(entries.length > 0){
+  //     const tags = entries.map((entry,index)=>{
+  //      return <EntryTag id={index} date={entry.date_created} handleClick={this.handleClick.bind(this)}/>
+  //      })
+  //     return tags
+  //    }
+  // }
        
   handleDisplayChange(id) {
     this.setState({display: id})
@@ -138,18 +138,18 @@ class DashboardRoute extends Component {
 
     const target = selected.length > 0 ? selected[0] : entries[entries.length - 1]
 
-    return <Link to={`/entry/${target.id}`} ><h3>{target.date_created}</h3></Link>
+    return <Link to={`/entry/${target.id}`} ><EntryTag date={target.date_created} /></Link>
   }
 
 
   render() {
 
-   const entryTags = this.generateEntryTags()
+  //  const entryTags = this.generateEntryTags()
     const toneData = this.generateToneData()
 
     const faceData = this.generateEmotionData()
 
-    const happinessData = this.generateHappinessData()
+    // const happinessData = this.generateHappinessData()
 
     // const screenWidth = window.innerWidth; 760
     const isMobile = window.innerWidth < 760;
@@ -163,8 +163,6 @@ class DashboardRoute extends Component {
           <div className='tone-table'>
             <ResponsiveContainer width='100%' height='100%'>
               <RadarChart 
-                  // cx={175} 
-                  // cy={200} 
                   cx='50%' 
                   cy='50%' 
                   outerRadius={radius} 
@@ -183,8 +181,6 @@ class DashboardRoute extends Component {
           <div className='face-table'>
             <ResponsiveContainer width='100%' height='100%'>
               <RadarChart 
-                // cx={175} 
-                // cy={200}
                 cx='50%' 
                 cy='50%'  
                 outerRadius={radius} 
@@ -209,9 +205,6 @@ class DashboardRoute extends Component {
           </LineChart>
         </div> */}
 
-        {/* <Link to="/new" className="new-entry-button">
-            New Entry
-        </Link> */}
 
         <ul className='past-entries'>
           <li>
@@ -223,13 +216,12 @@ class DashboardRoute extends Component {
             return (
               <li>
                 <div onClick={() => this.handleDisplayChange(entry.id)}>
-                <h3>{entry.date_created}</h3>
+                  <EntryTag date={entry.date_created} />
                 </div>
               </li>
             )
           })}
         </ul>
-        {entryTags}
       </div>
     );
   }

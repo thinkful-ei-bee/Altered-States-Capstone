@@ -16,11 +16,11 @@ export default class EntryTag extends Component{
 
         
         
-        return <button className='entry-tag' onClick={()=>this.props.handleClick(this.props.id)}>
+        return <h3 className='entry-tag' >
         
        {newDate}
        
-        </button>
+        </h3>
     }
   
     render(){
