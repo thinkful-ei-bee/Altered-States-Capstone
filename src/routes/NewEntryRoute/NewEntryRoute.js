@@ -112,6 +112,13 @@ export default class NewEntryRoute extends Component {
   }
 
 // <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/>
+  handleDeleteSelfie() {
+    EntryService.deleteSelfie(this.state.newEntry.face_url)
+      .then(res => {
+        this.setState({newEntry: {...this.state.newEntry, face_url: ''}}, () => console.log('state', this.state.newEntry))
+        console.log('res', res)
+      })
+  }
 
   render() {
     return (

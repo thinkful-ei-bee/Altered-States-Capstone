@@ -78,6 +78,24 @@ const EntryService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+  },
+
+  deleteSelfie(url) {
+    // const encodedKey = new Buffer(`${config.SELFIE_KEY}:${config.SELFIE_SECRET}`).toString('base64');
+    
+    const public_id = url.split('selfies/')[1].slice(0,-4)
+
+    return fetch(`${config.SELFIE_ENDPOINT}${public_id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Basic ODMzNzUxNjc2Njg5MTY2OmhYblRlOHEtZExERkpvOUNMNGM1dHRxUWx0SQ==`
+      }
+    })
+      .then(res => 
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+    )
   }
 }
 
