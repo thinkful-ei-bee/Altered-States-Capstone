@@ -1,19 +1,9 @@
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* .recharts-wrapper {
+.recharts-wrapper {
   margin: auto;
-
-} */
-
-.past-entries {
-  position: relative;
-  top: 350px;
 }
 
-/* .radar-charts {
+
+.radar-charts-entryPage {
   position: fixed;
   left:0;
   right:0;
@@ -69,7 +59,7 @@ tspan {
 
 
 @media only screen and (max-width: 760px) {
-  .radar-charts {
+  .radar-charts-entryPage {
     display: grid;
     grid-template-columns:50% 50%;
     grid-template-rows: 10% 10% 80%;
@@ -113,6 +103,4 @@ tspan {
   tspan {
     font-size: .6em;
   }
-} */
-
-
+}
