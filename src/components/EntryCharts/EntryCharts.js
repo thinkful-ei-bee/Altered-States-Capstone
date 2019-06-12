@@ -64,9 +64,9 @@ class EntryCharts extends Component {
 
     return (
       <div>
-        <div className='radar-charts-entryPage'>
+        <div className='radar-charts'>
           <div className='entry-label'>{this.renderEntryLabel()}</div>
-          <h3 className='chart-title-tone'>Written Analysis</h3>
+          <h3 className='chart-title-tone'>Writing Analysis</h3>
           <div className='tone-table'>
             <ResponsiveContainer width='100%' height='100%'>
               <RadarChart 
