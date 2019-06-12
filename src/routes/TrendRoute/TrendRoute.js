@@ -3,6 +3,7 @@ import { LineChart, Line,
      YAxis, XAxis, ResponsiveContainer } from 'recharts'
 import EntryService from "../../services/entry-service";
 import TrendGraph from '../../components/TrendGraph/TrendGraph'
+import './TrendRoute.css'
 
 export default class TrendRoute extends Component {
     constructor(props) {
@@ -36,7 +37,7 @@ export default class TrendRoute extends Component {
             for (let i = entries.length - 5; i < entries.length; i++) {
                 data.push({
                     name: entries[i].date_created,
-                    happiness:entries[i].happiness,
+                    happiness:entries[i].happiness / 10,
                     tone_joy: entries[i].tone_joy / 10,
                     tone_analytical:entries[i].tone_analytical / 10,
                     tone_confident:entries[i].tone_confident / 10,
@@ -64,7 +65,7 @@ export default class TrendRoute extends Component {
           for (let i = 0; i < entries.length; i++) {
             data.push({
                 name: entries[i].date_created,
-                happiness:entries[i].happiness,
+                happiness:entries[i].happiness / 10,
                 tone_joy: entries[i].tone_joy / 10,
                 tone_analytical:entries[i].tone_analytical / 10,
                 tone_confident:entries[i].tone_confident / 10,
@@ -91,7 +92,7 @@ export default class TrendRoute extends Component {
         
         const data = this.generateData()
         return(
-            <div>
+            <div className='trend-graphs'>
 
         <div className='happiness-table'>
                 
