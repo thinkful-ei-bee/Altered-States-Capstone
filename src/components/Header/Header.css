@@ -1,6 +1,10 @@
 .main-header {
   position: fixed;
   width: 100%;
+  background-color: white;
+  z-index: 100;
+  top: 0;
+  padding-top: 19px;
 }
 
 .main-header nav {
