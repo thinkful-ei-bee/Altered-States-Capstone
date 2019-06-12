@@ -14,7 +14,7 @@ export default class moodSelector extends Component{
 
     render(){
         return(
-            <div> How are you feeling today?
+            <div>
                 <section className='mood_number'onClick={this.props.handleClick.bind(this)}>
                     <button className='button button1' value='10'>10</button>
                     <button className='button button2'  value='20'>20</button>

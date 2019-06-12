@@ -1,13 +1,66 @@
 /* testing, not important */
 .cloudinary-thumb {
-  width: 300px;
+  width: 360px;
+}
+
+#parallax {
+  min-height: 460px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: initial;
+  width: 80%;
+  margin: auto;
+}
+
+.entry_form {
+  display: inline-block;
+  margin: auto;
+  width: 100%;
+  max-width: 360px;
+  transition: 300ms;
+}
+
+.entry_form button {
+  margin: auto;
+  color: white;
+  background-color: rgb(189, 62, 30);
+  font-size: 16px;
+  padding: 12px;
+  width: 67%;
+  float: right;
+  border: none;
+}
+
+.entry_form a {
+  margin: auto;
+  color: rgb(65, 65, 65);
+  background-color: white;
+  font-size: 16px;
+  width: 33%;
+  float: left;
+  padding: 12px 0;
 }
 
 textarea {
   resize: none;
   display: block;
-  margin: auto;
+  margin: 20px auto;
+  width: 312px;
+  height: 374px;
+  padding: 10px;
   border: 1px solid darkgray;
-  width: 322px;
-  height: 300px;
+  font-size: 16px;
+}
+
+.upload-button {
+  border: 1px solid darkgray;
+  background-color: white;
+  height: 120px;
+  width: 120px;
+  transition: 300ms;
+}
+
+.upload-button:hover {
+  background-color: lightgray;
 }
