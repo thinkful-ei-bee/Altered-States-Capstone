@@ -1,26 +1,19 @@
 import React, { Component } from "react";
-import Selfie from "../../components/Selfie/Selfie";
-import JournalInfo from './JournalInfo'
-import FaceInfo from './FaceInfo'
+// import { Radar, RadarChart, PolarGrid,
+//   PolarAngleAxis, ResponsiveContainer } from 'recharts'
 import BackButton from '../../components/Button/Back-button'
-import MoodEntry from '../../components/MoodSelector/moodEntry'
+import "./EntryRoute.css";
 import EntryService from "../../services/entry-service";
-import './EntryRoute.css'
+// import EntryTag from '../../components/EntryTag/EntryTag'
 
-export default class EntryRoute extends Component {
+import EntryCharts from '../../components/EntryCharts/EntryCharts';
+
+
+class EntryRoute extends Component {
+
   constructor(props) {
     super(props)
-    // this.state = {
-    //   entries: [],
-    //   currentEntry: 'This has me thinking, I should buy less stuff.',
-    //   Joy: 0,
-    //   Fear: 0,
-    //   Sadness: 0,
-    //   Anger: 0,
-    //   Analytical: 0,
-    //   Confident: 0,
-    //   Tentative: 0,
-    // }
+   
     this.state = {
       id: null,
       user_id: null,
@@ -45,31 +38,6 @@ export default class EntryRoute extends Component {
     }
   }
 
-  resetState = () => {
-    this.setState({      
-      id: null,
-      user_id: null,
-      date_created: null,
-      face_url: '',
-      happiness: 0,
-      face_anger: 0,
-      face_contempt: 0,
-      face_disgust: 0,
-      face_fear: 0,
-      face_happiness: 0,
-      face_neutral: 0,
-      face_sadness: 0,
-      face_surprise: 0,
-      tone_analytical: 0,
-      tone_anger: 0,
-      tone_confident: 0,
-      tone_fear: 0,
-      tone_joy: 0,
-      tone_sadness: 0,
-      tone_tentative: 0,
-    })
-  }
-
   componentDidMount() {
     const { id } = this.props.match.params
 
@@ -79,36 +47,104 @@ export default class EntryRoute extends Component {
       })
   }
 
+  // generateToneData() {
+  //   const target = this.state
+
+  //   let data = []
+
+  //   for (let key in target) {
+  //     if (key.split('_')[0] === 'tone') {
+  //       let keyWord = key.split('_')[1]
+  //       data.push({
+  //         name: keyWord,
+  //         amount: target[key] + 10
+  //       })
+  //     }
+  //   }
+    
+  //   return data
+
+  // }
+
+  // generateEmotionData() {
+  //   const target = this.state
+
+  //   let data = []
+
+  //   for (let key in target) {
+  //     if (key.split('_')[0] === 'face' && key.split('_')[1] !== 'url') {
+  //       let keyWord = key.split('_')[1]
+
+  //       data.push({
+  //         name: keyWord,
+  //         amount: target[key] + 10
+  //       })
+  //     }
+  //   }
+  //   return data
+  // }
+
+
+
   render() {
+
+    // const toneData = this.generateToneData()
+
+    // const faceData = this.generateEmotionData()
+
+    // const isMobile = window.innerWidth < 760;
+    // const radius = isMobile ? 45 : 80;
+
     return (
       <div>
         <BackButton/>
-        <h2>{this.state.date_created}</h2>
+
+        <EntryCharts entry={this.state} />
+        {/* <div className='radar-charts-entryPage'>
+          <div className='entry-label'><EntryTag date={this.state.date_created} /></div>
+          <h3 className='chart-title-tone'>Written Analysis</h3>
+          <div className='tone-table'>
+            <ResponsiveContainer width='100%' height='100%'>
+              <RadarChart 
+                  cx='50%' 
+                  cy='50%' 
+                  outerRadius={radius} 
+                  width={350} 
+                  height={300} 
+                  data={toneData}
+              >
+                <PolarGrid />
+                <PolarAngleAxis dataKey="name" />
+                
+                <Radar name="ToneRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
+          <h3 className='chart-title-face'>Face Analysis</h3>
+          <div className='face-table'>
+            <ResponsiveContainer width='100%' height='100%'>
+              <RadarChart 
+                cx='50%' 
+                cy='50%'  
+                outerRadius={radius} 
+                width={350} 
+                height={300} 
+                data={faceData}
+              >
+                <PolarGrid />
+                <PolarAngleAxis dataKey="name" />
+            
+                <Radar name="FaceRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
+        </div> */}
         <img src={this.state.face_url} alt='selfie'/>
-      
-        <JournalInfo 
-          currentEntry={this.state.currentEntry} 
-          joy={this.state.tone_joy}
-          fear={this.state.tone_fear}
-          sadness={this.state.tone_sadness}
-          anger={this.state.tone_anger}
-          analytical={this.state.tone_analytical}
-          confident={this.state.tone_confident}
-          tentative={this.state.tone_tentative} />
-
-          <FaceInfo 
-            anger={this.state.face_anger}
-            contempt={this.state.face_contempt}
-            disgust={this.state.face_disgust}
-            fear={this.state.face_fear}
-            happiness={this.state.face_happiness}
-            neutral={this.state.face_neutral}
-            sadness={this.state.face_sadness}
-            surprise={this.state.face_surprise}
-          />
-
         <p>{this.state.text}</p>
+
       </div>
     );
   }
 }
+
+export default EntryRoute;

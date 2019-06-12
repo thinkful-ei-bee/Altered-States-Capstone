@@ -3,17 +3,16 @@ ul {
   padding: 0;
 }
 
-.recharts-wrapper {
+/* .recharts-wrapper {
   margin: auto;
 
-  /* height: 200px !important; */
-}
+} */
 
 .past-entries {
   margin-top: 350px;
 }
 
-.radar-charts {
+/* .radar-charts {
   position: fixed;
   top: 100px;
   left:0;
@@ -109,6 +108,6 @@ tspan {
   tspan {
     font-size: .6em;
   }
-}
+} */
 
 

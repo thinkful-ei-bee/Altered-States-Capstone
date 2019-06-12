@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import { LineChart, Line, Radar, RadarChart, PolarGrid,
-  PolarAngleAxis, YAxis, XAxis, ResponsiveContainer } from 'recharts'
 import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
 import EntryTag from '../../components/EntryTag/EntryTag'
+import EntryCharts from "../../components/EntryCharts/EntryCharts";
 
 
 class DashboardRoute extends Component {
@@ -26,110 +25,14 @@ class DashboardRoute extends Component {
       })
   }
 
-  generateToneData() {
-    const { entries, display } = this.state
 
-    let data = []
-
-    // No entries
-    if (entries.length === 0) {
-      return
-    }
-
-    const selected = entries.filter(entry => entry.id === display)
-
-    const target = selected.length > 0 ? selected[0] : entries[entries.length - 1]
-
-    for (let key in target) {
-      if (key.split('_')[0] === 'tone') {
-        let keyWord = key.split('_')[1]
-        data.push({
-          name: keyWord,
-          amount: target[key] + 10
-        })
-      }
-    }
-    
-    return data
-
-  }
-
-  generateEmotionData() {
-    const { entries, display } = this.state
-    let data = []
-
-    if (entries.length === 0) return
-
-    const selected = entries.filter(entry => entry.id === display)
-
-    const target = selected.length > 0 ? selected[0] : entries[entries.length - 1]
-
-    for (let key in target) {
-      if (key.split('_')[0] === 'face' && key.split('_')[1] !== 'url') {
-        let keyWord = key.split('_')[1]
-
-        data.push({
-          name: keyWord,
-          amount: target[key] + 10
-        })
-      }
-    }
-    return data
-  }
-
-  generateHappinessData() {
-    const { entries } = this.state
-    let data = []
-
-    if (!entries) return
-
-    if (entries.length >= 5) {
-      for (let i = entries.length - 5; i < entries.length; i++) {
-        data.push({
-          name: entries[i].date_created,
-          Happiness: entries[i].happiness / 10
-        })
-      }
-    }
-
-    else if (entries.length < 5) {
-      for (let i = 0; i < entries.length; i++) {
-        data.push({
-          name: entries[i].date_created,
-          Happiness: entries[i].happiness / 10
-        })
-      }
-    }
-
-    return data
-  }
-
-  // handleClick=(id)=>{
-  //   const { entries } = this.state
-  //   console.log(entries)
-  //   console.log(id)
-  //   const selected = entries.filter(item => item.id === id)
-  //   console.log( selected)
-
-  // }
-
-  // generateEntryTags(){
-  //   const {entries} = this.state
-  //  console.log(entries)
-  //    if(entries.length > 0){
-  //     const tags = entries.map((entry,index)=>{
-  //      return <EntryTag id={index} date={entry.date_created} handleClick={this.handleClick.bind(this)}/>
-  //      })
-  //     return tags
-  //    }
-  // }
        
   handleDisplayChange(id) {
     this.setState({display: id})
 
   }
 
-  renderSelectedEntryDate() {
+  generateEntryLabel() {
     const { entries, display } = this.state
 
     if (entries.length === 0) return <p>No Entries</p>
@@ -141,69 +44,32 @@ class DashboardRoute extends Component {
     return <Link to={`/entry/${target.id}`} ><EntryTag date={target.date_created} /></Link>
   }
 
+  renderEntryCharts() {
+    const { entries, display } = this.state
+
+    if (entries.length === 0) {
+      return
+    }
+
+    const selected = entries.filter(entry => entry.id === display)
+
+    const target = selected.length > 0 ? selected[0] : entries[entries.length - 1]
+
+    return <EntryCharts entry={target} label={this.generateEntryLabel()}/>;
+  }
+
 
   render() {
 
-  //  const entryTags = this.generateEntryTags()
-    const toneData = this.generateToneData()
 
-    const faceData = this.generateEmotionData()
-
-    // const happinessData = this.generateHappinessData()
-
-    // const screenWidth = window.innerWidth; 760
-    const isMobile = window.innerWidth < 760;
-    const radius = isMobile ? 45 : 80;
+    
 
     return (
       <div>
-        <div className='radar-charts'>
-          <div className='entry-label'>{this.renderSelectedEntryDate()}</div>
-          <h3 className='chart-title-tone'>Written Analysis</h3>
-          <div className='tone-table'>
-            <ResponsiveContainer width='100%' height='100%'>
-              <RadarChart 
-                  cx='50%' 
-                  cy='50%' 
-                  outerRadius={radius} 
-                  width={350} 
-                  height={300} 
-                  data={toneData}
-              >
-                <PolarGrid />
-                <PolarAngleAxis dataKey="name" />
-                
-                <Radar name="ToneRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
-          <h3 className='chart-title-face'>Face Analysis</h3>
-          <div className='face-table'>
-            <ResponsiveContainer width='100%' height='100%'>
-              <RadarChart 
-                cx='50%' 
-                cy='50%'  
-                outerRadius={radius} 
-                width={350} 
-                height={300} 
-                data={faceData}
-              >
-                <PolarGrid />
-                <PolarAngleAxis dataKey="name" />
-            
-                <Radar name="FaceRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-        {/* <h3>Happiness</h3>
-        <div className='happiness-table'>
-          <LineChart width={300} height={175} data={happinessData}>
-            <Line type='monotone' dataKey='Happiness' stroke='#8884d8' strokeWidth={2} />
-            <YAxis ticks={[0,1,2,3,4,5]} type='number' domain={[0, 5]} />
-            <XAxis />
-          </LineChart>
-        </div> */}
+        {this.renderEntryCharts()}
+
+
+  
 
 
         <ul className='past-entries'>

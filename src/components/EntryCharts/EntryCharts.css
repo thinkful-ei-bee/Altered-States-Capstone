@@ -1,25 +1,23 @@
-/* ul {
-  list-style: none;
-  padding: 0;
-} */
-/* 
 .recharts-wrapper {
   margin: auto;
 }
 
-.past-entries {
-  margin-top: 350px;
-}
-
 
 .radar-charts-entryPage {
-  position: static;
+  position: fixed;
+  left:0;
+  right:0;
+
+  margin-top: 38px;
 
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
   grid-template-rows: 10% 10% 80%;
 
   height: 300px;
+
+  z-index: 100;
+  background-color: white;
 }
 
 .entry-label {
@@ -61,7 +59,7 @@ tspan {
 
 
 @media only screen and (max-width: 760px) {
-  .radar-charts {
+  .radar-charts-entryPage {
     display: grid;
     grid-template-columns:50% 50%;
     grid-template-rows: 10% 10% 80%;
@@ -105,6 +103,4 @@ tspan {
   tspan {
     font-size: .6em;
   }
-} */
-
-
+}
