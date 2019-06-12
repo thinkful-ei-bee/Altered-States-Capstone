@@ -3,14 +3,20 @@
   width: 360px;
 }
 
+.new-entry-page {
+  margin-top: 70px;
+}
+
 #parallax {
   min-height: 460px; 
   background-attachment: fixed;
-  background-position: center;
+  background-position-y: 38%;
+  background-position-x: center;
   background-repeat: no-repeat;
   background-size: initial;
   width: 80%;
   margin: auto;
+  margin-bottom: 10%;
 }
 
 .entry_form {
@@ -42,12 +48,24 @@
   padding: 12px 0;
 }
 
+.entry_form footer {
+  position: fixed;
+  width: 100%;
+  max-width: 334px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  margin: auto;
+}
+
 textarea {
   resize: none;
   display: block;
   margin: 20px auto;
+  margin-bottom: 70px;
   width: 312px;
-  height: 374px;
+  height: 400px;
   padding: 10px;
   border: 1px solid darkgray;
   font-size: 16px;
@@ -59,8 +77,15 @@ textarea {
   height: 120px;
   width: 120px;
   transition: 300ms;
+  margin: 18px;
 }
 
 .upload-button:hover {
   background-color: lightgray;
+}
+
+@media only screen and (min-height: 700px) {
+  textarea {
+    height: 500px;
+  }
 }

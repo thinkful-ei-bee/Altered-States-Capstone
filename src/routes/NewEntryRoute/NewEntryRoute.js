@@ -122,7 +122,7 @@ export default class NewEntryRoute extends Component {
 
   render() {
     return (
-      <div>
+      <div className='new-entry-page'>
 
         {this.state.newEntry.face_url && <div id='parallax'></div>}
 
@@ -138,8 +138,10 @@ export default class NewEntryRoute extends Component {
             className='entry_area'
             maxLength='5000'
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
-          <Link to='/'>CANCEL</Link>
-          <button type='submit'>SUBMIT</button>
+            <footer>
+              <Link to='/'>CANCEL</Link>
+              <button type='submit'>SUBMIT</button>
+            </footer>
         </form>
 
         {this.renderRedirect()}
