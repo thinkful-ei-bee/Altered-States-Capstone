@@ -89,3 +89,20 @@ textarea {
     height: 500px;
   }
 }
+
+/* @media only screen and (min-width: 768px) {
+  .left {
+    grid-area: left;
+  }
+
+  .right {
+    grid-area: right;
+  }
+  .new-entry-page {
+    display: grid;
+    grid-template-areas: 
+      'left left left right right right'
+      'bl bl bl br br br'
+    
+  }
+} */
