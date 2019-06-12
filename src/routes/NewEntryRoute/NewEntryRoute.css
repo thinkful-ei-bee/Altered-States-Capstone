@@ -18,6 +18,7 @@
   margin: auto;
   width: 100%;
   max-width: 360px;
+  transition: 300ms;
 }
 
 .entry_form button {
