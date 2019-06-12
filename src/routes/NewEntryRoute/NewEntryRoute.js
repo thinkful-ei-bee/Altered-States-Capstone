@@ -110,13 +110,26 @@ export default class NewEntryRoute extends Component {
     }
   }
 
+  handleDeleteSelfie() {
+    EntryService.deleteSelfie(this.state.newEntry.face_url)
+      .then(res => {
+        this.setState({newEntry: {...this.state.newEntry, face_url: ''}}, () => console.log('state', this.state.newEntry))
+        console.log('res', res)
+      })
+  }
+
 
 
   render() {
     return (
       <div>
         <CloudinaryWidget updateFaceUrl={this.updateFaceUrl.bind(this)} updateFaceData={this.updateFaceData.bind(this)}/>
-        {this.state.newEntry.face_url ? <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/> : ''} 
+        {this.state.newEntry.face_url ? 
+          <div>
+          <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/> 
+          <button onClick={()=>this.handleDeleteSelfie()}>Delete</button> 
+          </div>
+          : ''} 
         <MoodSelector handleClick={this.handleHappinessClick}/>
         <form className='entry_form' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
