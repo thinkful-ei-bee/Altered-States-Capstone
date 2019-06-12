@@ -10,20 +10,25 @@ ul {
 }
 
 .past-entries {
-  margin-top: 350px;
+  position: relative;
+  top: 350px;
 }
 
 .radar-charts {
   position: fixed;
-  top: 100px;
   left:0;
   right:0;
+
+  margin-top: 55px;
 
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
   grid-template-rows: 10% 10% 80%;
 
   height: 300px;
+
+  z-index: 100;
+  background-color: white;
 }
 
 .entry-label {
