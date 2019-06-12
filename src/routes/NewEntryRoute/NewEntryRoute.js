@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
+import Moment from 'react-moment'
 import './NewEntryRoute.css';
 
 
@@ -121,8 +122,10 @@ export default class NewEntryRoute extends Component {
   }
 
   render() {
+    let date = new Date().toString().slice(0, 9)
     return (
-      <div>
+      <div className='new-entry-page'>
+
 
         {this.state.newEntry.face_url && <div id='parallax'></div>}
 
@@ -133,13 +136,16 @@ export default class NewEntryRoute extends Component {
 
         <MoodSelector handleClick={this.handleHappinessClick}/>
 
-        <form className='entry_form' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
+        <h2 className='left'>{date}</h2>
+        <form className='entry_form left' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
             className='entry_area'
             maxLength='5000'
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
-          <Link to='/'>CANCEL</Link>
-          <button type='submit'>SUBMIT</button>
+            <footer>
+              <Link to='/'>CANCEL</Link>
+              <button type='submit'>SUBMIT</button>
+            </footer>
         </form>
 
         {this.renderRedirect()}
