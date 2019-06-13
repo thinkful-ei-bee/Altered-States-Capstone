@@ -19,3 +19,8 @@ a {
 a:visited {
   color: black;
 }
+
+button {
+    outline: none;
+    border: none;
+}
