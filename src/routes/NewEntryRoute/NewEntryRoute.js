@@ -125,7 +125,10 @@ export default class NewEntryRoute extends Component {
     let date = new Date().toString().slice(0, 9)
     return (
       <div className='new-entry-page'>
-
+        <div className='ne-title ne-title-top'>
+          <h2 >{date}</h2>
+          <h3>New Entry</h3>
+        </div>
 
         {this.state.newEntry.face_url && <div id='parallax'></div>}
 
@@ -136,7 +139,7 @@ export default class NewEntryRoute extends Component {
 
         <MoodSelector handleClick={this.handleHappinessClick}/>
 
-        <h2 className='left'>{date}</h2>
+        <div className='ne-title ta'><h3>Tone Analyzer</h3></div>
         <form className='entry_form left' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
             className='entry_area'

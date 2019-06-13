@@ -1,31 +1,35 @@
 
 .button {
-    border-radius: 50%;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-  }
-  .mood_number{
-      width: 322px;
-      border-radius: 10px;
-      margin: auto;
-  }
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0 3px;
+}
 
-  .mood-entry{
-    border-radius: 50%;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-  }
+.button img {
+  width: 60px;
+}
+
+.button img:hover {
+  opacity: 0.7;
+}
+.mood_number {
+  width: 350px;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 9px;
+  margin-bottom: 12px;
+}
+
+.mood-entry{
+  border-radius: 50%;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}

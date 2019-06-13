@@ -4,7 +4,36 @@
 }
 
 .new-entry-page {
+  margin: auto;
   margin-top: 70px;
+  max-width: 360px;
+}
+
+.ne-title {
+  text-align: left;
+  padding: 0 5%;
+}
+
+.ne-title-top {
+  padding-bottom: 10px;
+}
+
+.ne-title h3 {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.ne-title h2, .ne-title h3 {
+  margin: 0;
+}
+
+.ta {
+  position: relative;
+  top: 10px;
+}
+
+.cloud-button {
+  margin-top: 20px;
 }
 
 #parallax {
@@ -14,7 +43,7 @@
   background-position-x: center;
   background-repeat: no-repeat;
   background-size: initial;
-  width: 80%;
+  width: 90%;
   margin: auto;
   margin-bottom: 10%;
 }
@@ -50,7 +79,7 @@
 
 .entry_form footer {
   position: fixed;
-  width: 100%;
+  width: 324px;
   max-width: 334px;
   left: 0;
   bottom: 0;
@@ -64,8 +93,8 @@ textarea {
   display: block;
   margin: 20px auto;
   margin-bottom: 70px;
-  width: 312px;
-  height: 400px;
+  width: 302px;
+  height: 345px;
   padding: 10px;
   border: 1px solid darkgray;
   font-size: 16px;
@@ -75,34 +104,38 @@ textarea {
   border: 1px solid darkgray;
   background-color: white;
   height: 120px;
-  width: 120px;
+  width: 326px;
   transition: 300ms;
   margin: 18px;
+  margin-top: 7px;
+  margin-bottom: 28px;
 }
 
 .upload-button:hover {
-  background-color: lightgray;
+  background-color: rgb(174, 212, 235);
 }
 
 @media only screen and (min-height: 700px) {
   textarea {
-    height: 500px;
+    height: 412px;
   }
 }
 
-/* @media only screen and (min-width: 768px) {
-  .left {
-    grid-area: left;
+@media only screen and (min-width: 768px) {
+  .new-entry-page {
+    max-width: 1000px;
+  }
+  .ne-title {
+    text-align: center;
+  }
+  .entry_form {
+    max-width: 600px;
+  }
+  textarea {
+    height: 260px;
+    width: 530px;
+    margin-bottom: 0;
   }
 
-  .right {
-    grid-area: right;
-  }
-  .new-entry-page {
-    display: grid;
-    grid-template-areas: 
-      'left left left right right right'
-      'bl bl bl br br br'
-    
-  }
-} */
+
+}

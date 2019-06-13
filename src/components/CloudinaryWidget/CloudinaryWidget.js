@@ -58,7 +58,8 @@ class CloudinaryWidget extends Component {
   render() {
     
     return (
-      <div>
+      <div className='cloud-button'>
+        <div className='ne-title'><h3>Emotion Scanner</h3></div>
         <button onClick={this.uploadWidget.bind(this)} className="upload-button">
           Add Selfie
         </button>
