@@ -93,7 +93,8 @@ export default class TrendRoute extends Component {
     render(){
         
         const isMobile = window.innerWidth < 760;
-        const length = isMobile? 5 : 14;
+        const length = isMobile? 10 : 14;
+        
         const data = this.generateData(length)
         
 
