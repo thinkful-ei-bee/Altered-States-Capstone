@@ -112,7 +112,7 @@ textarea {
 }
 
 .upload-button:hover {
-  background-color: lightgray;
+  background-color: rgb(174, 212, 235);
 }
 
 @media only screen and (min-height: 700px) {
