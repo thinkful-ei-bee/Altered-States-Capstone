@@ -17,10 +17,21 @@
   font-size: 16px;
 }
 
-.logout-link {
+.nav-links {
   display: block;
   float: right;
   font-size: 14px;
   position: relative;
   bottom: 6px;
+
+  width: 300px;
+  text-align: right;
+}
+
+.nav-links a {
+  margin-left: 1em;
+}
+
+.nav-links p {
+  display: inline;
 }
