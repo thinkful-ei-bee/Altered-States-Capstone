@@ -85,12 +85,17 @@ export default class NewEntryRoute extends Component {
 
   handleHappinessClick=(e)=>{ 
 
-    if(!isNaN(e.target.value)){
-      this.setState({
-        newEntry: {...this.state.newEntry, happiness:Number(e.target.value)}
-      },()=>{console.log('happiness state:', this.state.newEntry)} // should we send this to database from here or 
-                                      //should we have one submit that will simply send all of State to database?
-      )}
+    console.log(e.target.id)
+    let num = parseInt(e.target.id, 10)
+    console.log(num)
+
+
+    this.setState({
+      newEntry: {...this.state.newEntry, happiness: num}
+    },()=>{console.log('happiness state:', this.state.newEntry)} // should we send this to database from here or 
+                                    //should we have one submit that will simply send all of State to database?
+    )
+    
     }
 
   handleFinishedEntry(event, newEntry) {
