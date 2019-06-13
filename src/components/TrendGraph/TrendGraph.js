@@ -18,16 +18,21 @@ export default class TrendGraph extends Component{
 
 
     render(){
-        console.log(this.props.data)
-      
+        const isMobile = window.innerWidth < 760;
+        const width = isMobile ? 300 : 500;
+        const ticks= isMobile ? [0,1,2,3,4,5] : [0,1,2,3,4,5,6,7]
+
         return(
+            <ResponsiveContainer  width='100%' height='100%'>
             <div>{this.props.className} 
-            <LineChart width={300} height={175} data={this.props.data}>
+
+            <LineChart width={width} height={175} data={this.props.data}>
             <Line type='monotone' dataKey={this.props.dataKey} stroke='#8884d8' strokeWidth={2} />
             <YAxis ticks={[0,1,2,3,4,5]} type='number' domain={[0, 5]} />
-            <XAxis />
+            <XAxis ticks={ticks} />
           </LineChart>
             </div>
+            </ResponsiveContainer>
         )
     }
 }
