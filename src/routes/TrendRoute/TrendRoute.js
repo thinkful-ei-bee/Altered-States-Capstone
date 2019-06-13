@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { LineChart, Line, 
-     YAxis, XAxis, ResponsiveContainer } from 'recharts'
+import dateFormat from 'dateformat';
 import EntryService from "../../services/entry-service";
 import TrendGraph from '../../components/TrendGraph/TrendGraph'
 import './TrendRoute.css'
@@ -27,16 +26,19 @@ export default class TrendRoute extends Component {
 
 
 
-      generateData() {
+      generateData(length) {
         const { entries } = this.state
         let data = []
-        console.log(entries)
+       
+
         if (!entries) return
         
-        if (entries.length >= 5) {
-            for (let i = entries.length - 5; i < entries.length; i++) {
+        if (entries.length >= length) {
+            for (let i = entries.length - length; i < entries.length; i++) {
+              
+              
                 data.push({
-                    name: entries[i].date_created,
+                    name: dateFormat(entries[i].date_created, 'mm/dd'),
                     happiness:entries[i].happiness / 10,
                     tone_joy: entries[i].tone_joy / 10,
                     tone_analytical:entries[i].tone_analytical / 10,
@@ -61,10 +63,10 @@ export default class TrendRoute extends Component {
         
         }
     
-        else if (entries.length < 5) {
+        else if (entries.length < length) {
           for (let i = 0; i < entries.length; i++) {
             data.push({
-                name: entries[i].date_created,
+                name: dateFormat(entries[i].date_created, 'mm/dd'),
                 happiness:entries[i].happiness / 10,
                 tone_joy: entries[i].tone_joy / 10,
                 tone_analytical:entries[i].tone_analytical / 10,
@@ -90,10 +92,14 @@ export default class TrendRoute extends Component {
 
     render(){
         
-        const data = this.generateData()
+        const isMobile = window.innerWidth < 760;
+        const length = isMobile? 5 : 14;
+        const data = this.generateData(length)
+        
+
         return(
             <div className='trend-graphs'>
-
+        <h2>Trends</h2>
         <div className='happiness-table'>
                 
           <TrendGraph className='happiness' data={data} dataKey='happiness' />
@@ -101,22 +107,24 @@ export default class TrendRoute extends Component {
         </div>
         
     <div className='tone-tables'>
-        <TrendGraph className='tone-joy' data={data} dataKey='tone_joy' />
-        <TrendGraph className='tone-confident' data={data} dataKey='tone_confident' />
-        <TrendGraph className='tone-analytical' data={data} dataKey='tone_analytical' />
-        <TrendGraph className='tone-tentative' data={data} dataKey='tone_tentative' />
-        <TrendGraph className='tone-fear' data={data} dataKey='tone_fear' />
-        <TrendGraph className='tone-sadness' data={data} dataKey='tone_sadness' />
+    <h3>Writing trends</h3>
+        <TrendGraph className='joy' data={data} dataKey='tone_joy' />
+        <TrendGraph className='confident' data={data} dataKey='tone_confident' />
+        <TrendGraph className='analytical' data={data} dataKey='tone_analytical' />
+        <TrendGraph className='tentative' data={data} dataKey='tone_tentative' />
+        <TrendGraph className='fear' data={data} dataKey='tone_fear' />
+        <TrendGraph className='sadness' data={data} dataKey='tone_sadness' />
     </div>
     <div className='face-tables'>
-        <TrendGraph className='face-anger' data={data} dataKey='face_anger' />
-        <TrendGraph className='face-contempt' data={data} dataKey='face_contempt' />
-        <TrendGraph className='face-disgust' data={data} dataKey='face_disgust' />
-        <TrendGraph className='face-fear' data={data} dataKey='face_fear' />
-        <TrendGraph className='face-sadness' data={data} dataKey='face_sadness' />
-        <TrendGraph className='face-neutral' data={data} dataKey='face_neutral' />
-        <TrendGraph className='face-surprise' data={data} dataKey='face_surprise' />
-        <TrendGraph className='face-happiness' data={data} dataKey='face_happiness' />
+        <h3>Selfie trends</h3>
+        <TrendGraph className='anger' data={data} dataKey='face_anger' />
+        <TrendGraph className='contempt' data={data} dataKey='face_contempt' />
+        <TrendGraph className='disgust' data={data} dataKey='face_disgust' />
+        <TrendGraph className='fear' data={data} dataKey='face_fear' />
+        <TrendGraph className='sadness' data={data} dataKey='face_sadness' />
+        <TrendGraph className='neutral' data={data} dataKey='face_neutral' />
+        <TrendGraph className='surprise' data={data} dataKey='face_surprise' />
+        <TrendGraph className='happiness' data={data} dataKey='face_happiness' />
 
     </div>
 
