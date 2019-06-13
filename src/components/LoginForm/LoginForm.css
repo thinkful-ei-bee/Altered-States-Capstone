@@ -1,0 +1,32 @@
+.log-in-form{
+    border:1px solid black;
+    padding:40px;
+    max-width: fit-content;
+    margin:auto;
+    border-radius:10px;
+    text-align: end;
+    background-color: white;
+    box-shadow: 5px 5px 3px grey;
+    margin-top:20vh;
+}
+
+.login-redirect :hover{
+    color:blue;
+}
+
+.log-in-button{
+    margin-bottom:8px;
+    border:.5px solid black;
+    border-radius: 10px;
+
+}
+footer{
+    margin-top:10px;
+    
+    padding:5px;
+}
+
+footer a{
+    font-size:small;
+   
+} 
