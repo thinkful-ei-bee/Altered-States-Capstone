@@ -13,6 +13,13 @@
     border:.5px solid black;
     border-radius: 10px;
     margin-bottom:8px;
+    padding-top:2px;
+    padding-bottom: 2px;
+ 
+}
+.registration-button:hover{
+    background-color: rgb(4, 168, 4);
+    color:white;
 }
 
 footer{
@@ -22,5 +29,9 @@ footer{
 
 footer a{
     font-size:small;
-   
+}
+footer a:hover{
+    border-bottom: 1px solid blue;
+    color:blue;
+    cursor: pointer;
 } 
