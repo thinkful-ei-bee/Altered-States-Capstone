@@ -44,6 +44,10 @@ class EntryRoute extends Component {
       })
   }
 
+  renderSelfie() {
+    return this.state.face_url ? <img className='entry-selfie' src={this.state.face_url} alt='selfie'/> : ''
+  }
+
 
 
   render() {
@@ -55,10 +59,15 @@ class EntryRoute extends Component {
         <div className='entry-charts-entry-container'>
           <EntryCharts entry={this.state} />
         </div>
+
+        <hr className='divider' />
         
-       
-        <img src={this.state.face_url} alt='selfie'/>
-        <p>{this.state.text}</p>
+        <div className='entry-container'>
+          {this.renderSelfie()}
+          <p className={this.state.face_url ? 'entry-text' : 'entry-text-solo'}>
+            {this.state.text}
+          </p>
+        </div>
 
       </div>
     );

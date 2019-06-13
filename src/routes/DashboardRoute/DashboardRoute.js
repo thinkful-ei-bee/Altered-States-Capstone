@@ -64,7 +64,7 @@ class DashboardRoute extends Component {
           </li>
           {this.state.entries.length > 0 && this.state.entries.map(entry => {
             return (
-              <li>
+              <li key={entry.id}>
                 <div onClick={() => this.handleDisplayChange(entry.id)}>
                   <EntryTag date={entry.date_created} />
                 </div>

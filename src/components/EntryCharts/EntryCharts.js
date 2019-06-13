@@ -53,6 +53,7 @@ class EntryCharts extends Component {
     }
   }
 
+
   render() {
 
     const toneData = this.generateToneData()
@@ -84,7 +85,7 @@ class EntryCharts extends Component {
               </RadarChart>
             </ResponsiveContainer>
           </div>
-          <h3 className='chart-title-face'>Face Analysis</h3>
+          <h3 className='chart-title-face'>Selfie Analysis</h3>
           <div className='face-table'>
             <ResponsiveContainer width='100%' height='100%'>
               <RadarChart 

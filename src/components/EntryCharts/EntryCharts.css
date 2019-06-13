@@ -96,4 +96,12 @@ tspan {
   tspan {
     font-size: .6em;
   }
+
+  .chart-title-tone, .chart-title-face {
+    font-size: .8em;
+  }
+
+  .entry-label {
+    font-size: .85em;
+  }
 }

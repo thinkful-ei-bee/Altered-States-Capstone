@@ -13,18 +13,11 @@ class Header extends Component {
 
   renderLogoutLink() {
     return (
-      <div className='logout-link'>
-        <nav>
-          <Link
-            onClick={this.handleLogoutClick}
-            to='/login'>
-            Logout
-          </Link>
-        </nav>
-        <span className='logged-user'>
-          {this.context.user.name}
-        </span>
-      </div>
+      <Link
+        onClick={this.handleLogoutClick}
+        to='/login'>
+        Logout
+      </Link>
     )
   }
 
@@ -37,6 +30,24 @@ class Header extends Component {
     )
   }
 
+  renderTrendsLink() {
+    return TokenService.hasAuthToken()
+    ? <Link to='/trends'>Trends</Link>
+    : ''
+  }
+
+  renderDashboardLink() {
+    return TokenService.hasAuthToken()
+      ? <Link to='/'>Dashboard</Link>
+      : ''
+  }
+
+  renderGreeting() {
+    return TokenService.hasAuthToken()
+    ? <p>Hi {this.context.user.username}!</p>
+    : ''
+  }
+
   render() {
     return (
       <header className='main-header'>
@@ -46,9 +57,16 @@ class Header extends Component {
               miMood
             </Link>
           </h1>
-          {TokenService.hasAuthToken()
-            ? this.renderLogoutLink()
-            : this.renderLoginLink()}
+          <div className='nav-links'>
+            <nav>
+              {this.renderGreeting()}
+              {this.renderDashboardLink()}
+              {this.renderTrendsLink()}
+              {TokenService.hasAuthToken()
+              ? this.renderLogoutLink()
+              : this.renderLoginLink()}
+            </nav>
+          </div>
         </nav>
       </header>
     );

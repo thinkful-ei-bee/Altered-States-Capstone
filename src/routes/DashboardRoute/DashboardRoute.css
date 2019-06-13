@@ -6,6 +6,10 @@ ul {
 .past-entries {
   position: relative;
   top: 350px;
+  width: 250px;
+  margin: auto;
+  text-align: left;
+  
 }
 
 .entry-charts-dashboard-container {
