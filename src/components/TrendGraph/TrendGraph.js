@@ -20,7 +20,7 @@ export default class TrendGraph extends Component{
     render(){
         const isMobile = window.innerWidth < 760;
         const width = isMobile ? 300 : 700;
-        const ticks= isMobile ? [0,1,2,3,4,5] : [0,1,2,3,4,5,6,7]
+        const ticks= isMobile ? [0,1,2,3,4,5] : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 
         return(
             <ResponsiveContainer  width='100%' height='100%'>
