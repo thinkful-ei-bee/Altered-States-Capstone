@@ -44,7 +44,7 @@ class Header extends Component {
 
   renderGreeting() {
     return TokenService.hasAuthToken()
-    ? <p>Hi {this.context.user.username}!</p>
+    ? <p>Hi {this.context.user.name}!</p>
     : ''
   }
 
