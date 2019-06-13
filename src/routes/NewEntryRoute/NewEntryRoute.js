@@ -144,8 +144,8 @@ export default class NewEntryRoute extends Component {
 
         <MoodSelector handleClick={this.handleHappinessClick}/>
 
-        <div className='ne-title ta'><h3>Tone Analyzer</h3></div>
         <form className='entry_form left' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
+          <div className='ne-title ta'><h3>Tone Analyzer</h3></div>
           <textarea 
             className='entry_area'
             maxLength='5000'

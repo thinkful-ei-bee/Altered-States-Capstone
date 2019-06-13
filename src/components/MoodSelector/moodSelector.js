@@ -16,7 +16,7 @@ export default class moodSelector extends Component{
 
     render(){
         return(
-            <div>
+            <div className='mood-container'>
                 <div className='ne-title'><h3>Happiness</h3></div>
                 <section className='mood_number'onClick={this.props.handleClick.bind(this)}>
                     <button className='button button1' value='10'><img src={verySad} alt='1' id='10' /></button>
