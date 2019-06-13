@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
 import { LineChart, Line, 
     YAxis, XAxis, ResponsiveContainer } from 'recharts'
-
+import veryHappy from '../../images/veryHappy.png'
+import happy from '../../images/happy.png'
+import neutral from '../../images/neutral.png'
+import sad from '../../images/sad.png'
+import verySad from '../../images/verySad.png'
 
 export default class TrendGraph extends Component{
     constructor(props) {
@@ -19,7 +23,7 @@ export default class TrendGraph extends Component{
 
     render(){
         const isMobile = window.innerWidth < 760;
-        const width = isMobile ? 300 : 700;
+        const width = isMobile ? 400 : 900;
      
 
         return(
@@ -28,7 +32,7 @@ export default class TrendGraph extends Component{
 
             <LineChart width={width} height={175} data={this.props.data}>
             <Line type='monotone' dataKey={this.props.dataKey} stroke='#8884d8' strokeWidth={2} />
-            <YAxis ticks={[0,1,2,3,4,5]} type='number' domain={[0, 5]} />
+            <YAxis ticks={this.props.className ==='happiness'?[0,1,2,3,4,5]:[0,1,2,3,4,5]} type='number' domain={[0, 5]} />
             <XAxis dataKey='name'/>
           </LineChart>
             </div>
