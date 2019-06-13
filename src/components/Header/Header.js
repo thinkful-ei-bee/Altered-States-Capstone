@@ -38,6 +38,7 @@ class Header extends Component {
   }
 
   render() {
+    console.log(this.context.user)
     return (
       <header className='main-header'>
         <nav>

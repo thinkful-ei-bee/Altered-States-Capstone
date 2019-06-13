@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Radar, RadarChart, PolarGrid,
-  PolarAngleAxis, ResponsiveContainer } from 'recharts'
+  PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis } from 'recharts'
 import EntryTag from '../EntryTag/EntryTag'
 import "./EntryCharts.css";
 
@@ -41,6 +41,7 @@ class EntryCharts extends Component {
         })
       }
     }
+    console.log('data: ', data)
     return data
   }
 
@@ -94,9 +95,11 @@ class EntryCharts extends Component {
                 width={350} 
                 height={300} 
                 data={faceData}
+                
               >
-                <PolarGrid />
-                <PolarAngleAxis dataKey="name" />
+                <PolarRadiusAxis domain={[0, 60]} display='none' />
+                <PolarGrid  />
+                <PolarAngleAxis dataKey="name"  />
             
                 <Radar name="FaceRadar" dataKey="amount" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
               </RadarChart>
