@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import dateFormat from 'dateformat';
 import EntryService from "../../services/entry-service";
 import TrendGraph from '../../components/TrendGraph/TrendGraph'
 import './TrendRoute.css'
@@ -26,16 +26,19 @@ export default class TrendRoute extends Component {
 
 
 
-      generateData() {
+      generateData(length) {
         const { entries } = this.state
         let data = []
-        console.log(entries)
+       
+
         if (!entries) return
         
-        if (entries.length >= 5) {
-            for (let i = entries.length - 5; i < entries.length; i++) {
+        if (entries.length >= length) {
+            for (let i = entries.length - length; i < entries.length; i++) {
+              
+              
                 data.push({
-                    name: entries[i].date_created,
+                    name: dateFormat(entries[i].date_created, 'mm/dd'),
                     happiness:entries[i].happiness / 10,
                     tone_joy: entries[i].tone_joy / 10,
                     tone_analytical:entries[i].tone_analytical / 10,
@@ -60,10 +63,10 @@ export default class TrendRoute extends Component {
         
         }
     
-        else if (entries.length < 5) {
+        else if (entries.length < length) {
           for (let i = 0; i < entries.length; i++) {
             data.push({
-                name: entries[i].date_created,
+                name: dateFormat(entries[i].date_created, 'mm/dd'),
                 happiness:entries[i].happiness / 10,
                 tone_joy: entries[i].tone_joy / 10,
                 tone_analytical:entries[i].tone_analytical / 10,
@@ -89,7 +92,11 @@ export default class TrendRoute extends Component {
 
     render(){
         
-        const data = this.generateData()
+        const isMobile = window.innerWidth < 760;
+        const length = isMobile? 5 : 14;
+        const data = this.generateData(length)
+        
+
         return(
             <div className='trend-graphs'>
         <h2>Trends</h2>
