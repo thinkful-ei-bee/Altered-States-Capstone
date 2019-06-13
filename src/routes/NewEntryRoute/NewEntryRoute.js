@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import {Redirect} from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
+import Moment from 'react-moment'
 import './NewEntryRoute.css';
 
 
@@ -41,8 +42,9 @@ export default class NewEntryRoute extends Component {
   // username and password like so:
   // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
 
-  updateFaceUrl = (url) => {
-    this.setState({newEntry: {...this.state.newEntry, face_url: url}}, () => console.log('face_url:', this.state.newEntry.face_url))
+  updateFaceUrl = async (url) => {
+    await this.setState({newEntry: {...this.state.newEntry, face_url: url}}, () => console.log('face_url:', this.state.newEntry.face_url))
+    document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url})`
   }
 
   updateFaceData = (faceData) => {
@@ -64,14 +66,19 @@ export default class NewEntryRoute extends Component {
     EntryService.postEntryToWatson(this.state.newEntry.text)
       .then(res => {
         let toneData = res.document_tone.tones
-        console.log(res.document_tone.tones)
 
         for (let i in toneData) {
           tones[toneData[i].tone_name] = Math.floor(toneData[i].score * 50)
         }
 
-        console.log(tones)
         this.handleEntryTones(tones)
+      })
+      .then(() => {
+        EntryService.postEntry(this.state.newEntry)
+          .then(res => {
+            this.setState({ res_id: res.id })
+            this.setRedirect()
+          })
       })
   }
 
@@ -88,10 +95,8 @@ export default class NewEntryRoute extends Component {
 
   handleFinishedEntry(event, newEntry) {
     event.preventDefault();
-    console.log('newEntry', newEntry)
     EntryService.postEntry(newEntry)
       .then(res => {
-        console.log('postEntry res:',res)
         this.setState({res_id: res.id})
         this.setRedirect()
       })
@@ -102,29 +107,50 @@ export default class NewEntryRoute extends Component {
   }
 
   renderRedirect() {
-    console.log('renderRedirect')
     if (this.state.redirect) {
       return <Redirect to={`/entry/${this.state.res_id}`} />
     }
   }
 
-
+// <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/>
+  handleDeleteSelfie() {
+    EntryService.deleteSelfie(this.state.newEntry.face_url)
+      .then(res => {
+        this.setState({newEntry: {...this.state.newEntry, face_url: ''}}, () => console.log('state', this.state.newEntry))
+        console.log('res', res)
+      })
+  }
 
   render() {
+    let date = new Date().toString().slice(0, 9)
     return (
-      <div>
-        <CloudinaryWidget updateFaceUrl={this.updateFaceUrl.bind(this)} updateFaceData={this.updateFaceData.bind(this)}/>
-        {this.state.newEntry.face_url ? <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/> : ''} 
+      <div className='new-entry-page'>
+        <div className='ne-title ne-title-top'>
+          <h2 >{date}</h2>
+          <h3>New Entry</h3>
+        </div>
+
+        {this.state.newEntry.face_url && <div id='parallax'></div>}
+
+        {!this.state.newEntry.face_url && 
+          <CloudinaryWidget 
+            updateFaceUrl={this.updateFaceUrl.bind(this)} 
+            updateFaceData={this.updateFaceData.bind(this)} />}
+
         <MoodSelector handleClick={this.handleHappinessClick}/>
-        <form className='entry_form' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
+
+        <div className='ne-title ta'><h3>Tone Analyzer</h3></div>
+        <form className='entry_form left' value={this.state.newEntry.text} onSubmit={(event) => this.handleSubmitEntry(event)}>
           <textarea 
             className='entry_area'
+            maxLength='5000'
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
-          <button type='submit'>Submit</button>
+            <footer>
+              <Link to='/'>CANCEL</Link>
+              <button type='submit'>SUBMIT</button>
+            </footer>
         </form>
-        <button onClick={(event) => this.handleFinishedEntry(event, this.state.newEntry)} >
-          Submit Entry
-        </button>
+
         {this.renderRedirect()}
       </div>
     );

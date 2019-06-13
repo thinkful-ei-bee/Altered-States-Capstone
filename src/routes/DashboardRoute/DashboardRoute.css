@@ -1,3 +1,25 @@
-.recharts-wrapper {
-  margin: auto;
+ul {
+  list-style: none;
+  padding: 0;
 }
+
+.past-entries {
+  position: relative;
+  top: 350px;
+}
+
+.entry-charts-dashboard-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin-top: 38px;
+  z-index: 100;
+}
+
+@media only screen and (max-width: 760px) {
+  .past-entries {
+    position: relative;
+    top: 260px;
+  }
+}
+

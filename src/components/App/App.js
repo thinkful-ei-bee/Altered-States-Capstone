@@ -10,6 +10,7 @@ import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
 import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
 import EntryRoute from '../../routes/EntryRoute/EntryRoute';
+import TrendRoute from '../../routes/TrendRoute/TrendRoute';
 
 export default class App extends Component {
   state = { 
@@ -44,6 +45,11 @@ export default class App extends Component {
               exact
               path={'/new'}
               component={NewEntryRoute} />
+                <PrivateRoute
+              exact
+              path={'/trends'}
+              component={TrendRoute}
+            />
             <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}

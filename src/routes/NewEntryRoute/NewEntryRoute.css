@@ -1,4 +1,141 @@
 /* testing, not important */
 .cloudinary-thumb {
-  width: 300px;
+  width: 360px;
+}
+
+.new-entry-page {
+  margin: auto;
+  margin-top: 70px;
+  max-width: 360px;
+}
+
+.ne-title {
+  text-align: left;
+  padding: 0 5%;
+}
+
+.ne-title-top {
+  padding-bottom: 10px;
+}
+
+.ne-title h3 {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.ne-title h2, .ne-title h3 {
+  margin: 0;
+}
+
+.ta {
+  position: relative;
+  top: 10px;
+}
+
+.cloud-button {
+  margin-top: 20px;
+}
+
+#parallax {
+  min-height: 460px; 
+  background-attachment: fixed;
+  background-position-y: 38%;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: initial;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10%;
+}
+
+.entry_form {
+  display: inline-block;
+  margin: auto;
+  width: 100%;
+  max-width: 360px;
+  transition: 300ms;
+}
+
+.entry_form button {
+  margin: auto;
+  color: white;
+  background-color: rgb(189, 62, 30);
+  font-size: 16px;
+  padding: 12px;
+  width: 67%;
+  float: right;
+  border: none;
+}
+
+.entry_form a {
+  margin: auto;
+  color: rgb(65, 65, 65);
+  background-color: white;
+  font-size: 16px;
+  width: 33%;
+  float: left;
+  padding: 12px 0;
+}
+
+.entry_form footer {
+  position: fixed;
+  width: 324px;
+  max-width: 334px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  margin: auto;
+}
+
+textarea {
+  resize: none;
+  display: block;
+  margin: 20px auto;
+  margin-bottom: 70px;
+  width: 302px;
+  height: 345px;
+  padding: 10px;
+  border: 1px solid darkgray;
+  font-size: 16px;
+}
+
+.upload-button {
+  border: 1px solid darkgray;
+  background-color: white;
+  height: 120px;
+  width: 326px;
+  transition: 300ms;
+  margin: 18px;
+  margin-top: 7px;
+  margin-bottom: 28px;
+}
+
+.upload-button:hover {
+  background-color: lightgray;
+}
+
+@media only screen and (min-height: 700px) {
+  textarea {
+    height: 412px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .new-entry-page {
+    max-width: 1000px;
+  }
+  .ne-title {
+    text-align: center;
+  }
+  .entry_form {
+    max-width: 600px;
+  }
+  textarea {
+    height: 260px;
+    width: 530px;
+    margin-bottom: 0;
+  }
+
+
 }

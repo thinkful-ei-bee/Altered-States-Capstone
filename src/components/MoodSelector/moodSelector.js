@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
 import './moodSelector.css'
+import verySad from '../../images/verySad.png'
+import sad from '../../images/sad.png'
+import neutral from '../../images/neutral.png'
+import happy from '../../images/happy.png'
+import veryHappy from '../../images/veryHappy.png'
 
 export default class moodSelector extends Component{
     constructor(props){
@@ -9,18 +14,16 @@ export default class moodSelector extends Component{
         }
     }
 
-   
-
-
     render(){
         return(
-            <div> How are you feeling today?
+            <div>
+                <div className='ne-title'><h3>Happiness</h3></div>
                 <section className='mood_number'onClick={this.props.handleClick.bind(this)}>
-                    <button className='button button1' value='10'>10</button>
-                    <button className='button button2'  value='20'>20</button>
-                    <button className='button button3' value='30'>30</button>
-                    <button className='button button4' value='40'>40</button>
-                    <button className='button button5' value='50'>50</button>
+                    <button className='button button1' value='10'><img src={verySad} alt='1' /></button>
+                    <button className='button button2'  value='20'><img src={sad} alt='2' /></button>
+                    <button className='button button3' value='30'><img src={neutral} alt='3' /></button>
+                    <button className='button button4' value='40'><img src={happy} alt='4' /></button>
+                    <button className='button button5' value='50'><img src={veryHappy} alt='5' /></button>
                 </section>
             </div>
         )

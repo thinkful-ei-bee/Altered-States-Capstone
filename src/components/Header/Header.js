@@ -30,24 +30,27 @@ class Header extends Component {
 
   renderLoginLink() {
     return (
-      <nav>
+      <div>
         <Link to='/login'>Login</Link>
         <Link to='/register'>Sign up</Link>
-      </nav>
+      </div>
     )
   }
 
   render() {
+    console.log(this.context.user)
     return (
       <header className='main-header'>
-        <h1>
-          <Link to='/'>
-            Mood Flux
-          </Link>
-        </h1>
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
+        <nav>
+          <h1>
+            <Link to='/'>
+              miMood
+            </Link>
+          </h1>
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
+        </nav>
       </header>
     );
   }

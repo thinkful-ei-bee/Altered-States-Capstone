@@ -1,0 +1,26 @@
+.main-header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 100;
+  top: 0;
+  padding-top: 19px;
+}
+
+.main-header nav {
+  padding: 7px 4%;
+}
+
+.main-header h1 {
+  float: left;
+  margin: 0;
+  font-size: 16px;
+}
+
+.logout-link {
+  display: block;
+  float: right;
+  font-size: 14px;
+  position: relative;
+  bottom: 6px;
+}
