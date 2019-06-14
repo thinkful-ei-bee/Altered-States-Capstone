@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardRoute renders the complete page 1`] = `
+<section
+  className="journal-feedback"
+>
+  <h2
+    className="chart-title"
+  >
+    Written Analysis
+  </h2>
+  <p />
+  <div
+    className="pie-container"
+  >
+    <RadarChart
+      barCategoryGap="10%"
+      barGap={4}
+      cx={175}
+      cy={200}
+      data={
+        Array [
+          Object {
+            "amount": NaN,
+            "name": "joy",
+          },
+          Object {
+            "amount": NaN,
+            "name": "fear",
+          },
+          Object {
+            "amount": NaN,
+            "name": "sadness",
+          },
+          Object {
+            "amount": NaN,
+            "name": "anger",
+          },
+          Object {
+            "amount": NaN,
+            "name": "analytical",
+          },
+          Object {
+            "amount": NaN,
+            "name": "confident",
+          },
+          Object {
+            "amount": NaN,
+            "name": "tentative",
+          },
+        ]
+      }
+      endAngle={-270}
+      height={300}
+      innerRadius={0}
+      layout="centric"
+      margin={
+        Object {
+          "bottom": 5,
+          "left": 5,
+          "right": 5,
+          "top": 5,
+        }
+      }
+      outerRadius={50}
+      reverseStackOrder={false}
+      stackOffset="none"
+      startAngle={90}
+      width={350}
+    >
+      <PolarGrid
+        cx={0}
+        cy={0}
+        gridType="polygon"
+        innerRadius={0}
+        outerRadius={0}
+      />
+      <PolarAngleAxis
+        allowDuplicatedCategory={true}
+        angleAxisId={0}
+        axisLine={true}
+        cx={0}
+        cy={0}
+        dataKey="name"
+        domain={
+          Array [
+            0,
+            "auto",
+          ]
+        }
+        hide={false}
+        orientation="outer"
+        scale="auto"
+        tick={true}
+        tickLine={true}
+        type="category"
+      />
+      <Radar
+        activeDot={true}
+        angleAxisId={0}
+        animationBegin={0}
+        animationDuration={1500}
+        animationEasing="ease"
+        dataKey="amount"
+        dot={false}
+        fill="#8884d8"
+        fillOpacity={0.6}
+        hide={false}
+        isAnimationActive={true}
+        legendType="rect"
+        name="ToneRadar"
+        radiusAxisId={0}
+        stroke="#8884d8"
+      />
+    </RadarChart>
+  </div>
+</section>
+`;
