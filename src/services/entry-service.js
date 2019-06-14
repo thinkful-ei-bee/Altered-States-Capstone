@@ -95,6 +95,20 @@ const EntryService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+  },
+
+  deleteEntry(id) {
+    return fetch(`${config.API_ENDPOINT}/entry/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `Bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res => 
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
   }
 }
 

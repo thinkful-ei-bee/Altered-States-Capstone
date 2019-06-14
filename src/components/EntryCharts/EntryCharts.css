@@ -18,6 +18,14 @@
   grid-row: 1/2;
 }
 
+.entry-label div {
+  display: inline-block;
+}
+
+.fa-trash {
+  font-size: 1.5em;
+}
+
 .entry-label h3 {
   margin: auto;
 }

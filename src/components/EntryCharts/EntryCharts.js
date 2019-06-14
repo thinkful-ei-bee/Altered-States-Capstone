@@ -54,6 +54,13 @@ class EntryCharts extends Component {
     }
   }
 
+  renderDeleteButton() {
+    const {deleteEntry} = this.props
+    return deleteEntry 
+    ? <button onClick={() => deleteEntry()}><i className="fa fa-trash"></i></button>
+    : ''
+  }
+
 
   render() {
 
@@ -67,7 +74,7 @@ class EntryCharts extends Component {
     return (
       <div>
         <div className='radar-charts'>
-          <div className='entry-label'>{this.renderEntryLabel()}</div>
+          <div className='entry-label'>{this.renderEntryLabel()}{this.renderDeleteButton()}</div>
           <h3 className='chart-title-tone'>Writing Analysis</h3>
           <div className='tone-table'>
             <ResponsiveContainer width='100%' height='100%'>
