@@ -158,6 +158,7 @@ export default class NewEntryRoute extends Component {
         </form>
 
         {this.renderRedirect()}
+        <Footer/>
       </div>
     );
   }

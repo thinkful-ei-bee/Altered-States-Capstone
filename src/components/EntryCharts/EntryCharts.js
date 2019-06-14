@@ -3,7 +3,7 @@ import { Radar, RadarChart, PolarGrid,
   PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis } from 'recharts'
 import EntryTag from '../EntryTag/EntryTag'
 import "./EntryCharts.css";
-import Footer from '../../components/Footer/Footer'
+
 
 class EntryCharts extends Component {
 

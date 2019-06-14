@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import Footer from '../../components/Footer/Footer'
 
 class LoginRoute extends Component {
   static defaultProps = {
@@ -20,6 +21,7 @@ class LoginRoute extends Component {
       <section>
         <h2>Login</h2>
         <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+        <Footer/>
       </section>
     );
   }
