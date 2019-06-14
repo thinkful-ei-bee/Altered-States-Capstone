@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./EntryRoute.css";
 import EntryService from "../../services/entry-service";
 import EntryCharts from '../../components/EntryCharts/EntryCharts';
+import Footer from '../../components/Footer/Footer'
 
 
 class EntryRoute extends Component {
@@ -67,6 +68,7 @@ class EntryRoute extends Component {
             {this.state.text}
           </p>
         </div>
+        {/* <Footer/> */}
       </div>
     );
   }

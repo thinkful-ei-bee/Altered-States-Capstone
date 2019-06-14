@@ -5,6 +5,7 @@ import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
 import Moment from 'react-moment'
 import './NewEntryRoute.css';
+import Footer from '../../components/Footer/Footer'
 
 
 export default class NewEntryRoute extends Component {

@@ -3,6 +3,7 @@ import dateFormat from 'dateformat';
 import EntryService from "../../services/entry-service";
 import TrendGraph from '../../components/TrendGraph/TrendGraph'
 import './TrendRoute.css'
+import Footer from '../../components/Footer/Footer'
 
 export default class TrendRoute extends Component {
     constructor(props) {
@@ -128,6 +129,7 @@ export default class TrendRoute extends Component {
         <TrendGraph className='happiness' data={data} dataKey='face_happiness' />
 
     </div>
+    {/* <Footer/> */}
   </div>
         )
     }
