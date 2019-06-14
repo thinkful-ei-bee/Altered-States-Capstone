@@ -69,9 +69,8 @@ class DashboardRoute extends Component {
           <div className='tutorial-container'>
             <img src={happy} alt='happy' />
             <h2>Welcome to miMood!</h2>
-            <p>With this app you can track your mood with artificial intelligence.</p>
-            <p>Whenever you write in your journal or upload a selfie, an AI will evaluate what you submit.</p>
-            <p>Track your mood with the help of AI! Machine learning algorithms analyze your entries for emotional cues, providing insight into how you're feeling.</p>
+            <h3>Track your mood with the help of AI!</h3>
+            <p>Machine learning algorithms analyze your entries for emotional cues, providing insight into how you're feeling.</p>
             <p>Add an entry to see emotional analysis.</p>
             <button onClick={() => this.setState({ newUser: false })}>GET STARTED</button>
           </div>
