@@ -93,7 +93,7 @@ class DashboardRoute extends Component {
             return (
               <li key={entry.id}>
                 <div onClick={() => this.handleDisplayChange(entry.id)}>
-                  <EntryTag date={entry.date_created} />
+                  <EntryTag date={entry.date_created} happiness={entry.happiness}/>
                 </div>
               </li>
             )

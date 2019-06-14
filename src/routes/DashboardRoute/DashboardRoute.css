@@ -52,7 +52,8 @@ ul {
 .past-entries {
   position: relative;
   top: 350px;
-  width: 250px;
+  /* width: 250px; */
+  width: 300px;
   margin: auto;
   text-align: left;
   

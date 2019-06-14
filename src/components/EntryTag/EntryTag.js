@@ -1,7 +1,30 @@
 import React, {Component} from 'react'
 import './EntryTag.css'
+import veryHappy from '../../images/veryHappy.png'
+import happy from '../../images/happy.png'
+import neutral from '../../images/neutral.png'
+import sad from '../../images/sad.png'
+import verySad from '../../images/verySad.png'
 
 export default class EntryTag extends Component{
+
+    generateHappiness(happiness) {
+        switch (happiness) {
+            case 10: return verySad;
+            case 20: return sad;
+            case 30: return neutral;
+            case 40: return happy;
+            case 50: return veryHappy;
+            default: return ''
+        }
+    }
+
+    generateEmoji() {
+        const hapValue = this.generateHappiness(this.props.happiness)
+        return this.props.happiness
+        ? <img src={hapValue} alt={hapValue.toString()} />
+        : ''
+    }
 
     formatEntryTag(){
         
@@ -15,7 +38,7 @@ export default class EntryTag extends Component{
         
         const newDate = dayOfWeek + day.slice(0,-6) + day.slice(-3)     
         
-        return <h3 className='entry-tag'>{newDate}</h3>
+        return <div className='entryTag-div'><h3 className='entry-tag'>{newDate}</h3>{this.generateEmoji()}</div>
     }
   
     render(){

@@ -3,6 +3,11 @@ import { Radar, RadarChart, PolarGrid,
   PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis } from 'recharts'
 import EntryTag from '../EntryTag/EntryTag'
 import "./EntryCharts.css";
+import veryHappy from '../../images/veryHappy.png'
+import happy from '../../images/happy.png'
+import neutral from '../../images/neutral.png'
+import sad from '../../images/sad.png'
+import verySad from '../../images/verySad.png'
 
 
 class EntryCharts extends Component {
@@ -64,6 +69,24 @@ class EntryCharts extends Component {
     : ''
   }
 
+  generateHappiness(happiness) {
+    switch (happiness) {
+        case 10: return verySad;
+        case 20: return sad;
+        case 30: return neutral;
+        case 40: return happy;
+        case 50: return veryHappy;
+        default: return ''
+    }
+}
+
+generateEmoji() {
+    const hapValue = this.generateHappiness(this.props.entry.happiness)
+    return this.props.entry.happiness
+    ? <img className='chart-emoji' src={hapValue} alt={hapValue.toString()} />
+    : ''
+}
+
 
   render() {
 
@@ -78,6 +101,7 @@ class EntryCharts extends Component {
       <div>
         <div className='radar-charts'>
           <div className='entry-label'>{this.renderEntryLabel()}{this.renderDeleteButton()}</div>
+          {this.generateEmoji()}
           <h3 className='chart-title-tone'>Writing Analysis</h3>
           <div className='tone-table'>
             <ResponsiveContainer width='100%' height='100%'>

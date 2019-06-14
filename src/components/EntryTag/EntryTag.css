@@ -2,8 +2,6 @@
     min-width:60%;
     height:auto;
     font-weight: 400;
-    /* background-color:white; */
-    /* border:2px solid black; */
 }
 
 .entry-tag:hover {
@@ -12,4 +10,23 @@
 
 .entry-charts-entry-container .entry-tag:hover {
     cursor: default;
+}
+
+.past-entries .entry-tag {
+    width: 60%;
+}
+
+.entryTag-div img {
+    width: 23px;
+    position: relative;
+    top: 4px;
+    right: -25px;
+}
+
+.entryTag-div {
+    /* display: inline-block; */
+}
+
+.entryTag-div h3 {
+    display: inline-block;
 }
