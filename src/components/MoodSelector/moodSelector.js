@@ -7,40 +7,34 @@ import happy from '../../images/happy.png'
 import veryHappy from '../../images/veryHappy.png'
 
 export default class moodSelector extends Component{
-    constructor(props){
-        super(props)
-        this.state={
-            happiness:null
-        }
-    }
 
     render(){
         return(
             <div className='mood-container'>
                 <div className='ne-title'><h3>How are you feeling today?</h3></div>
-                {!!this.props.handleClick && <section className='mood_number'onClick={this.props.handleClick.bind(this)}>
+                {!!this.props.handleClick && <section className='mood_number'onClick={(event) => this.props.handleClick(event)}>
                     <label className='radio'>
-                      <input type='radio' name='mood-radio' value='10' />
+                      <input type='radio' name='mood-radio' value='10' id='10' />
                       <img src={verySad} alt='1' id='10' />
                     </label>
 
                     <label className='radio'>
-                      <input type='radio' name='mood-radio' value='20' />
+                      <input type='radio' name='mood-radio' value='20' id='20' />
                       <img src={sad} alt='2' id='20' />
                     </label>
 
                     <label className='radio'>
-                      <input type='radio' name='mood-radio' value='30' />
+                      <input type='radio' name='mood-radio' value='30' id='30' />
                       <img src={neutral} alt='3' id='30' />
                     </label>
 
                     <label className='radio'>
-                      <input type='radio' name='mood-radio' value='40' />
+                      <input type='radio' name='mood-radio' value='40' id='40' />
                       <img src={happy} alt='4' id='40' />
                     </label>
 
                     <label className='radio'>
-                      <input type='radio' name='mood-radio' value='50' />
+                      <input type='radio' name='mood-radio' value='50' id='50' />
                       <img src={veryHappy} alt='5' id='50' />
                     </label>
                 </section>}
