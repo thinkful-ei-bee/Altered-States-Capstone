@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import BackButton from '../../components/Button/Back-button'
 import "./EntryRoute.css";
 import EntryService from "../../services/entry-service";
 
 import EntryCharts from '../../components/EntryCharts/EntryCharts';
+import DeleteBox from '../../components/DeleteBox/DeleteBox';
 
 
 class EntryRoute extends Component {
@@ -32,6 +32,8 @@ class EntryRoute extends Component {
       tone_joy: 0,
       tone_sadness: 0,
       tone_tentative: 0,
+
+      deleting: false
     }
   }
 
@@ -48,16 +50,47 @@ class EntryRoute extends Component {
     return this.state.face_url ? <img className='entry-selfie' src={this.state.face_url} alt='selfie'/> : ''
   }
 
+  handleDelete() {
+    this.setState({deleting: true})
+  }
+
+  cancelDelete() {
+    this.setState({deleting: false})
+  }
+
+  async callDelete() {
+    if (!this.state.face_url){
+      await EntryService.deleteEntry(this.state.id)
+    }
+    else {
+      await EntryService.deleteEntry(this.state.id)
+      await EntryService.deleteSelfie(this.state.face_url)
+    }
+  }
+
+  confirmDelete() {
+    this.callDelete()
+      .then(() => {
+        this.props.history.push('/')
+      })
+  }
+
 
 
   render() {
 
     return (
       <div>
-        {/* <BackButton/> */}
+        {this.state.deleting 
+          && <DeleteBox 
+            cancelDelete={this.cancelDelete.bind(this)} 
+            confirmDelete={this.confirmDelete.bind(this)}
+            target='entry'
+            />
+        }
 
         <div className='entry-charts-entry-container'>
-          <EntryCharts entry={this.state} />
+          <EntryCharts entry={this.state} deleteEntry={this.handleDelete.bind(this)}/>
         </div>
 
         <hr className='divider' />

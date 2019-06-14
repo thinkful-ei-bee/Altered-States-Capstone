@@ -3,7 +3,8 @@ import { Redirect, Link } from 'react-router-dom';
 import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
-import Moment from 'react-moment'
+// import Moment from 'react-moment'
+import DeleteBox from '../../components/DeleteBox/DeleteBox';
 import './NewEntryRoute.css';
 
 
@@ -33,7 +34,8 @@ export default class NewEntryRoute extends Component {
         face_neutral: 0,
         face_sadness: 0,
         face_surprise: 0
-      }
+      },
+      deleting: false
     }
   }
 
@@ -117,12 +119,19 @@ export default class NewEntryRoute extends Component {
     }
   }
 
-// <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/>
-  handleDeleteSelfie() {
+  handleDelete() {
+    this.setState({deleting: true})
+  }
+
+  cancelDelete() {
+    this.setState({deleting: false})
+  }
+
+
+  confirmDelete() {
     EntryService.deleteSelfie(this.state.newEntry.face_url)
       .then(res => {
-        this.setState({newEntry: {...this.state.newEntry, face_url: ''}}, () => console.log('state', this.state.newEntry))
-        console.log('res', res)
+        this.setState({deleting: false, newEntry: {...this.state.newEntry, face_url: ''}})
       })
   }
 
@@ -130,12 +139,22 @@ export default class NewEntryRoute extends Component {
     let date = new Date().toString().slice(0, 9)
     return (
       <div className='new-entry-page'>
+
+        {this.state.deleting 
+          && <DeleteBox 
+            cancelDelete={this.cancelDelete.bind(this)} 
+            confirmDelete={this.confirmDelete.bind(this)}
+            target='selfie'
+            />
+        }
+
         <div className='ne-title ne-title-top'>
+
           <h2 >{date}</h2>
-          <h3>New Entry</h3>
+          <h3 >New Entry</h3>
         </div>
 
-        {this.state.newEntry.face_url && <div id='parallax'></div>}
+        {this.state.newEntry.face_url && <div onClick={() => this.handleDelete()}id='parallax'></div>}
 
         {!this.state.newEntry.face_url && 
           <CloudinaryWidget 

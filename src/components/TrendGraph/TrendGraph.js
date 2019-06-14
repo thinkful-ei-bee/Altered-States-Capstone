@@ -25,6 +25,7 @@ export default class TrendGraph extends Component{
         const isMobile = window.innerWidth < 760;
         const width = isMobile ? 400 : 900;
         const height = isMobile ? 125 : 175;
+     
 
         return(
             <div className='graph'>
