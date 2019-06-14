@@ -81,7 +81,13 @@ class EntryRoute extends Component {
 
     return (
       <div>
-        {this.state.deleting && <DeleteBox cancelDelete={this.cancelDelete.bind(this)} confirmDelete={this.confirmDelete.bind(this)}/>}
+        {this.state.deleting 
+          && <DeleteBox 
+            cancelDelete={this.cancelDelete.bind(this)} 
+            confirmDelete={this.confirmDelete.bind(this)}
+            target='entry'
+            />
+        }
 
         <div className='entry-charts-entry-container'>
           <EntryCharts entry={this.state} deleteEntry={this.handleDelete.bind(this)}/>
