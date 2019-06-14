@@ -28,8 +28,16 @@
   font-size: 1.5em;
 }
 
+.fa-trash:hover {
+  cursor: pointer;
+}
+
 .entry-label h3 {
   margin: auto;
+}
+
+.entry-charts-dashboard-container .entry-label h3 {
+  text-decoration: underline;
 }
 
 .chart-title-tone {

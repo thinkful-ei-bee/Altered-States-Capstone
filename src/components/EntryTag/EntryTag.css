@@ -8,3 +8,7 @@
 .entry-tag:hover {
     cursor: pointer;
 }
+
+.entry-charts-entry-container .entry-tag:hover {
+    cursor: default;
+}
