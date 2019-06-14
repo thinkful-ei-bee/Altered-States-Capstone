@@ -4,12 +4,14 @@ import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
 import EntryTag from '../../components/EntryTag/EntryTag'
 import EntryCharts from "../../components/EntryCharts/EntryCharts";
+import happy from '../../images/happy.png'
 
 
 class DashboardRoute extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      newUser: false,
       entries: [],
       display: null
     }
@@ -18,8 +20,11 @@ class DashboardRoute extends Component {
   componentDidMount() {
     EntryService.getUserEntries()
       .then(res => {
-        this.setState({entries: res}, () => {
-          if (this.state.entries.length === 0) return;
+        this.setState({entries: res.reverse()}, () => {
+          if (this.state.entries.length === 0) {
+            this.setState({ newUser: true })
+            return
+          }
           this.setState({display: this.state.entries[-1]})
         })
       })
@@ -40,7 +45,12 @@ class DashboardRoute extends Component {
   renderEntryCharts() {
     const { entries, display } = this.state
     if (entries.length === 0) {
-      return
+      // await this.setState({ newUser: true })
+      return (
+        <div className='chart-instructions'>
+          <p>Here you will see data related to your mood. Try clicking "Add New Entry" below to see new data.</p>
+        </div>
+      )
     }
     const selected = entries.filter(entry => entry.id === display)
     const target = selected.length > 0 ? selected[0] : entries[entries.length - 1]
@@ -49,9 +59,23 @@ class DashboardRoute extends Component {
 
 
   render() {
+    let { newUser } = this.state
+    console.log(newUser)
 
     return (
       <div>
+
+        {newUser && 
+          <div className='tutorial-container'>
+            <img src={happy} alt='happy' />
+            <h2>Welcome to miMood!</h2>
+            <h3>Track your mood with the help of AI!</h3>
+            <p>Machine learning algorithms analyze your entries for emotional cues, providing insight into how you're feeling.</p>
+            <p>Add an entry to see emotional analysis.</p>
+            <button onClick={() => this.setState({ newUser: false })}>GET STARTED</button>
+          </div>
+        }
+
         <div className='entry-charts-dashboard-container'>
           {this.renderEntryCharts()}
         </div>
@@ -62,11 +86,14 @@ class DashboardRoute extends Component {
                 <h3>+ Add New Entry</h3>
             </Link>
           </li>
+          {!this.state.entries.length && 
+            <li>(... no entries yet!)</li>
+          }
           {this.state.entries.length > 0 && this.state.entries.map(entry => {
             return (
-              <li>
+              <li key={entry.id}>
                 <div onClick={() => this.handleDisplayChange(entry.id)}>
-                  <EntryTag date={entry.date_created} />
+                  <EntryTag date={entry.date_created} happiness={entry.happiness}/>
                 </div>
               </li>
             )

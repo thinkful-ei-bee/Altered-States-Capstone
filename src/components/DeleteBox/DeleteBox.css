@@ -1,0 +1,43 @@
+.del-prevent-clicks {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 998;
+}
+
+.delete-div {
+
+  position: fixed;
+  top: 300px;
+  left: 0;
+  right: 0;
+
+  border: .5px grey solid;
+
+  margin: auto;
+  width: 350px;
+  height: 100px;
+
+  background-color: white;
+  z-index: 999;
+
+  border-radius: 10px;
+
+  box-shadow: 5px 5px 3px grey;
+}
+
+.delete-div button {
+  border-radius: 3px;
+  border: grey solid .5px;
+}
+
+.delete-div button:last-child {
+  background-color: red;
+  border-radius: 3px;
+  margin-left: 20px;
+
+}
+

@@ -18,8 +18,24 @@
   grid-row: 1/2;
 }
 
+.entry-label div {
+  display: inline-block;
+}
+
+.fa-trash {
+  font-size: 1.5em;
+}
+
+.fa-trash:hover {
+  cursor: pointer;
+}
+
 .entry-label h3 {
   margin: auto;
+}
+
+.entry-charts-dashboard-container .entry-label h3 {
+  text-decoration: underline;
 }
 
 .chart-title-tone {
@@ -48,6 +64,15 @@
 
 tspan {
   font-size: .85em;
+}
+
+.chart-emoji {
+  height: 100px;
+  grid-column: 2/4;
+  grid-row: 2/3;
+  margin: auto;
+  margin-top: 20px;
+  opacity: .75;
 }
 
 
@@ -95,5 +120,21 @@ tspan {
   
   tspan {
     font-size: .6em;
+  }
+
+  .chart-title-tone, .chart-title-face {
+    font-size: .8em;
+  }
+
+  .entry-label {
+    font-size: .85em;
+  }
+
+  .chart-emoji {
+    height: 40px;
+    grid-column: 1/3;
+    grid-row: 2/3;
+    margin: auto;
+    margin-top: 20px;
   }
 }

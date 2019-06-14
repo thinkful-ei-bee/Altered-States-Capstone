@@ -3,6 +3,11 @@ import { Radar, RadarChart, PolarGrid,
   PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis } from 'recharts'
 import EntryTag from '../EntryTag/EntryTag'
 import "./EntryCharts.css";
+import veryHappy from '../../images/veryHappy.png'
+import happy from '../../images/happy.png'
+import neutral from '../../images/neutral.png'
+import sad from '../../images/sad.png'
+import verySad from '../../images/verySad.png'
 
 
 class EntryCharts extends Component {
@@ -46,13 +51,42 @@ class EntryCharts extends Component {
   }
 
   renderEntryLabel() {
+    if(!this.props.entry) return
     const {date_created} = this.props.entry
+    if (!date_created) return
+
     if (this.props.label) {
       return this.props.label
     } else {
       return <EntryTag date={date_created} />
     }
   }
+
+  renderDeleteButton() {
+    const {deleteEntry} = this.props
+    return deleteEntry 
+    ? <button onClick={() => deleteEntry()}><i className="fa fa-trash"></i></button>
+    : ''
+  }
+
+  generateHappiness(happiness) {
+    switch (happiness) {
+        case 10: return verySad;
+        case 20: return sad;
+        case 30: return neutral;
+        case 40: return happy;
+        case 50: return veryHappy;
+        default: return ''
+    }
+}
+
+generateEmoji() {
+    const hapValue = this.generateHappiness(this.props.entry.happiness)
+    return this.props.entry.happiness
+    ? <img className='chart-emoji' src={hapValue} alt={hapValue.toString()} />
+    : ''
+}
+
 
   render() {
 
@@ -66,7 +100,8 @@ class EntryCharts extends Component {
     return (
       <div>
         <div className='radar-charts'>
-          <div className='entry-label'>{this.renderEntryLabel()}</div>
+          <div className='entry-label'>{this.renderEntryLabel()}{this.renderDeleteButton()}</div>
+          {this.generateEmoji()}
           <h3 className='chart-title-tone'>Writing Analysis</h3>
           <div className='tone-table'>
             <ResponsiveContainer width='100%' height='100%'>
@@ -78,6 +113,7 @@ class EntryCharts extends Component {
                   height={300} 
                   data={toneData}
               >
+                <PolarRadiusAxis domain={[0, 60]} display='none' />
                 <PolarGrid />
                 <PolarAngleAxis dataKey="name" />
                 
@@ -85,7 +121,7 @@ class EntryCharts extends Component {
               </RadarChart>
             </ResponsiveContainer>
           </div>
-          <h3 className='chart-title-face'>Face Analysis</h3>
+          <h3 className='chart-title-face'>Selfie Analysis</h3>
           <div className='face-table'>
             <ResponsiveContainer width='100%' height='100%'>
               <RadarChart 

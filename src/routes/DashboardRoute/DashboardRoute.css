@@ -3,9 +3,60 @@ ul {
   padding: 0;
 }
 
+.chart-instructions {
+  text-align: center;
+  padding: 20px;
+}
+
+.tutorial-container {
+  background-color: white;
+  width: 80%;
+  position: absolute;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 200;
+  opacity: 1;
+  transition: opacity .3s;
+
+  padding: 0 10%;
+}
+
+.tutorial-container img {
+  width: 100px;
+  margin-top: 20%;
+}
+
+.tutorial-container h2 {
+  margin-top: 20%;
+  text-align: center;
+}
+
+.tutorial-container p {
+  text-align: left;
+}
+
+.tutorial-container button {
+  margin: auto;
+  margin-top: 20%;
+  color: white;
+  background-color: rgb(189, 62, 30);
+  font-size: 16px;
+  padding: 12px;
+  width: 80%;
+  max-width: 360px;
+  border: none;
+}
+
 .past-entries {
   position: relative;
   top: 350px;
+  /* width: 250px; */
+  width: 300px;
+  margin: auto;
+  text-align: left;
+  
 }
 
 .entry-charts-dashboard-container {
@@ -20,6 +71,26 @@ ul {
   .past-entries {
     position: relative;
     top: 260px;
+  }
+}
+
+@media only screen and (min-width: 760px) {
+  .tutorial-container {
+    width: 46%;
+    padding: 0 27%;
+  }
+  .tutorial-container img {
+    margin-top: 8%;
+  }
+  .tutorial-container h2 {
+    margin-top: 5%;
+  }
+  .tutorial-container button {
+    margin-top: 10%;
+    width: 160px;
+  }
+  .tutorial-container p {
+    text-align: center;
   }
 }
 

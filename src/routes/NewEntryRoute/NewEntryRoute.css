@@ -75,6 +75,7 @@
   width: 33%;
   float: left;
   padding: 12px 0;
+  padding-bottom: 0;
 }
 
 .entry_form footer {
@@ -112,7 +113,7 @@ textarea {
 }
 
 .upload-button:hover {
-  background-color: lightgray;
+  background-color: rgb(174, 212, 235);
 }
 
 @media only screen and (min-height: 700px) {
@@ -123,18 +124,61 @@ textarea {
 
 @media only screen and (min-width: 768px) {
   .new-entry-page {
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    grid-template-rows: 100px 30% 1fr;
     max-width: 1000px;
   }
   .ne-title {
     text-align: center;
   }
+  .ne-title-top {
+    grid-column: 2/4;
+    grid-row: 1/2;
+  }
   .entry_form {
-    max-width: 600px;
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+  .entry_form footer {
+    position: relative;
+    grid-column: 3/4;
+    grid-row: 3/4;
+    margin-top: 10px;
   }
   textarea {
     height: 260px;
-    width: 530px;
+    width: inherit;
     margin-bottom: 0;
+  }
+  .cloud-button {
+    grid-column: 3/4;
+    grid-row: 2/3;
+  }
+  .cloud-button h3 {
+    position: relative;
+    bottom: 10px;
+  }
+  .upload-button {
+    margin-top: 0px;
+    height: 180px;
+    width: 150px;
+  }
+  #parallax {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    margin: auto;
+    margin-top: 20px;
+    background-attachment: inherit;
+    background-size: 50%;
+    min-height: 285px;
+    width: 318px;
+  }
+  .mood-container {
+    grid-column: 3/4;
+    grid-row: 3/4;
+    height: 130px;
+    margin-top: 85px;
   }
 
 

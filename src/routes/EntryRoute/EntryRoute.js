@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import BackButton from '../../components/Button/Back-button'
 import "./EntryRoute.css";
 import EntryService from "../../services/entry-service";
 
 import EntryCharts from '../../components/EntryCharts/EntryCharts';
+import DeleteBox from '../../components/DeleteBox/DeleteBox';
 
 
 class EntryRoute extends Component {
@@ -32,15 +32,49 @@ class EntryRoute extends Component {
       tone_joy: 0,
       tone_sadness: 0,
       tone_tentative: 0,
+
+      deleting: false
     }
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params
+    let id;
+    if (this.props.match) {
+      id = this.props.match.params.id
+    }
 
     EntryService.getEntryById(id)
       .then(res => {
         this.setState({...res})
+      })
+  }
+
+  renderSelfie() {
+    return this.state.face_url ? <img className='entry-selfie' src={this.state.face_url} alt='selfie'/> : ''
+  }
+
+  handleDelete() {
+    this.setState({deleting: true})
+  }
+
+  cancelDelete() {
+    this.setState({deleting: false})
+  }
+
+  async callDelete() {
+    if (!this.state.face_url){
+      await EntryService.deleteEntry(this.state.id)
+    }
+    else {
+      await EntryService.deleteEntry(this.state.id)
+      await EntryService.deleteSelfie(this.state.face_url)
+    }
+  }
+
+  confirmDelete() {
+    this.callDelete()
+      .then(() => {
+        this.props.history.push('/')
       })
   }
 
@@ -50,15 +84,26 @@ class EntryRoute extends Component {
 
     return (
       <div>
-        {/* <BackButton/> */}
+        {this.state.deleting 
+          && <DeleteBox 
+            cancelDelete={this.cancelDelete.bind(this)} 
+            confirmDelete={this.confirmDelete.bind(this)}
+            target='entry'
+            />
+        }
 
         <div className='entry-charts-entry-container'>
-          <EntryCharts entry={this.state} />
+          <EntryCharts entry={this.state} deleteEntry={this.handleDelete.bind(this)}/>
         </div>
+
+        <hr className='divider' />
         
-       
-        <img src={this.state.face_url} alt='selfie'/>
-        <p>{this.state.text}</p>
+        <div className='entry-container'>
+          {this.renderSelfie()}
+          <p className={this.state.face_url ? 'entry-text' : 'entry-text-solo'}>
+            {this.state.text}
+          </p>
+        </div>
 
       </div>
     );

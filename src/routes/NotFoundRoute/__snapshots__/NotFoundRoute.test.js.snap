@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardRoute renders the complete page 1`] = `
+<section>
+  <h2>
+    404 - Page not found
+  </h2>
+  <p>
+    Try going back to the previous page.
+  </p>
+</section>
+`;
