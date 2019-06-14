@@ -25,6 +25,7 @@
 }
 
 .login-redirect :hover{
+    border-bottom: 1px solid blue;
     color:blue;
     cursor: pointer;
 }
@@ -43,6 +44,11 @@ footer a{
 
     .log-in-form{
         padding:25px;
+    }
+    .log-in-button{
+        background-color: rgb(4, 168, 4);
+        color:white;
+   
     }
 
   

@@ -44,6 +44,10 @@ footer a{
     .registration-form{
         padding:20px;
     }
-
+    .registration-button{
+        background-color: rgb(4, 168, 4);
+        color:white;
+   
+    }
   
 }
