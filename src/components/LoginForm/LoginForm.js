@@ -45,6 +45,7 @@ class LoginForm extends Component {
   render() {
     const { error } = this.state;
     return (
+      <div className='log-in-form'>
       <form className="LoginForm" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>
         <div className="login-input">
@@ -65,11 +66,14 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <Button type="submit">LOGIN</Button> <br/>
+        <footer>
+        <Button className='log-in-button'type="submit">LOGIN</Button> <br/>
         <Link to="/" className="login-redirect">
           Need to Sign up?
         </Link>
+        </footer>
       </form>
+      </div>
     );
   }
 }
