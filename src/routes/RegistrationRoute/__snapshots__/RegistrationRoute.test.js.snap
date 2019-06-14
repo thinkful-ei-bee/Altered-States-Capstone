@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardRoute renders the complete page 1`] = `
+<section>
+  <h2>
+    Sign up
+  </h2>
+  <RegistrationForm
+    onRegistrationSuccess={[Function]}
+  />
+</section>
+`;

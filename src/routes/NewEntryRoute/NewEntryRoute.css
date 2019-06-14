@@ -75,6 +75,7 @@
   width: 33%;
   float: left;
   padding: 12px 0;
+  padding-bottom: 0;
 }
 
 .entry_form footer {

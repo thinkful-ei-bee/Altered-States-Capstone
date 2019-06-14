@@ -46,7 +46,10 @@ class EntryCharts extends Component {
   }
 
   renderEntryLabel() {
+    if(!this.props.entry) return
     const {date_created} = this.props.entry
+    if (!date_created) return
+
     if (this.props.label) {
       return this.props.label
     } else {

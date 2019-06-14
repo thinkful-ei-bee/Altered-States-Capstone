@@ -18,7 +18,7 @@ export default class moodSelector extends Component{
         return(
             <div className='mood-container'>
                 <div className='ne-title'><h3>How are you feeling today?</h3></div>
-                <section className='mood_number'onClick={this.props.handleClick.bind(this)}>
+                {!!this.props.handleClick && <section className='mood_number'onClick={this.props.handleClick.bind(this)}>
                     <label className='radio'>
                       <input type='radio' name='mood-radio' value='10' />
                       <img src={verySad} alt='1' id='10' />
@@ -43,7 +43,7 @@ export default class moodSelector extends Component{
                       <input type='radio' name='mood-radio' value='50' />
                       <img src={veryHappy} alt='5' id='50' />
                     </label>
-                </section>
+                </section>}
             </div>
         )
     }

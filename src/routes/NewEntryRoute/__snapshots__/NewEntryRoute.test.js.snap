@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardRoute renders the complete page 1`] = `
+<div
+  className="new-entry-page"
+>
+  <div
+    className="ne-title ne-title-top"
+  >
+    <h2>
+      Fri Jun 1
+    </h2>
+    <h3>
+      New Entry
+    </h3>
+  </div>
+  <CloudinaryWidget
+    updateFaceData={[Function]}
+    updateFaceUrl={[Function]}
+  />
+  <moodSelector
+    handleClick={[Function]}
+  />
+  <form
+    className="entry_form left"
+    onSubmit={[Function]}
+    value=""
+  >
+    <div
+      className="ne-title ta"
+    >
+      <h3>
+        How's it going? What's on your mind?
+      </h3>
+    </div>
+    <textarea
+      className="entry_area"
+      maxLength="5000"
+      onChange={[Function]}
+    />
+    <footer>
+      <Link
+        to="/"
+      >
+        CANCEL
+      </Link>
+      <button
+        type="submit"
+      >
+        SUBMIT
+      </button>
+    </footer>
+  </form>
+</div>
+`;

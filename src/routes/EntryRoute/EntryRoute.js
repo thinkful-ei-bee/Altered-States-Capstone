@@ -36,7 +36,10 @@ class EntryRoute extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params
+    let id;
+    if (this.props.match) {
+      id = this.props.match.params.id
+    }
 
     EntryService.getEntryById(id)
       .then(res => {
