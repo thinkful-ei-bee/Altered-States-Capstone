@@ -58,10 +58,19 @@ class EntryRoute extends Component {
     this.setState({deleting: false})
   }
 
+  async callDelete() {
+    if (!this.state.face_url){
+      await EntryService.deleteEntry(this.state.id)
+    }
+    else {
+      await EntryService.deleteEntry(this.state.id)
+      await EntryService.deleteSelfie(this.state.face_url)
+    }
+  }
+
   confirmDelete() {
-    EntryService.deleteEntry(this.state.id)
-      .then(res => {
-        console.log('deleteRes', res)
+    this.callDelete()
+      .then(() => {
         this.props.history.push('/')
       })
   }
