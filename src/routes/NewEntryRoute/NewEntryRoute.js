@@ -87,16 +87,12 @@ export default class NewEntryRoute extends Component {
 
   handleHappinessClick=(e)=>{ 
 
-    console.log('e.target.id: ', e.target.id)
     let num = e.target.id
-    console.log('num: ', num)
 
 
-    this.setState({
-      newEntry: {...this.state.newEntry, happiness: num}
-    },()=>{console.log('happiness state:', this.state.newEntry)} // should we send this to database from here or 
+    this.setState({newEntry: {...this.state.newEntry, happiness: num}}) // should we send this to database from here or 
                                     //should we have one submit that will simply send all of State to database?
-    )
+    
     
     }
 
