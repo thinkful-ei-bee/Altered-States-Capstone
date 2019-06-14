@@ -17,7 +17,6 @@ class RegistrationRoute extends Component {
     return (
       <section>
         
-        <h2>Sign up</h2>
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />
