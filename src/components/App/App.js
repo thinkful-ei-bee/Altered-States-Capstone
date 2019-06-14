@@ -11,7 +11,7 @@ import './App.css'
 import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
 import EntryRoute from '../../routes/EntryRoute/EntryRoute';
 import TrendRoute from '../../routes/TrendRoute/TrendRoute';
-
+import Footer from '../../components/Footer/Footer'
 
 export default class App extends Component {
   state = { 
@@ -64,7 +64,7 @@ export default class App extends Component {
             />
           </Switch>
         </main>
-        
+        <Footer/>
       </div>
     );
   }

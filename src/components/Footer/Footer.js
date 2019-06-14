@@ -2,9 +2,9 @@ import React from 'react'
 import './Footer.css'
 function Footer(){
     return(
-        <footer >
+        <div className='App-Footer'>
             Footer
-        </footer>
+        </div>
     )
 }
 export default Footer;
