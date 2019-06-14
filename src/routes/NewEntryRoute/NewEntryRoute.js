@@ -87,9 +87,9 @@ export default class NewEntryRoute extends Component {
 
   handleHappinessClick=(e)=>{ 
 
-    console.log(e.target.id)
-    let num = parseInt(e.target.id, 10)
-    console.log(num)
+    console.log('e.target.id: ', e.target.id)
+    let num = e.target.id
+    console.log('num: ', num)
 
 
     this.setState({
