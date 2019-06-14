@@ -117,12 +117,11 @@ export default class NewEntryRoute extends Component {
     }
   }
 
-// <img src={this.state.newEntry.face_url} alt='uploaded selfie' className='cloudinary-thumb'/>
   handleDeleteSelfie() {
+    console.log('click')
     EntryService.deleteSelfie(this.state.newEntry.face_url)
       .then(res => {
         this.setState({newEntry: {...this.state.newEntry, face_url: ''}}, () => console.log('state', this.state.newEntry))
-        console.log('res', res)
       })
   }
 
@@ -131,8 +130,9 @@ export default class NewEntryRoute extends Component {
     return (
       <div className='new-entry-page'>
         <div className='ne-title ne-title-top'>
+
           <h2 >{date}</h2>
-          <h3>New Entry</h3>
+          <h3 >New Entry</h3>
         </div>
 
         {this.state.newEntry.face_url && <div id='parallax'></div>}
@@ -141,6 +141,8 @@ export default class NewEntryRoute extends Component {
           <CloudinaryWidget 
             updateFaceUrl={this.updateFaceUrl.bind(this)} 
             updateFaceData={this.updateFaceData.bind(this)} />}
+            
+            <button onClick={() => this.handleDeleteSelfie()}>delete selfie</button>
 
         <MoodSelector handleClick={this.handleHappinessClick}/>
 
