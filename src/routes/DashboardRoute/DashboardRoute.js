@@ -5,7 +5,7 @@ import EntryService from "../../services/entry-service";
 import EntryTag from '../../components/EntryTag/EntryTag'
 import EntryCharts from "../../components/EntryCharts/EntryCharts";
 import happy from '../../images/happy.png'
-
+import Footer from '../../components/Footer/Footer'
 
 class DashboardRoute extends Component {
   constructor(props) {
@@ -100,6 +100,7 @@ class DashboardRoute extends Component {
             )
           })}
         </ul>
+        <Footer/>
       </div>
     );
   }

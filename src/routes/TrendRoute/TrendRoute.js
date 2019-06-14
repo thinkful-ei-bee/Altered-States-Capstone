@@ -3,7 +3,7 @@ import dateFormat from 'dateformat';
 import EntryService from "../../services/entry-service";
 import TrendGraph from '../../components/TrendGraph/TrendGraph'
 import './TrendRoute.css'
-
+import Footer from '../../components/Footer/Footer'
 export default class TrendRoute extends Component {
     constructor(props) {
         super(props)
@@ -129,7 +129,7 @@ export default class TrendRoute extends Component {
 
     </div>
 
-
+          <Footer/>
     </div>
         )
     }

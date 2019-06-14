@@ -12,6 +12,7 @@ import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
 import EntryRoute from '../../routes/EntryRoute/EntryRoute';
 import TrendRoute from '../../routes/TrendRoute/TrendRoute';
 
+
 export default class App extends Component {
   state = { 
     hasError: false,
@@ -63,6 +64,7 @@ export default class App extends Component {
             />
           </Switch>
         </main>
+        
       </div>
     );
   }

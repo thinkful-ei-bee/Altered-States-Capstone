@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import BackButton from '../../components/Button/Back-button'
 import "./EntryRoute.css";
 import EntryService from "../../services/entry-service";
-
+import Footer from '../../components/Footer/Footer'
 import EntryCharts from '../../components/EntryCharts/EntryCharts';
 
 
@@ -68,7 +68,7 @@ class EntryRoute extends Component {
             {this.state.text}
           </p>
         </div>
-
+      <Footer/>
       </div>
     );
   }
