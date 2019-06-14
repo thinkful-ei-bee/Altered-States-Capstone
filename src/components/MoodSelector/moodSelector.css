@@ -1,16 +1,24 @@
 
-.button {
+.radio {
   display: inline-block;
   background: none;
   border: none;
   padding: 0 3px;
 }
 
-.button img {
+.mood-container input {
+  display: none;
+}
+
+.radio img {
   width: 60px;
 }
 
-.button img:hover {
+input[type=radio]:checked + img {
+  opacity: 0.7;
+}
+
+.radio img:hover {
   opacity: 0.7;
 }
 .mood_number {

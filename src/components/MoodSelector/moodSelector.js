@@ -17,13 +17,32 @@ export default class moodSelector extends Component{
     render(){
         return(
             <div className='mood-container'>
-                <div className='ne-title'><h3>Happiness</h3></div>
+                <div className='ne-title'><h3>How are you feeling today?</h3></div>
                 <section className='mood_number'onClick={this.props.handleClick.bind(this)}>
-                    <button className='button button1' value='10'><img src={verySad} alt='1' id='10' /></button>
-                    <button className='button button2'  value='20'><img src={sad} alt='2' id='20' /></button>
-                    <button className='button button3' value='30'><img src={neutral} alt='3' id='30' /></button>
-                    <button className='button button4' value='40'><img src={happy} alt='4' id='40' /></button>
-                    <button className='button button5' value='50'><img src={veryHappy} alt='5' id='50' /></button>
+                    <label className='radio'>
+                      <input type='radio' name='mood-radio' value='10' />
+                      <img src={verySad} alt='1' id='10' />
+                    </label>
+
+                    <label className='radio'>
+                      <input type='radio' name='mood-radio' value='20' />
+                      <img src={sad} alt='2' id='20' />
+                    </label>
+
+                    <label className='radio'>
+                      <input type='radio' name='mood-radio' value='30' />
+                      <img src={neutral} alt='3' id='30' />
+                    </label>
+
+                    <label className='radio'>
+                      <input type='radio' name='mood-radio' value='40' />
+                      <img src={happy} alt='4' id='40' />
+                    </label>
+
+                    <label className='radio'>
+                      <input type='radio' name='mood-radio' value='50' />
+                      <img src={veryHappy} alt='5' id='50' />
+                    </label>
                 </section>
             </div>
         )

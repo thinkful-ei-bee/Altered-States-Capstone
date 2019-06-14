@@ -79,6 +79,7 @@ class EntryCharts extends Component {
                   height={300} 
                   data={toneData}
               >
+                <PolarRadiusAxis domain={[0, 60]} display='none' />
                 <PolarGrid />
                 <PolarAngleAxis dataKey="name" />
                 
