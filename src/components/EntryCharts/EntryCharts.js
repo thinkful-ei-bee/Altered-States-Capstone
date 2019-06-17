@@ -62,12 +62,12 @@ class EntryCharts extends Component {
     }
   }
 
-  renderDeleteButton() {
-    const {deleteEntry} = this.props
-    return deleteEntry 
-    ? <button onClick={() => deleteEntry()}><i className="fa fa-trash"></i></button>
-    : ''
-  }
+  // renderDeleteButton() {
+  //   const {deleteEntry} = this.props
+  //   return deleteEntry 
+  //   ? <button onClick={() => deleteEntry()}><i className="fa fa-trash"></i></button>
+  //   : ''
+  // }
 
   generateHappiness(happiness) {
     switch (happiness) {
@@ -100,7 +100,7 @@ generateEmoji() {
     return (
       <div>
         <div className='radar-charts'>
-          <div className='entry-label'>{this.renderEntryLabel()}{this.renderDeleteButton()}</div>
+          <div className='entry-label'>{this.renderEntryLabel()}</div>
           {this.generateEmoji()}
           <h3 className='chart-title-tone'>Writing Analysis</h3>
           <div className='tone-table'>

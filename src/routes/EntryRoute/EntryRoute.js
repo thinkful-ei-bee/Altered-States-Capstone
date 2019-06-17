@@ -93,7 +93,7 @@ class EntryRoute extends Component {
         }
 
         <div className='entry-charts-entry-container'>
-          <EntryCharts entry={this.state} deleteEntry={this.handleDelete.bind(this)}/>
+          <EntryCharts entry={this.state} />
         </div>
 
         <hr className='divider' />
@@ -103,6 +103,7 @@ class EntryRoute extends Component {
           <p className={this.state.face_url ? 'entry-text' : 'entry-text-solo'}>
             {this.state.text}
           </p>
+          <button className='delete-button' onClick={() => this.handleDelete()}><i className="fa fa-trash"></i></button>
         </div>
 
       </div>
