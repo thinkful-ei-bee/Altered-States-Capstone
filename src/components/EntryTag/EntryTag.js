@@ -31,7 +31,7 @@ export default class EntryTag extends Component{
         
         const {date}=this.props
         const formattedDate=dateFormat(date, 'mm/dd/yy, h:MM TT')
-        console.log(formattedDate,'<-------')
+     
 
         // const day = new Date(date).toLocaleString([], { hour12: true});
         // const dayTwo = new Date(date)
