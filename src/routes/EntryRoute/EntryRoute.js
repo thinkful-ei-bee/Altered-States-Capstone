@@ -4,6 +4,7 @@ import EntryService from "../../services/entry-service";
 
 import EntryCharts from '../../components/EntryCharts/EntryCharts';
 import DeleteBox from '../../components/DeleteBox/DeleteBox';
+import ZoomBox from '../../components/ZoomBox/ZoomBox';
 
 
 class EntryRoute extends Component {
@@ -33,7 +34,8 @@ class EntryRoute extends Component {
       tone_sadness: 0,
       tone_tentative: 0,
 
-      deleting: false
+      deleting: false,
+      zoom: false
     }
   }
 
@@ -50,7 +52,8 @@ class EntryRoute extends Component {
   }
 
   renderSelfie() {
-    return this.state.face_url ? <img className='entry-selfie' src={this.state.face_url} alt='selfie'/> : ''
+    return this.state.face_url 
+    ? <img onClick={() => this.handleZoom()} className='entry-selfie' src={this.state.face_url} alt='selfie'/> : ''
   }
 
   handleDelete() {
@@ -78,6 +81,14 @@ class EntryRoute extends Component {
       })
   }
 
+  handleZoom() {
+    this.setState({zoom: true})
+  }
+
+  endZoom() {
+    this.setState({zoom: false})
+  }
+
 
 
   render() {
@@ -89,6 +100,13 @@ class EntryRoute extends Component {
             cancelDelete={this.cancelDelete.bind(this)} 
             confirmDelete={this.confirmDelete.bind(this)}
             target='entry'
+            />
+        }
+
+        {this.state.zoom 
+          && <ZoomBox 
+            endZoom={this.endZoom.bind(this)} 
+            url={this.state.face_url}
             />
         }
 
