@@ -48,7 +48,7 @@ hr {
 .fa-trash {
   font-size: 2em;
   opacity: .5;
-  margin-right: 10px;
+  margin-right: 75px;
   margin-bottom: 20px;
 }
 
@@ -81,6 +81,10 @@ hr {
     margin-left: 20px;
     margin-right: 20px;
     width: 125px;
+  }
+
+  .fa-trash {
+    margin-right: 20px;
   }
 
   .delete-button {
