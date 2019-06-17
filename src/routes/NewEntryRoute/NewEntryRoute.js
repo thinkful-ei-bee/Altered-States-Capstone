@@ -132,7 +132,7 @@ export default class NewEntryRoute extends Component {
   }
 
   render() {
-    let date = new Date().toString().slice(0, 9)
+    let date = new Date().toString().slice(0, 10)
     return (
       <div className='new-entry-page'>
 

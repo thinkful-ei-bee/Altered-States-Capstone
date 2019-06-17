@@ -52,13 +52,13 @@ class EntryCharts extends Component {
 
   renderEntryLabel() {
     if(!this.props.entry) return
-    const {date_created} = this.props.entry
-    if (!date_created) return
+    const date = this.props.entry.date_created
+    if (!date) return
 
     if (this.props.label) {
       return this.props.label
     } else {
-      return <EntryTag date={date_created} />
+      return <EntryTag date={date} />
     }
   }
 
