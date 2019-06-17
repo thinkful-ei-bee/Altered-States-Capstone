@@ -40,10 +40,10 @@ export default class TrendRoute extends Component {
                 data.push({
                     name: dateFormat(entries[i].date_created, 'mm/dd'),
                     happiness:entries[i].happiness / 10,
-                    tone_joy: entries[i].tone_joy / 10,
                     tone_analytical:entries[i].tone_analytical / 10,
                     tone_confident:entries[i].tone_confident / 10,
                     tone_fear:entries[i].tone_fear / 10,
+                    tone_joy: entries[i].tone_joy / 10,
                     tone_sadness:entries[i].tone_sadness / 10,
                     tone_tentative:entries[i].tone_tentative / 10,
                     face_anger:entries[i].face_anger/10,
@@ -68,10 +68,10 @@ export default class TrendRoute extends Component {
             data.push({
                 name: dateFormat(entries[i].date_created, 'mm/dd'),
                 happiness:entries[i].happiness / 10,
-                tone_joy: entries[i].tone_joy / 10,
                 tone_analytical:entries[i].tone_analytical / 10,
                 tone_confident:entries[i].tone_confident / 10,
                 tone_fear:entries[i].tone_fear / 10,
+                tone_joy: entries[i].tone_joy / 10,
                 tone_sadness:entries[i].tone_sadness / 10,
                 tone_tentative:entries[i].tone_tentative / 10,
                 face_anger:entries[i].face_anger/10,
@@ -109,23 +109,23 @@ export default class TrendRoute extends Component {
         
     <div className='tone-tables'>
     <h3>Writing trends</h3>
-        <TrendGraph className='joy' data={data} dataKey='tone_joy' />
-        <TrendGraph className='confident' data={data} dataKey='tone_confident' />
         <TrendGraph className='analytical' data={data} dataKey='tone_analytical' />
-        <TrendGraph className='tentative' data={data} dataKey='tone_tentative' />
+        <TrendGraph className='confident' data={data} dataKey='tone_confident' />
         <TrendGraph className='fear' data={data} dataKey='tone_fear' />
+        <TrendGraph className='joy' data={data} dataKey='tone_joy' />
         <TrendGraph className='sadness' data={data} dataKey='tone_sadness' />
+        <TrendGraph className='tentative' data={data} dataKey='tone_tentative' />
     </div>
     <div className='face-tables'>
         <h3>Selfie trends</h3>
         <TrendGraph className='anger' data={data} dataKey='face_anger' />
         <TrendGraph className='contempt' data={data} dataKey='face_contempt' />
         <TrendGraph className='disgust' data={data} dataKey='face_disgust' />
-        <TrendGraph className='fear' data={data} dataKey='face_fear' />
-        <TrendGraph className='sadness' data={data} dataKey='face_sadness' />
-        <TrendGraph className='neutral' data={data} dataKey='face_neutral' />
-        <TrendGraph className='surprise' data={data} dataKey='face_surprise' />
         <TrendGraph className='happiness' data={data} dataKey='face_happiness' />
+        <TrendGraph className='fear' data={data} dataKey='face_fear' />
+        <TrendGraph className='neutral' data={data} dataKey='face_neutral' />
+        <TrendGraph className='sadness' data={data} dataKey='face_sadness' />
+        <TrendGraph className='surprise' data={data} dataKey='face_surprise' />
 
     </div>
 
