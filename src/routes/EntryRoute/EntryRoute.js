@@ -99,10 +99,12 @@ class EntryRoute extends Component {
         <hr className='divider' />
         
         <div className='entry-container'>
-          {this.renderSelfie()}
-          <p className={this.state.face_url ? 'entry-text' : 'entry-text-solo'}>
-            {this.state.text}
-          </p>
+          <div className='text-selfie-div'>
+            {this.renderSelfie()}
+            <p className='entry-text'>
+              {this.state.text}
+            </p>
+          </div>
           <button className='delete-button' onClick={() => this.handleDelete()}><i className="fa fa-trash"></i></button>
         </div>
 
