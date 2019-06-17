@@ -5,6 +5,7 @@ import happy from '../../images/happy.png'
 import neutral from '../../images/neutral.png'
 import sad from '../../images/sad.png'
 import verySad from '../../images/verySad.png'
+import dateFormat from 'dateformat';
 
 export default class EntryTag extends Component{
 
@@ -29,16 +30,15 @@ export default class EntryTag extends Component{
     formatEntryTag(){
         
         const {date}=this.props
-       
-        const day = new Date(date).toLocaleString([], { hour12: true});
+        const formattedDate=dateFormat(date, 'mm/dd/yy, h:MM TT')
+        console.log(formattedDate,'<-------')
 
-        const dayTwo = new Date(date)
-
-        const dayOfWeek = dayTwo.toString().slice(0, 4)
+        // const day = new Date(date).toLocaleString([], { hour12: true});
+        // const dayTwo = new Date(date)
+        // const dayOfWeek = dayTwo.toString().slice(0, 4) 
+        // const newDate = dayOfWeek + day.slice(0,-6) + day.slice(-3)     
         
-        const newDate = dayOfWeek + day.slice(0,-6) + day.slice(-3)     
-        
-        return <div className='entryTag-div'><h3 className='entry-tag'>{newDate}</h3>{this.generateEmoji()}</div>
+        return <div className='entryTag-div'><h3 className='entry-tag'>{formattedDate}</h3>{this.generateEmoji()}</div>
     }
   
     render(){
