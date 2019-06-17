@@ -46,33 +46,34 @@ class LoginForm extends Component {
     const { error } = this.state;
     return (
       <div className='log-in-form'>
-      <form className="LoginForm" onSubmit={this.handleSubmit}>
-        <div role="alert">{error && <p>{error}</p>}</div>
-        <div className="login-input">
-          <Label htmlFor="login-username-input">Username</Label>
-          <Input
-            ref={this.firstInput}
-            id="login-username-input"
-            name="username"
-            required
-          />
-        </div>
-        <div className="login-input">
-          <Label htmlFor="login-password-input">Password</Label>
-          <Input
-            id="login-password-input"
-            name="password"
-            type="password"
-            required
-          />
-        </div>
-        <footer>
-        <Button className='log-in-button'type="submit">LOGIN</Button> <br/>
-        <Link to="/" className="login-redirect">
-          Need to Sign up?
-        </Link>
-        </footer>
-      </form>
+        <h2 className='log-reg-header log-header'>Login</h2>
+        <form className="LoginForm" onSubmit={this.handleSubmit}>
+          <div role="alert">{error && <p>{error}</p>}</div>
+          <div className="login-input">
+            <Label htmlFor="login-username-input">Username</Label>
+            <Input
+              ref={this.firstInput}
+              id="login-username-input"
+              name="username"
+              required
+            />
+          </div>
+          <div className="login-input">
+            <Label htmlFor="login-password-input">Password</Label>
+            <Input
+              id="login-password-input"
+              name="password"
+              type="password"
+              required
+            />
+          </div>
+          <footer>
+          <Button className='log-in-button'type="submit">LOGIN</Button> <br/>
+          <Link to="/" className="login-redirect">
+            Need to Sign up?
+          </Link>
+          </footer>
+        </form>
       </div>
     );
   }
