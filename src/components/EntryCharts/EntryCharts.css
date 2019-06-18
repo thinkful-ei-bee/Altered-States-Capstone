@@ -37,11 +37,12 @@
   margin: auto;
   font-size: 1.5em;
   margin-top: 10px;
+  font-weight: bold;
 }
 
-.entry-charts-dashboard-container .entry-label h3 {
+/* .entry-charts-dashboard-container .entry-label h3 {
   text-decoration: underline;
-}
+} */
 
 .chart-title-tone {
   grid-column: 2/3;
