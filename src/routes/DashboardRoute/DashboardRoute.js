@@ -65,7 +65,6 @@ class DashboardRoute extends Component {
 
   render() {
     let { newUser } = this.state
-    console.log(newUser)
 
     return (
       <div>

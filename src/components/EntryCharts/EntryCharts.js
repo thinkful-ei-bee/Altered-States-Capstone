@@ -46,7 +46,6 @@ class EntryCharts extends Component {
         })
       }
     }
-    console.log('data: ', data)
     return data
   }
 

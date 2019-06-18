@@ -1,11 +1,6 @@
 import React, {Component} from 'react'
 import { LineChart, Line, 
     YAxis, XAxis, ResponsiveContainer } from 'recharts'
-import veryHappy from '../../images/veryHappy.png'
-import happy from '../../images/happy.png'
-import neutral from '../../images/neutral.png'
-import sad from '../../images/sad.png'
-import verySad from '../../images/verySad.png'
 
 export default class TrendGraph extends Component{
     constructor(props) {
