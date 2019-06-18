@@ -99,7 +99,7 @@ generateEmoji() {
     const radius = isMobile ? 45 : 80;
 
     return (
-      <div>
+      <div id={`entry-${this.props.entry.id}`}>
         <div className='radar-charts'>
           <div className='entry-label'>{this.renderEntryLabel()}</div>
           {this.generateEmoji()}

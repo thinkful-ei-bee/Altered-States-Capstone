@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./EntryRoute.css";
 import EntryService from "../../services/entry-service";
-
+import { Link } from 'react-router-dom';
 import EntryCharts from '../../components/EntryCharts/EntryCharts';
 import DeleteBox from '../../components/DeleteBox/DeleteBox';
 import ZoomBox from '../../components/ZoomBox/ZoomBox';
@@ -125,6 +125,7 @@ class EntryRoute extends Component {
               {this.state.text}
             </p>
           </div>
+          <a className='back-button' href={`/#entry-${this.state.id}`}>Back</a>
           <button className='delete-button' onClick={() => this.handleDelete()}><i className="fa fa-trash"></i></button>
         </div>
 
