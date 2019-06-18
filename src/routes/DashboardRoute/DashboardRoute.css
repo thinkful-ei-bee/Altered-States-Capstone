@@ -69,6 +69,23 @@ ul {
   border: black solid 1px;
   box-shadow: 5px 5px 3px grey;
   border-radius: 10px;
+  transition: all .3s;
+}
+
+.entryList-entry:hover {
+  box-shadow: 8px 8px 3px grey;
+  cursor: pointer;
+  transform: scale(1.01, 1.01);
+}
+
+.entryList-entry:active {
+  box-shadow: none;
+  transition: all .1s;
+  transform: scale(.99, .99);
+}
+
+.entryList-entry svg:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 850px) {
@@ -81,6 +98,14 @@ ul {
     border: black solid 1px;
     box-shadow: 3px 3px 3px grey;
     border-radius: 10px;
+  }
+
+  .entryList-entry:hover {
+    transform: none;
+  }
+
+  .entryList-entry:active {
+    transform: none;
   }
 }
 
@@ -107,5 +132,20 @@ ul {
   .tutorial-container p {
     text-align: center;
   }
+
+  /* .entryList-entry:hover {
+    box-shadow: 8px 8px 3px grey;
+    cursor: pointer;
+    transform: scale(1.01, 1.01);
+  }
+  
+  .entryList-entry:active {
+    box-shadow: none;
+    transform: scale(.99, .99);
+  }
+  
+  .entryList-entry svg:hover {
+    cursor: pointer;
+  } */
 }
 

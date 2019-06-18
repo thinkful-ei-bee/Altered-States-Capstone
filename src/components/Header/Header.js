@@ -49,13 +49,13 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.context.user)
     return (
       <header className='main-header'>
         <nav>
           <h1>
             <Link to='/'>
-              miMood
+              <span>miMood</span>
+              <span className='journal'>journal</span>
             </Link>
           </h1>
           <div className='nav-links'>

@@ -33,9 +33,15 @@ class DashboardRoute extends Component {
   }
 
 
+  // generateEntryLabel(entry) {
+  //   return <Link to={`/entry/${entry.id}`} ><EntryTag date={entry.date_created} /></Link>
+  // }
+
   generateEntryLabel(entry) {
-    return <Link to={`/entry/${entry.id}`} ><EntryTag date={entry.date_created} /></Link>
+    return <EntryTag date={entry.date_created} />
   }
+
+  
 
   renderEntryList() {
     const { entries } = this.state
@@ -54,17 +60,21 @@ class DashboardRoute extends Component {
   }
 
   renderEntry(entry) {
+    const selfie = entry.face_url ? true : false;
     return (
+    
       <li key={entry.id} className='entryList-entry'>
-        <EntryCharts entry={entry} label={this.generateEntryLabel(entry)}/>
+        <Link to={`/entry/${entry.id}`} >
+          <EntryCharts entry={entry} label={this.generateEntryLabel(entry)} selfie={selfie}/>
+        </Link>
       </li>
+      
     )
   }
 
 
   render() {
     let { newUser } = this.state
-    console.log(newUser)
 
     return (
       <div>

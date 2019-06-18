@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./EntryRoute.css";
 import EntryService from "../../services/entry-service";
-
+import { HashLink as Link } from 'react-router-hash-link';
 import EntryCharts from '../../components/EntryCharts/EntryCharts';
 import DeleteBox from '../../components/DeleteBox/DeleteBox';
 import ZoomBox from '../../components/ZoomBox/ZoomBox';
@@ -93,6 +93,8 @@ class EntryRoute extends Component {
 
   render() {
 
+    const selfie = this.state.face_url ? true : false;
+
     return (
       <div>
         {this.state.deleting 
@@ -111,7 +113,7 @@ class EntryRoute extends Component {
         }
 
         <div className='entry-charts-entry-container'>
-          <EntryCharts entry={this.state} />
+          <EntryCharts entry={this.state} selfie={selfie}/>
         </div>
 
         <hr className='divider' />
@@ -123,7 +125,12 @@ class EntryRoute extends Component {
               {this.state.text}
             </p>
           </div>
-          <button className='delete-button' onClick={() => this.handleDelete()}><i className="fa fa-trash"></i></button>
+          {/* <Link className='back-button' to={`/#entry-${this.state.id}`}><i className="fa fa-arrow-left"></i></Link>
+          <button className='delete-button'><i className="fa fa-trash" onClick={() => this.handleDelete()}></i></button> */}
+          <div className='entry-buttons'>
+            <Link className='back-button' to={`/#entry-${this.state.id}`}><i className="fa fa-arrow-left"></i></Link>
+            <i className="fa fa-trash" onClick={() => this.handleDelete()}></i>
+          </div>
         </div>
 
       </div>

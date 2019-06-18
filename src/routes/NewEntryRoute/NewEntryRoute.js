@@ -49,12 +49,12 @@ export default class NewEntryRoute extends Component {
   }
 
   updateFaceUrl = async (url) => {
-    await this.setState({newEntry: {...this.state.newEntry, face_url: url}}, () => console.log('face_url:', this.state.newEntry.face_url))
+    await this.setState({newEntry: {...this.state.newEntry, face_url: url}})
     document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url})`
   }
 
   updateFaceData = (faceData) => {
-    this.setState({newEntry: {...this.state.newEntry, ...faceData }}, () => console.log('face state:', this.state.newEntry))
+    this.setState({newEntry: {...this.state.newEntry, ...faceData }})
   }
 
   updateEntry = (text) => {
@@ -62,7 +62,7 @@ export default class NewEntryRoute extends Component {
   }
 
   handleEntryTones = (tones) => {
-    this.setState({newEntry: {...this.state.newEntry, ...tones }}, () => console.log('tones state:', this.state.newEntry))
+    this.setState({newEntry: {...this.state.newEntry, ...tones }})
   }
 
   handleSubmitEntry(event) {

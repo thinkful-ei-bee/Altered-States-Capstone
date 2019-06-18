@@ -59,7 +59,6 @@ export default class TrendRoute extends Component {
              
            
         }
-        console.log(data)
         
         }
     

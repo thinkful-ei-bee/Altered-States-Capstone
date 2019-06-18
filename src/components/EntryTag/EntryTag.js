@@ -30,8 +30,6 @@ export default class EntryTag extends Component{
     formatEntryTag(){
         
         const {date}=this.props
-
-        console.log('date', date)
        
         const day = new Date(date).toLocaleString([], { hour12: true});
 
