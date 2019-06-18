@@ -4,6 +4,7 @@ import EntryService from "../../services/entry-service";
 
 import EntryCharts from '../../components/EntryCharts/EntryCharts';
 import DeleteBox from '../../components/DeleteBox/DeleteBox';
+import ZoomBox from '../../components/ZoomBox/ZoomBox';
 
 
 class EntryRoute extends Component {
@@ -33,7 +34,8 @@ class EntryRoute extends Component {
       tone_sadness: 0,
       tone_tentative: 0,
 
-      deleting: false
+      deleting: false,
+      zoom: false
     }
   }
 
@@ -50,7 +52,8 @@ class EntryRoute extends Component {
   }
 
   renderSelfie() {
-    return this.state.face_url ? <img className='entry-selfie' src={this.state.face_url} alt='selfie'/> : ''
+    return this.state.face_url 
+    ? <img onClick={() => this.handleZoom()} className='entry-selfie' src={this.state.face_url} alt='selfie'/> : ''
   }
 
   handleDelete() {
@@ -78,6 +81,14 @@ class EntryRoute extends Component {
       })
   }
 
+  handleZoom() {
+    this.setState({zoom: true})
+  }
+
+  endZoom() {
+    this.setState({zoom: false})
+  }
+
 
 
   render() {
@@ -92,17 +103,27 @@ class EntryRoute extends Component {
             />
         }
 
+        {this.state.zoom 
+          && <ZoomBox 
+            endZoom={this.endZoom.bind(this)} 
+            url={this.state.face_url}
+            />
+        }
+
         <div className='entry-charts-entry-container'>
-          <EntryCharts entry={this.state} deleteEntry={this.handleDelete.bind(this)}/>
+          <EntryCharts entry={this.state} />
         </div>
 
         <hr className='divider' />
         
         <div className='entry-container'>
-          {this.renderSelfie()}
-          <p className={this.state.face_url ? 'entry-text' : 'entry-text-solo'}>
-            {this.state.text}
-          </p>
+          <div className='text-selfie-div'>
+            {this.renderSelfie()}
+            <p className='entry-text'>
+              {this.state.text}
+            </p>
+          </div>
+          <button className='delete-button' onClick={() => this.handleDelete()}><i className="fa fa-trash"></i></button>
         </div>
 
       </div>

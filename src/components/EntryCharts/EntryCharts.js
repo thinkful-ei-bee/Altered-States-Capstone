@@ -52,22 +52,22 @@ class EntryCharts extends Component {
 
   renderEntryLabel() {
     if(!this.props.entry) return
-    const {date_created} = this.props.entry
-    if (!date_created) return
+    const date = this.props.entry.date_created
+    if (!date) return
 
     if (this.props.label) {
       return this.props.label
     } else {
-      return <EntryTag date={date_created} />
+      return <EntryTag date={date} />
     }
   }
 
-  renderDeleteButton() {
-    const {deleteEntry} = this.props
-    return deleteEntry 
-    ? <button onClick={() => deleteEntry()}><i className="fa fa-trash"></i></button>
-    : ''
-  }
+  // renderDeleteButton() {
+  //   const {deleteEntry} = this.props
+  //   return deleteEntry 
+  //   ? <button onClick={() => deleteEntry()}><i className="fa fa-trash"></i></button>
+  //   : ''
+  // }
 
   generateHappiness(happiness) {
     switch (happiness) {
@@ -100,7 +100,7 @@ generateEmoji() {
     return (
       <div>
         <div className='radar-charts'>
-          <div className='entry-label'>{this.renderEntryLabel()}{this.renderDeleteButton()}</div>
+          <div className='entry-label'>{this.renderEntryLabel()}</div>
           {this.generateEmoji()}
           <h3 className='chart-title-tone'>Writing Analysis</h3>
           <div className='tone-table'>

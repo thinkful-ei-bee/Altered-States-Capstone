@@ -1,0 +1,34 @@
+.zoom-end {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 998;
+
+  background-color: black;
+  opacity: .8;
+}
+
+.zoom-selfie {
+  z-index: 999;
+  opacity: 1;
+
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+
+  border: 5px black solid;
+
+  margin: auto;
+  width: 350px;
+}
+
+@media only screen and (max-width: 760px) {
+
+  .zoom-selfie {
+    width: 80%;
+  }
+}
