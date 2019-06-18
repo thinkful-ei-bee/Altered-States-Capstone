@@ -72,6 +72,10 @@
   background-color: gray;
 }
 
+.entry_form button:hover {
+  cursor: pointer;
+}
+
 .entry_form a {
   margin: auto;
   color: rgb(65, 65, 65);
@@ -79,8 +83,12 @@
   font-size: 16px;
   width: 33%;
   float: left;
-  padding: 12px 0;
-  padding-bottom: 0;
+  padding-top: 8.5px;
+  padding-bottom: 3.5px;
+}
+
+.entry_form a:hover {
+  color:  red;
 }
 
 .entry_form footer {

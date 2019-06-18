@@ -28,7 +28,7 @@
     cursor: pointer;
 }
 
-footer a:hover{
+.login-redirect:hover{
     border-bottom: 1px solid blue;
     color:blue;
     cursor: pointer;
