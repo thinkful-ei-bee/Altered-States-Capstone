@@ -38,7 +38,14 @@ hr {
 
 }
 
-.delete-button {
+/* .delete-button {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  background-color: white;
+  text-align: right;
+} */
+
+.entry-buttons {
   grid-column: 2/3;
   grid-row: 3/4;
   background-color: white;
@@ -53,6 +60,20 @@ hr {
 }
 
 .fa-trash:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.fa-arrow-left {
+  font-size: 2em;
+  opacity: .5;
+  margin-left: 75px;
+  margin-bottom: 20px;
+  float: left;
+  color: black;
+}
+
+.fa-arrow-left:hover {
   cursor: pointer;
   opacity: 1;
 }
@@ -87,10 +108,14 @@ hr {
     margin-right: 20px;
   }
 
-  .delete-button {
+  .entry-buttons {
     grid-column: 1/2;
     grid-row: 3/4;
     margin-top: 20px;
+  }
+
+  .fa-arrow-left {
+    margin-left: 20px;
   }
 }
 
