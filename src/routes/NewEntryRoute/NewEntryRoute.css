@@ -20,7 +20,7 @@
 }
 
 .ne-title h3 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 16px;
 }
 
@@ -60,12 +60,16 @@
 .entry_form button {
   margin: auto;
   color: white;
-  background-color: rgb(189, 62, 30);
+  background-color: rgb(136, 132, 216);
   font-size: 16px;
   padding: 12px;
   width: 67%;
   float: right;
   border: none;
+}
+
+.entry_form button:disabled {
+  background-color: gray;
 }
 
 .entry_form a {
@@ -92,6 +96,7 @@
 }
 
 textarea {
+  font-family: 'Hind Guntur', sans-serif;
   resize: none;
   display: block;
   margin: 20px auto;
@@ -101,6 +106,7 @@ textarea {
   padding: 10px;
   border: 1px solid darkgray;
   font-size: 16px;
+  outline: none;
 }
 
 .upload-button {
@@ -112,10 +118,16 @@ textarea {
   margin: 18px;
   margin-top: 7px;
   margin-bottom: 28px;
+  cursor: pointer;
 }
 
 .upload-button:hover {
-  background-color: rgb(174, 212, 235);
+  background-color: rgb(136, 132, 216);
+  color: white;
+}
+
+.mood_number img {
+  cursor: pointer;
 }
 
 @media only screen and (min-height: 700px) {

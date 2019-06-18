@@ -44,6 +44,10 @@ export default class NewEntryRoute extends Component {
   // username and password like so:
   // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
 
+  componentDidUpdate() {
+    this.handleDisableSubmit()
+  }
+
   updateFaceUrl = async (url) => {
     await this.setState({newEntry: {...this.state.newEntry, face_url: url}}, () => console.log('face_url:', this.state.newEntry.face_url))
     document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url})`
@@ -131,6 +135,16 @@ export default class NewEntryRoute extends Component {
       })
   }
 
+  handleDisableSubmit = () => {
+    if (this.state.newEntry.text && this.state.newEntry.happiness) {
+      console.log('enabled')
+      document.getElementById('ne-submit').disabled = false;
+    } else {
+      console.log('disabled')
+      document.getElementById('ne-submit').disabled = true;
+    }
+  }
+
   render() {
     let date = new Date().toString().slice(0, 10)
     return (
@@ -167,7 +181,7 @@ export default class NewEntryRoute extends Component {
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
             <footer>
               <Link to='/'>CANCEL</Link>
-              <button type='submit'>SUBMIT</button>
+              <button type='submit' className='ne-submit' id='ne-submit' disabled>SUBMIT</button>
             </footer>
         </form>
 
