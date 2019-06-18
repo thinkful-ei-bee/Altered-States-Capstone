@@ -17,6 +17,7 @@
 
 .nav-links nav {
   padding-right: 0;
+  padding-left: 0;
   position: relative;
   bottom: 2px;
 }
@@ -34,7 +35,7 @@
   position: relative;
   bottom: 6px;
 
-  width: 250px;
+  width: 300px;
 
   text-align: right;
 }
@@ -62,5 +63,14 @@
   }
   .nav-links a, .nav-links p {
     font-size: .85em;
+  }
+
+  .main-header nav {
+    padding: 7px 2%;
+  }
+
+  .nav-links nav{
+    padding-right: 0;
+    padding-left: 0;
   }
 }
