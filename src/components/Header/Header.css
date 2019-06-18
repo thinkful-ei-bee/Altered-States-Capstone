@@ -34,7 +34,7 @@
   position: relative;
   bottom: 6px;
 
-  width: 300px;
+  width: 250px;
 
   text-align: right;
 }
@@ -58,7 +58,7 @@
 
 @media only screen and (max-width: 760px) {
   .nav-links {
-    width: 230px;
+    width: 200px;
   }
   .nav-links a, .nav-links p {
     font-size: .85em;
