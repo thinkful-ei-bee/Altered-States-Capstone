@@ -30,19 +30,9 @@ export default class EntryTag extends Component{
     formatEntryTag(){
         
         const {date}=this.props
-       
-        const day = new Date(date).toLocaleString([], { hour12: true});
 
-        const dayTwo = new Date(date)
-        const formattedDate=dateFormat(date, 'mm/dd/yy h:MM TT')
-        //const formattedTime = dateFormat(date, '')
+        const formattedDate=dateFormat(date, 'ddd mm/dd/yy h:MM TT')
      
-
-        // const day = new Date(date).toLocaleString([], { hour12: true});
-        // const dayTwo = new Date(date)
-        // const dayOfWeek = dayTwo.toString().slice(0, 4) 
-        // const newDate = dayOfWeek + day.slice(0,-6) + day.slice(-3)     
-        
         return (
           <div className='entryTag-div'>
             <h3 className='entry-tag'>{formattedDate}</h3>{this.generateEmoji()}
