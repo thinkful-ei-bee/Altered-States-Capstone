@@ -88,6 +88,10 @@ tspan {
   opacity: .75;
 }
 
+.empty {
+  opacity: .5;
+}
+
 
 @media only screen and (max-width: 760px) {
   .radar-charts {

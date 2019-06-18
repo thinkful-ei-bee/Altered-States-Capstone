@@ -55,7 +55,8 @@ class Header extends Component {
         <nav>
           <h1>
             <Link to='/'>
-              miMood
+              <span>miMood</span>
+              <span className='journal'>journal</span>
             </Link>
           </h1>
           <div className='nav-links'>

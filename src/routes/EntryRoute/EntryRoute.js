@@ -93,6 +93,8 @@ class EntryRoute extends Component {
 
   render() {
 
+    const selfie = this.state.face_url ? true : false;
+
     return (
       <div>
         {this.state.deleting 
@@ -111,7 +113,7 @@ class EntryRoute extends Component {
         }
 
         <div className='entry-charts-entry-container'>
-          <EntryCharts entry={this.state} />
+          <EntryCharts entry={this.state} selfie={selfie}/>
         </div>
 
         <hr className='divider' />

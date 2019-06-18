@@ -90,6 +90,8 @@ generateEmoji() {
 
   render() {
 
+    const noSelfie = this.props.selfie ? '' : ' empty';
+
     const toneData = this.generateToneData()
 
     const faceData = this.generateEmotionData()
@@ -121,8 +123,8 @@ generateEmoji() {
               </RadarChart>
             </ResponsiveContainer>
           </div>
-          <h3 className='chart-title-face'>Selfie Analysis</h3>
-          <div className='face-table'>
+          <h3 className={`chart-title-face${noSelfie}`}>Selfie Analysis</h3>
+          <div className={`face-table${noSelfie}`}>
             <ResponsiveContainer width='100%' height='100%'>
               <RadarChart 
                 cx='50%' 

@@ -54,9 +54,10 @@ class DashboardRoute extends Component {
   }
 
   renderEntry(entry) {
+    const selfie = entry.face_url ? true : false;
     return (
       <li key={entry.id} className='entryList-entry'>
-        <EntryCharts entry={entry} label={this.generateEntryLabel(entry)}/>
+        <EntryCharts entry={entry} label={this.generateEntryLabel(entry)} selfie={selfie}/>
       </li>
     )
   }
