@@ -30,6 +30,7 @@ ul {
   transition: opacity .3s;
 
   padding: 0 10%;
+  transition: all 500ms;
 }
 
 .tutorial-container img {
@@ -40,6 +41,10 @@ ul {
 .tutorial-container h2 {
   margin-top: 20%;
   text-align: center;
+}
+
+.tutorial-container h3 {
+  text-align: left;
 }
 
 .tutorial-container p {

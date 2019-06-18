@@ -4,14 +4,12 @@ import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
 import EntryTag from '../../components/EntryTag/EntryTag'
 import EntryCharts from "../../components/EntryCharts/EntryCharts";
-import happy from '../../images/happy.png'
 
 
 class DashboardRoute extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      newUser: false,
       entries: [],
     }
   }
@@ -74,22 +72,8 @@ class DashboardRoute extends Component {
 
 
   render() {
-    let { newUser } = this.state
-
     return (
       <div>
-
-        {newUser && 
-          <div className='tutorial-container'>
-            <img src={happy} alt='happy' />
-            <h2>Welcome to miMood!</h2>
-            <h3>Track your mood with the help of AI!</h3>
-            <p>Machine learning algorithms analyze your entries for emotional cues, providing insight into how you're feeling.</p>
-            <p>Add an entry to see emotional analysis.</p>
-            <button onClick={() => this.setState({ newUser: false })}>GET STARTED</button>
-          </div>
-        }
-
         <div className='entry-charts-dashboard-container'>
           <Link to="/new" className="new-entry-button">
               <h3>+ Add New Entry</h3>
