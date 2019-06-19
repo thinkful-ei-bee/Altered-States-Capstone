@@ -2,9 +2,6 @@
 
 exports[`DashboardRoute renders the complete page 1`] = `
 <section>
-  <h2>
-    Login
-  </h2>
   <LoginForm
     onLoginSuccess={[Function]}
   />

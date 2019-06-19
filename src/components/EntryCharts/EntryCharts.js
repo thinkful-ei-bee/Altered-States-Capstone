@@ -80,10 +80,12 @@ class EntryCharts extends Component {
 }
 
 generateEmoji() {
-    const hapValue = this.generateHappiness(this.props.entry.happiness)
-    return this.props.entry.happiness
-    ? <img className='chart-emoji' src={hapValue} alt={hapValue.toString()} />
-    : ''
+    if(this.props.entry && this.props.entry.happiness) {
+      const hapValue = this.generateHappiness(this.props.entry.happiness)
+      return this.props.entry.happiness
+      ? <img className='chart-emoji' src={hapValue} alt={hapValue.toString()} />
+      : ''
+    }
 }
 
 
@@ -97,9 +99,16 @@ generateEmoji() {
 
     const isMobile = window.innerWidth < 760;
     const radius = isMobile ? 45 : 80;
+    
+    let entryId;
+    const { entry } = this.props
+
+    if (entry) {
+      entryId = entry.id
+    }
 
     return (
-      <div id={`entry-${this.props.entry.id}`}>
+      <div id={`entry-${entryId}`}>
         <div className='radar-charts'>
           <div className='entry-label'>{this.renderEntryLabel()}</div>
           {this.generateEmoji()}

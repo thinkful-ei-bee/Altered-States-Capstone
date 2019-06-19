@@ -21,9 +21,9 @@
   grid-row: 1/2;
 }
 
-.entry-label div {
+/* .entry-label div {
   display: inline-block;
-}
+} */
 
 /* .fa-trash {
   font-size: 1.5em;
@@ -37,7 +37,13 @@
   margin: auto;
   font-size: 1.5em;
   margin-top: 10px;
+  margin-right: 10px;
   font-weight: bold;
+}
+
+#entry-time {
+  color: gray;
+  font-weight: 300;
 }
 
 /* .entry-charts-dashboard-container .entry-label h3 {
@@ -114,6 +120,7 @@ tspan {
     margin: auto;
     font-size: 1.2em;
     margin-top: 10px;
+    margin-right: 6px;
   }
   
   .chart-title-tone {

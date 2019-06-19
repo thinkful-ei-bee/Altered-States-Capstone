@@ -2,9 +2,43 @@
 
 exports[`DashboardRoute renders the complete page 1`] = `
 <section>
-  <h2>
-    Sign up
-  </h2>
+  <div
+    className="tutorial-container"
+  >
+    <div
+      className="onboard-header"
+    >
+      <span>
+        miMood
+      </span>
+      <span
+        className="journal"
+      >
+        journal
+      </span>
+    </div>
+    <img
+      alt="happy"
+      src="happy.png"
+    />
+    <h2>
+      Welcome to miMood!
+    </h2>
+    <h3>
+      Track your mood with the help of AI!
+    </h3>
+    <p>
+      Machine learning algorithms analyze your entries for emotional cues, providing insight into how you're feeling.
+    </p>
+    <p>
+      Add an entry to see emotional analysis.
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      GET STARTED
+    </button>
+  </div>
   <RegistrationForm
     onRegistrationSuccess={[Function]}
   />
