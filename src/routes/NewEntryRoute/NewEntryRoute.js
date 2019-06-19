@@ -3,7 +3,6 @@ import { Redirect, Link } from 'react-router-dom';
 import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
-// import Moment from 'react-moment'
 import DeleteBox from '../../components/DeleteBox/DeleteBox';
 import './NewEntryRoute.css';
 
@@ -39,18 +38,17 @@ export default class NewEntryRoute extends Component {
     }
   }
 
-
-  // Entries sent to Tone Analyzer need an 'Authorization' header with a base64 encoded 
-  // username and password like so:
-  // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
+  componentDidUpdate() {
+    this.handleDisableSubmit()
+  }
 
   updateFaceUrl = async (url) => {
-    await this.setState({newEntry: {...this.state.newEntry, face_url: url}}, () => console.log('face_url:', this.state.newEntry.face_url))
+    await this.setState({newEntry: {...this.state.newEntry, face_url: url}})
     document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url})`
   }
 
   updateFaceData = (faceData) => {
-    this.setState({newEntry: {...this.state.newEntry, ...faceData }}, () => console.log('face state:', this.state.newEntry))
+    this.setState({newEntry: {...this.state.newEntry, ...faceData }})
   }
 
   updateEntry = (text) => {
@@ -58,7 +56,7 @@ export default class NewEntryRoute extends Component {
   }
 
   handleEntryTones = (tones) => {
-    this.setState({newEntry: {...this.state.newEntry, ...tones }}, () => console.log('tones state:', this.state.newEntry))
+    this.setState({newEntry: {...this.state.newEntry, ...tones }})
   }
 
   handleSubmitEntry(event) {
@@ -90,8 +88,7 @@ export default class NewEntryRoute extends Component {
     let num = e.target.id
 
 
-    this.setState({newEntry: {...this.state.newEntry, happiness: num}}) // should we send this to database from here or 
-                                    //should we have one submit that will simply send all of State to database?
+    this.setState({newEntry: {...this.state.newEntry, happiness: num}})
     
     
     }
@@ -111,7 +108,7 @@ export default class NewEntryRoute extends Component {
 
   renderRedirect() {
     if (this.state.redirect) {
-      return <Redirect to={`/entry/${this.state.res_id}`} />
+      return <Redirect to={`/entry/${this.state.res_id}/new`} />
     }
   }
 
@@ -131,8 +128,16 @@ export default class NewEntryRoute extends Component {
       })
   }
 
+  handleDisableSubmit = () => {
+    if (this.state.newEntry.text && this.state.newEntry.happiness) {
+      document.getElementById('ne-submit').disabled = false;
+    } else {
+      document.getElementById('ne-submit').disabled = true;
+    }
+  }
+
   render() {
-    let date = new Date().toString().slice(0, 9)
+    let date = new Date().toString().slice(0, 10)
     return (
       <div className='new-entry-page'>
 
@@ -167,7 +172,7 @@ export default class NewEntryRoute extends Component {
             onChange={(event) => this.updateEntry(event.target.value)}></textarea>
             <footer>
               <Link to='/'>CANCEL</Link>
-              <button type='submit'>SUBMIT</button>
+              <button type='submit' className='ne-submit' id='ne-submit' disabled>SUBMIT</button>
             </footer>
         </form>
 

@@ -1,3 +1,12 @@
+.log-reg-header {
+  margin: 0;
+  text-align: left;
+}
+
+.login-input label {
+  margin-right: 4px;
+}
+
 .log-in-form{
     border:1px solid black;
     padding:40px;

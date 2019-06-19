@@ -31,7 +31,6 @@ const AuthApiService = {
       )
   },
 
-  //changed from PUT method
   refreshToken() {
     return fetch(`${config.API_ENDPOINT}/auth/refresh`, {
       method: 'POST',

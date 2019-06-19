@@ -46,27 +46,19 @@ class EntryCharts extends Component {
         })
       }
     }
-    console.log('data: ', data)
     return data
   }
 
   renderEntryLabel() {
     if(!this.props.entry) return
-    const {date_created} = this.props.entry
-    if (!date_created) return
+    const date = this.props.entry.date_created
+    if (!date) return
 
     if (this.props.label) {
       return this.props.label
     } else {
-      return <EntryTag date={date_created} />
+      return <EntryTag date={date} />
     }
-  }
-
-  renderDeleteButton() {
-    const {deleteEntry} = this.props
-    return deleteEntry 
-    ? <button onClick={() => deleteEntry()}><i className="fa fa-trash"></i></button>
-    : ''
   }
 
   generateHappiness(happiness) {
@@ -81,14 +73,18 @@ class EntryCharts extends Component {
 }
 
 generateEmoji() {
-    const hapValue = this.generateHappiness(this.props.entry.happiness)
-    return this.props.entry.happiness
-    ? <img className='chart-emoji' src={hapValue} alt={hapValue.toString()} />
-    : ''
+    if(this.props.entry && this.props.entry.happiness) {
+      const hapValue = this.generateHappiness(this.props.entry.happiness)
+      return this.props.entry.happiness
+      ? <img className='chart-emoji' src={hapValue} alt={hapValue.toString()} />
+      : ''
+    }
 }
 
 
   render() {
+
+    const noSelfie = this.props.selfie ? '' : ' empty';
 
     const toneData = this.generateToneData()
 
@@ -96,11 +92,18 @@ generateEmoji() {
 
     const isMobile = window.innerWidth < 760;
     const radius = isMobile ? 45 : 80;
+    
+    let entryId;
+    const { entry } = this.props
+
+    if (entry) {
+      entryId = entry.id
+    }
 
     return (
-      <div>
+      <div id={`entry-${entryId}`}>
         <div className='radar-charts'>
-          <div className='entry-label'>{this.renderEntryLabel()}{this.renderDeleteButton()}</div>
+          <div className='entry-label'>{this.renderEntryLabel()}</div>
           {this.generateEmoji()}
           <h3 className='chart-title-tone'>Writing Analysis</h3>
           <div className='tone-table'>
@@ -121,8 +124,8 @@ generateEmoji() {
               </RadarChart>
             </ResponsiveContainer>
           </div>
-          <h3 className='chart-title-face'>Selfie Analysis</h3>
-          <div className='face-table'>
+          <h3 className={`chart-title-face${noSelfie}`}>Selfie Analysis</h3>
+          <div className={`face-table${noSelfie}`}>
             <ResponsiveContainer width='100%' height='100%'>
               <RadarChart 
                 cx='50%' 

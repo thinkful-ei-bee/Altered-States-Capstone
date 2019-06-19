@@ -1,12 +1,7 @@
-/* testing, not important */
-.cloudinary-thumb {
-  width: 360px;
-}
-
 .new-entry-page {
-  margin: auto;
-  margin-top: 70px;
+  margin: auto; 
   max-width: 360px;
+  margin-top: 90px;
 }
 
 .ne-title {
@@ -19,7 +14,7 @@
 }
 
 .ne-title h3 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 16px;
 }
 
@@ -37,7 +32,7 @@
 }
 
 #parallax {
-  min-height: 460px; 
+  min-height: 410px; 
   background-attachment: fixed;
   background-position-y: 38%;
   background-position-x: center;
@@ -45,7 +40,7 @@
   background-size: initial;
   width: 90%;
   margin: auto;
-  margin-bottom: 10%;
+  margin-bottom: 3%;
 }
 
 .entry_form {
@@ -59,12 +54,18 @@
 .entry_form button {
   margin: auto;
   color: white;
-  background-color: rgb(189, 62, 30);
+  background-color: rgb(136, 132, 216);
   font-size: 16px;
   padding: 12px;
   width: 67%;
   float: right;
   border: none;
+  cursor: pointer;
+}
+
+.entry_form button:disabled {
+  background-color: gray;
+  cursor: default;
 }
 
 .entry_form a {
@@ -74,8 +75,12 @@
   font-size: 16px;
   width: 33%;
   float: left;
-  padding: 12px 0;
-  padding-bottom: 0;
+  padding-top: 8.5px;
+  padding-bottom: 3.5px;
+}
+
+.entry_form a:hover {
+  color:  red;
 }
 
 .entry_form footer {
@@ -87,9 +92,11 @@
   right: 0;
   display: inline-block;
   margin: auto;
+  padding-bottom: 0;
 }
 
 textarea {
+  font-family: 'Hind Guntur', sans-serif;
   resize: none;
   display: block;
   margin: 20px auto;
@@ -99,6 +106,7 @@ textarea {
   padding: 10px;
   border: 1px solid darkgray;
   font-size: 16px;
+  outline: none;
 }
 
 .upload-button {
@@ -110,10 +118,16 @@ textarea {
   margin: 18px;
   margin-top: 7px;
   margin-bottom: 28px;
+  cursor: pointer;
 }
 
 .upload-button:hover {
-  background-color: rgb(174, 212, 235);
+  background-color: rgb(136, 132, 216);
+  color: white;
+}
+
+.mood_number img {
+  cursor: pointer;
 }
 
 @media only screen and (min-height: 700px) {
@@ -128,6 +142,7 @@ textarea {
     grid-template-columns: 10% 40% 40% 10%;
     grid-template-rows: 100px 30% 1fr;
     max-width: 1000px;
+    margin-top: 100px;
   }
   .ne-title {
     text-align: center;

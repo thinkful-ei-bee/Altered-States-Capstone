@@ -1,0 +1,78 @@
+.App-Footer{
+    background-color: rgba(224, 224, 224, 0.582);
+    border: 1px  #CCC solid;
+       
+    
+    box-shadow: 
+        inset 0px 20px 15px -5px #CCC,
+        inset 0px -4px 7px 0px#CCC; 
+    
+    width:auto;
+    min-height: 150px;
+    height: auto;
+     position: relative;
+    bottom:0; 
+    padding:20px;
+    padding-top:25px;
+   margin-top:10vh;
+
+}
+
+.gitLogo{
+    max-height:15px;
+}
+.gitLogo:hover{
+    cursor: pointer;
+}
+.credits{
+    float:left;
+    text-align: left;
+    margin-left:20px;
+}
+.credits h2{
+    font-size: .8rem;
+}
+
+.credits p{
+    font-size: .8rem;
+    
+}
+
+.credits a:hover{
+    color:blue;
+    cursor: pointer;
+}
+
+.creators{
+    float :right;
+    text-align: right;
+    margin-right:20px;
+}
+.creators a:hover{
+   
+    cursor: pointer;
+  
+}
+.creators h2{
+    font-size: .8rem;
+}
+.creators p{
+    font-size: .8rem;
+    
+}
+@media only screen and (max-width: 760px) {
+    
+    .App-Footer{
+       width: initial;
+        padding:10px;
+        height:300px;
+       
+    }
+    .creators{
+        float:left;
+        text-align: left;
+        margin-left:20px;
+
+    }
+  
+}

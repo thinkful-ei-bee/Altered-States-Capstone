@@ -1,3 +1,7 @@
+.reg-header label {
+  margin-right: 4px;
+}
+
 .registration-form{
     border:1px solid black;
     padding:40px;
@@ -24,7 +28,7 @@
     cursor: pointer;
 }
 
-footer a:hover{
+.login-redirect:hover{
     border-bottom: 1px solid blue;
     color:blue;
     cursor: pointer;

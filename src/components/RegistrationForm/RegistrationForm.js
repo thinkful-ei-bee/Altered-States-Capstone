@@ -41,46 +41,47 @@ class RegistrationForm extends Component {
     const { error } = this.state;
     return (
       <div className='registration-form'>
-      <form onSubmit={this.handleSubmit}>
-        <div role="alert">{error && <p>{error}</p>}</div>
-        <div className="form-label">
-          <Label htmlFor="registration-name-input">
-            Enter your name
-            <Required />
-          </Label>
-          <Input
-            ref={this.firstInput}
-            id="registration-name-input"
-            name="name"
-            required
-          />
-        </div>
-        <div className="form-label">
-          <Label htmlFor="registration-username-input">
-            Choose a username
-            <Required />
-          </Label>
-          <Input id="registration-username-input" name="username" required />
-        </div>
-        <div className="form-label">
-          <Label htmlFor="registration-password-input">
-            Choose a password
-            <Required />
-          </Label>
-          <Input
-            id="registration-password-input"
-            name="password"
-            type="password"
-            required
-          />
-        </div>
-        <footer>
-          <button className='registration-button'type="submit">SIGN UP</button> <br />
-          <Link to="/login" className="login-redirect">
-            Already have an account?
-          </Link>
-        </footer>
-      </form>
+        <h2 className='log-reg-header reg-header'>Sign Up</h2>
+        <form onSubmit={this.handleSubmit}>
+          <div role="alert">{error && <p>{error}</p>}</div>
+          <div className="form-label">
+            <Label htmlFor="registration-name-input">
+              Enter your name
+              <Required />
+            </Label>
+            <Input
+              ref={this.firstInput}
+              id="registration-name-input"
+              name="name"
+              required
+            />
+          </div>
+          <div className="form-label">
+            <Label htmlFor="registration-username-input">
+              Choose a username
+              <Required />
+            </Label>
+            <Input id="registration-username-input" name="username" required />
+          </div>
+          <div className="form-label">
+            <Label htmlFor="registration-password-input">
+              Choose a password
+              <Required />
+            </Label>
+            <Input
+              id="registration-password-input"
+              name="password"
+              type="password"
+              required
+            />
+          </div>
+          <footer>
+            <Button className='registration-button'type="submit">SIGN UP</Button> <br />
+            <Link to="/login" className="login-redirect">
+              Already have an account?
+            </Link>
+          </footer>
+        </form>
       </div>
     );
   }

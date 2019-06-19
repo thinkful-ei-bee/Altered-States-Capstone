@@ -43,19 +43,19 @@ class Header extends Component {
   }
 
   renderGreeting() {
-    return TokenService.hasAuthToken()
+    return TokenService.hasAuthToken() && window.innerWidth > 760
     ? <p>Hi {this.context.user.name}!</p>
     : ''
   }
 
   render() {
-    console.log(this.context.user)
     return (
       <header className='main-header'>
         <nav>
           <h1>
             <Link to='/'>
-              miMood
+              <span>miMood</span>
+              <span className='journal'>journal</span>
             </Link>
           </h1>
           <div className='nav-links'>

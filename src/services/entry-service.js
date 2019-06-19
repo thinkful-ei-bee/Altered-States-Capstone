@@ -21,7 +21,7 @@ const EntryService = {
   },
 
   postSelfieToAzure(url) {
-
+    console.log('config', config)
     return fetch(config.FACE_ENDPOINT, {
       method: 'POST',
       headers: {
