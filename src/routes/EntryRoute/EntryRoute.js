@@ -113,11 +113,12 @@ class EntryRoute extends Component {
         }
 
         <div className='entry-charts-entry-container'>
+          {this.props.match.params.origin === 'new' && <h2 className='created-feedback'>Entry Created</h2>}
           <EntryCharts entry={this.state} selfie={selfie}/>
         </div>
 
         <hr className='divider' />
-        
+
         <div className='entry-container'>
           <div className='text-selfie-div'>
             {this.renderSelfie()}
@@ -125,8 +126,6 @@ class EntryRoute extends Component {
               {this.state.text}
             </p>
           </div>
-          {/* <Link className='back-button' to={`/#entry-${this.state.id}`}><i className="fa fa-arrow-left"></i></Link>
-          <button className='delete-button'><i className="fa fa-trash" onClick={() => this.handleDelete()}></i></button> */}
           <div className='entry-buttons'>
             <Link className='back-button' to={`/#entry-${this.state.id}`}><i className="fa fa-arrow-left"></i></Link>
             <i className="fa fa-trash" onClick={() => this.handleDelete()}></i>

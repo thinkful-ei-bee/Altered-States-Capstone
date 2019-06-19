@@ -1,0 +1,118 @@
+.tutorial-container {
+  border: black solid 1px;
+  box-shadow: 5px 5px 3px grey;
+  border-radius: 10px;
+  width: 400px;
+  margin: auto;
+  margin-top: 150px;
+  padding: 5px;
+  padding-bottom: 50px;
+}
+
+.onboard-header {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.tutorial-emojis {
+  position: relative;
+  height: 100px;
+}
+
+.tutorial-container img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100px;
+
+  animation: emoji-cycle infinite 30s linear;
+  opacity: 0;
+}
+
+@keyframes emoji-cycle {
+  0% {
+    opacity:0;
+  }
+  4% {
+    opacity:1;
+  }
+  16% {
+    opacity:1;
+  }
+  20% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+  }
+}
+.tutorial-container img:nth-of-type(1) {
+  animation-delay: 6s;
+}
+.tutorial-container img:nth-of-type(2) {
+  animation-delay: 18s;
+}
+.tutorial-container img:nth-of-type(3) {
+  animation-delay: 24s;
+}
+.tutorial-container img:nth-of-type(4) {
+  animation-delay: 12s;
+}
+.tutorial-container img:nth-of-type(5) {
+  animation-delay: 0;
+}
+
+
+.tutorial-container h2 {
+  text-align: center;
+}
+
+.tutorial-container h3 {
+  text-align: center;
+  color: rgb(136, 132, 216);
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.tutorial-container p {
+  text-align: center;
+  font-weight: bold;
+  margin: 25px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.tutorial-container a {
+  margin: auto;
+  margin-top: 20%;
+  color: white;
+  background-color: rgb(136, 132, 216);
+  font-size: 16px;
+  padding: 12px;
+  padding-top: 14px;
+  padding-bottom: 10px;
+  width: 80%;
+  max-width: 360px;
+  border-radius: 7px;
+
+  opacity: .8;
+  transition: all .5s;
+}
+
+.tutorial-container a:hover {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 850px) {
+  .tutorial-container {
+    width: 80%;
+    margin-top: 100px;
+  }
+
+  .tutorial-container h1 {
+    font-size: 1.5em;
+  }
+ 
+}

@@ -69,7 +69,7 @@ class LoginForm extends Component {
           </div>
           <footer>
           <Button className='log-in-button'type="submit">LOGIN</Button> <br/>
-          <Link to="/" className="login-redirect">
+          <Link to="/register" className="login-redirect">
             Need to Sign up?
           </Link>
           </footer>

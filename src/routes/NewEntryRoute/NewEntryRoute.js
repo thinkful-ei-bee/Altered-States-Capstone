@@ -115,7 +115,7 @@ export default class NewEntryRoute extends Component {
 
   renderRedirect() {
     if (this.state.redirect) {
-      return <Redirect to={`/entry/${this.state.res_id}`} />
+      return <Redirect to={`/entry/${this.state.res_id}/new`} />
     }
   }
 
