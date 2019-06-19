@@ -9,16 +9,6 @@ import './LandingPageRoute.css';
 
 class LandingPageRoute extends Component {
 
-  // static defaultProps = {
-  //   history: {
-  //     push: () => {},
-  //   }
-  // };
-
-  // handleRegistrationSuccess = () => {
-  //   const { history } = this.props;
-  //   history.push("/login");
-  // };
 
   render() {
     return (
@@ -36,10 +26,6 @@ class LandingPageRoute extends Component {
               <img src={happy} alt='happy' />
               <img src={veryHappy} alt='veryHappy' />
             </div>
-            {/* <h2>Welcome to miMood!</h2>
-            <h3>Track your mood with the help of AI!</h3>
-            <p>Machine learning algorithms analyze your entries for emotional cues, providing insight into how you're feeling.</p> */}
-            {/* <p>Add an entry to see emotional analysis.</p> */}
             <h3>Welcome to miMood!</h3>
             <p>
               miMood is a journaling app that helps you to track your emotions. 

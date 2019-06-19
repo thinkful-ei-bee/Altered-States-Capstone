@@ -76,7 +76,9 @@ export default class App extends Component {
         </main>
         <Switch>
         <Route exact path='/' component={Footer}/>
+        <Route path='/landing' component={Footer}/>
         <Route path='/login' component={Footer}/>
+        <Route path='/register' component={Footer}/>
         <Route path='/trends' component={Footer}/>
         <Route path='/entry' component={Footer}/>
 

@@ -4,8 +4,6 @@ import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
 import EntryTag from '../../components/EntryTag/EntryTag'
 import EntryCharts from "../../components/EntryCharts/EntryCharts";
-// import example from '../../images/example-entry.png'
-// import Footer from '../../components/Footer/Footer'
 
 class DashboardRoute extends Component {
   constructor(props) {
@@ -30,11 +28,6 @@ class DashboardRoute extends Component {
   handleDisplayChange(id) {
     this.setState({display: id})
   }
-
-
-  // generateEntryLabel(entry) {
-  //   return <Link to={`/entry/${entry.id}`} ><EntryTag date={entry.date_created} /></Link>
-  // }
 
   generateEntryLabel(entry) {
     return <EntryTag date={entry.date_created} />
@@ -83,9 +76,7 @@ class DashboardRoute extends Component {
           
           {this.renderEntryList()}
           
-          {/* {!this.state.entries.length && <img src={example} alt='example' className='example-entry' />} */}
         </div>
-        {/* <Footer/> */}
       </div>
     );
   }

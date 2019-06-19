@@ -38,13 +38,6 @@ hr {
 
 }
 
-/* .delete-button {
-  grid-column: 2/3;
-  grid-row: 3/4;
-  background-color: white;
-  text-align: right;
-} */
-
 .entry-buttons {
   grid-column: 2/3;
   grid-row: 3/4;

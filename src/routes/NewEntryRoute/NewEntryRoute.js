@@ -3,7 +3,6 @@ import { Redirect, Link } from 'react-router-dom';
 import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 import EntryService from '../../services/entry-service'
 import MoodSelector from '../../components/MoodSelector/moodSelector'
-// import Moment from 'react-moment'
 import DeleteBox from '../../components/DeleteBox/DeleteBox';
 import './NewEntryRoute.css';
 
@@ -38,11 +37,6 @@ export default class NewEntryRoute extends Component {
       deleting: false
     }
   }
-
-
-  // Entries sent to Tone Analyzer need an 'Authorization' header with a base64 encoded 
-  // username and password like so:
-  // apikey:3489hgdvuh2384hfetc.etc.etc.etc.
 
   componentDidUpdate() {
     this.handleDisableSubmit()
@@ -94,8 +88,7 @@ export default class NewEntryRoute extends Component {
     let num = e.target.id
 
 
-    this.setState({newEntry: {...this.state.newEntry, happiness: num}}) // should we send this to database from here or 
-                                    //should we have one submit that will simply send all of State to database?
+    this.setState({newEntry: {...this.state.newEntry, happiness: num}})
     
     
     }

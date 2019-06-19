@@ -1,11 +1,9 @@
 import React from 'react'
 import gitLogo from '../../images/git-link.png'
-// import gitLogoWhite from '../../images/git-link-white.png'
 import './Footer.css'
 
 
 function Footer(){
-    // console.log(props.location.pathname)
     return(
         <footer className='App-Footer'>
             <div className='credits'>

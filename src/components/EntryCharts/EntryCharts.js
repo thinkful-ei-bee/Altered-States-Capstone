@@ -61,13 +61,6 @@ class EntryCharts extends Component {
     }
   }
 
-  // renderDeleteButton() {
-  //   const {deleteEntry} = this.props
-  //   return deleteEntry 
-  //   ? <button onClick={() => deleteEntry()}><i className="fa fa-trash"></i></button>
-  //   : ''
-  // }
-
   generateHappiness(happiness) {
     switch (happiness) {
         case 10: return verySad;

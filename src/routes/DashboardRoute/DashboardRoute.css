@@ -17,52 +17,6 @@ ul {
   color: rgb(136, 132, 216);
 }
 
-/* .tutorial-container {
-  background-color: white;
-  width: 80%;
-  position: absolute;
-  overflow-y: scroll;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 200;
-  opacity: 1;
-  transition: opacity .3s;
-
-  padding: 0 10%;
-  transition: all 500ms;
-}
-
-.tutorial-container img {
-  width: 100px;
-  margin-top: 20%;
-}
-
-.tutorial-container h2 {
-  margin-top: 20%;
-  text-align: center;
-}
-
-.tutorial-container h3 {
-  text-align: left;
-}
-
-.tutorial-container p {
-  text-align: left;
-}
-
-.tutorial-container button {
-  margin: auto;
-  margin-top: 20%;
-  color: white;
-  background-color: rgb(136, 132, 216);
-  font-size: 16px;
-  padding: 12px;
-  width: 80%;
-  max-width: 360px;
-  border: none;
-} */
-
 .entry-charts-dashboard-container {
   margin-top: 100px;
 }
@@ -126,40 +80,5 @@ ul {
     width: 850px;
   }
 
-  /* .tutorial-container {
-    width: 46%;
-    padding: 0 27%;
-  }
-  .tutorial-container img {
-    margin-top: 8%;
-  }
-  .tutorial-container h2 {
-    margin-top: 5%;
-  }
-  .tutorial-container h3 {
-    text-align: center;
-  }
-  .tutorial-container button {
-    margin-top: 10%;
-    width: 160px;
-  }
-  .tutorial-container p {
-    text-align: center;
-  } */
-
-  /* .entryList-entry:hover {
-    box-shadow: 8px 8px 3px grey;
-    cursor: pointer;
-    transform: scale(1.01, 1.01);
-  }
-  
-  .entryList-entry:active {
-    box-shadow: none;
-    transform: scale(.99, .99);
-  }
-  
-  .entryList-entry svg:hover {
-    cursor: pointer;
-  } */
 }
 
