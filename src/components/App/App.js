@@ -39,7 +39,7 @@ export default class App extends Component {
               component={DashboardRoute}
             />
             <PrivateRoute
-              path={'/entry/:id'}
+              path={'/entry/:id/:origin'}
               component={EntryRoute}
             />
             <PrivateRoute

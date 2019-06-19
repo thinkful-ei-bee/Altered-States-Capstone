@@ -62,7 +62,7 @@ class DashboardRoute extends Component {
     return (
     
       <li key={entry.id} className='entryList-entry'>
-        <Link to={`/entry/${entry.id}`} >
+        <Link to={`/entry/${entry.id}/dash`} >
           <EntryCharts entry={entry} label={this.generateEntryLabel(entry)} selfie={selfie}/>
         </Link>
       </li>
