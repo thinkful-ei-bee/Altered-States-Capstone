@@ -12,10 +12,9 @@
     height: auto;
      position: relative;
     bottom:0; 
-    /* margin-top: 10vh; */
     padding:20px;
     padding-top:25px;
-   
+   margin-top:10vh;
 
 }
 
@@ -67,6 +66,7 @@
        width: initial;
         padding:10px;
         height:300px;
+       
         /* width:100vw; */
        
     }

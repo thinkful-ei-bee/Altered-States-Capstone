@@ -14,9 +14,11 @@ import TrendRoute from '../../routes/TrendRoute/TrendRoute';
 import Footer from '../Footer/Footer'
 import LandingPageRoute from '../../routes/LandingPageRoute/LandingPageRoute';
 
+
 export default class App extends Component {
   state = { 
     hasError: false,
+    newEntry:false,
   }
 
   static getDerivedStateFromError(error) {
@@ -24,7 +26,10 @@ export default class App extends Component {
     return { hasError: true }
   }
 
+
   render() {
+
+
     const { hasError } = this.state
     return (
       <div className='App'>
@@ -69,7 +74,13 @@ export default class App extends Component {
             />
           </Switch>
         </main>
-        <Footer/>
+        <Switch>
+        <Route exact path='/' component={Footer}/>
+        <Route path='/login' component={Footer}/>
+        <Route path='/trends' component={Footer}/>
+        <Route path='/entry' component={Footer}/>
+
+        </Switch>
       </div>
     );
   }
