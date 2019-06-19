@@ -23,9 +23,9 @@ exports[`DashboardRoute renders the complete page 1`] = `
       Writing trends
     </h3>
     <TrendGraph
-      className="joy"
+      className="analytical"
       data={Array []}
-      dataKey="tone_joy"
+      dataKey="tone_analytical"
     />
     <TrendGraph
       className="confident"
@@ -33,24 +33,24 @@ exports[`DashboardRoute renders the complete page 1`] = `
       dataKey="tone_confident"
     />
     <TrendGraph
-      className="analytical"
-      data={Array []}
-      dataKey="tone_analytical"
-    />
-    <TrendGraph
-      className="tentative"
-      data={Array []}
-      dataKey="tone_tentative"
-    />
-    <TrendGraph
       className="fear"
       data={Array []}
       dataKey="tone_fear"
     />
     <TrendGraph
+      className="joy"
+      data={Array []}
+      dataKey="tone_joy"
+    />
+    <TrendGraph
       className="sadness"
       data={Array []}
       dataKey="tone_sadness"
+    />
+    <TrendGraph
+      className="tentative"
+      data={Array []}
+      dataKey="tone_tentative"
     />
   </div>
   <div
@@ -75,14 +75,14 @@ exports[`DashboardRoute renders the complete page 1`] = `
       dataKey="face_disgust"
     />
     <TrendGraph
+      className="happiness"
+      data={Array []}
+      dataKey="face_happiness"
+    />
+    <TrendGraph
       className="fear"
       data={Array []}
       dataKey="face_fear"
-    />
-    <TrendGraph
-      className="sadness"
-      data={Array []}
-      dataKey="face_sadness"
     />
     <TrendGraph
       className="neutral"
@@ -90,14 +90,14 @@ exports[`DashboardRoute renders the complete page 1`] = `
       dataKey="face_neutral"
     />
     <TrendGraph
+      className="sadness"
+      data={Array []}
+      dataKey="face_sadness"
+    />
+    <TrendGraph
       className="surprise"
       data={Array []}
       dataKey="face_surprise"
-    />
-    <TrendGraph
-      className="happiness"
-      data={Array []}
-      dataKey="face_happiness"
     />
   </div>
 </div>

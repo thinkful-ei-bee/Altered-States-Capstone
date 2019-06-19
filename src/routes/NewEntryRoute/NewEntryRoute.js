@@ -137,10 +137,8 @@ export default class NewEntryRoute extends Component {
 
   handleDisableSubmit = () => {
     if (this.state.newEntry.text && this.state.newEntry.happiness) {
-      console.log('enabled')
       document.getElementById('ne-submit').disabled = false;
     } else {
-      console.log('disabled')
       document.getElementById('ne-submit').disabled = true;
     }
   }

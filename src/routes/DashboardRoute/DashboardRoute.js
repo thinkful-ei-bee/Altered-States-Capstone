@@ -4,6 +4,7 @@ import "./DashboardRoute.css";
 import EntryService from "../../services/entry-service";
 import EntryTag from '../../components/EntryTag/EntryTag'
 import EntryCharts from "../../components/EntryCharts/EntryCharts";
+// import example from '../../images/example-entry.png'
 
 
 class DashboardRoute extends Component {
@@ -74,12 +75,15 @@ class DashboardRoute extends Component {
   render() {
     return (
       <div>
+
         <div className='entry-charts-dashboard-container'>
           <Link to="/new" className="new-entry-button">
               <h3>+ Add New Entry</h3>
           </Link>
           
           {this.renderEntryList()}
+          
+          {/* {!this.state.entries.length && <img src={example} alt='example' className='example-entry' />} */}
         </div>
       </div>
     );

@@ -78,7 +78,7 @@ ul {
 }
 
 .entryList-entry:hover {
-  box-shadow: 8px 8px 3px grey;
+  box-shadow: 8px 8px 3px rgb(161, 161, 161);
   cursor: pointer;
   transform: scale(1.01, 1.01);
 }
@@ -91,6 +91,12 @@ ul {
 
 .entryList-entry svg:hover {
   cursor: pointer;
+}
+
+.example-entry {
+  width: 200px;
+  opacity: 0.5;
+  border: 1px solid gray;
 }
 
 @media only screen and (max-width: 850px) {
@@ -130,12 +136,18 @@ ul {
   .tutorial-container h2 {
     margin-top: 5%;
   }
+  .tutorial-container h3 {
+    text-align: center;
+  }
   .tutorial-container button {
     margin-top: 10%;
     width: 160px;
   }
   .tutorial-container p {
     text-align: center;
+  }
+  .example-entry {
+    width: 100px;
   }
 
   /* .entryList-entry:hover {
