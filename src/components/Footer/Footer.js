@@ -4,7 +4,7 @@ import gitLogo from '../../images/git-link.png'
 import './Footer.css'
 function Footer(){
     return(
-        <div className='App-Footer'>
+        <footer className='App-Footer'>
             <div className='credits'>
         <h2 >Credits:</h2>
         <p>This app utilizes the following Artificial Intelligence API's : <br/> <a href='https://www.ibm.com/watson/services/tone-analyzer/'> IBM Watson Tone Analyzer</a> <br/>
@@ -22,7 +22,7 @@ function Footer(){
         <p className='creators3'>Enrique Montemayor <a href='https://github.com/eemontemayor'> <img className='gitLogo' src={gitLogo} alt='git-hub-logo'/></a></p> 
             </div>
     
-        </div>
+        </footer>
     )
 }
 export default Footer;

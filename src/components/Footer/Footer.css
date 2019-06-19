@@ -3,17 +3,19 @@
     border: 1px  #CCC solid;
        
     
-        box-shadow: 
-            inset 0px 20px 15px -5px #CCC,
-            inset 0px -4px 7px 0px#CCC; 
+    box-shadow: 
+        inset 0px 20px 15px -5px #CCC,
+        inset 0px -4px 7px 0px#CCC; 
     
     width:auto;
-    min-height: 150px;
+    min-height: 200px;
     /* height: auto; */
-  
+     position: relative;
+    bottom:0; 
     margin-top: 22vh;
     padding:20px;
     padding-top:25px;
+    z-index: 1;
 
 }
 
@@ -62,7 +64,7 @@
 @media only screen and (max-width: 760px) {
     
     .App-Footer{
-       width: 100vw;
+       width: initial;
         padding:10px;
         height:300px;
        
