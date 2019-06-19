@@ -31,11 +31,13 @@ export default class EntryTag extends Component{
         
         const {date}=this.props
 
-        const formattedDate=dateFormat(date, 'ddd mm/dd/yy h:MM TT')
+        const formattedDate=dateFormat(date, 'ddd mm/dd/yy')
+        const formattedTime = dateFormat(date, 'h:MM TT')
      
         return (
           <div className='entryTag-div'>
             <h3 className='entry-tag'>{formattedDate}</h3>{this.generateEmoji()}
+            <h3 className='entry-time' id='entry-time'>{formattedTime}</h3>
           </div>)
     }
   

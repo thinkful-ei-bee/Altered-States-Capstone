@@ -78,6 +78,33 @@ hr {
   opacity: 1;
 }
 
+.created-feedback {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: rgb(136, 132, 216);
+  font-size: 2em;
+  animation: fadeout 5s linear;
+  opacity: 0;
+  z-index: 1000;
+}
+
+@keyframes fadeout {
+0% {
+  opacity:1;
+}
+75% {
+  opacity:1;
+}
+100% {
+  opacity:0;
+}
+}
+
+
+
 @media only screen and (max-width: 760px) {
 
   .entry-container {
@@ -116,6 +143,17 @@ hr {
 
   .fa-arrow-left {
     margin-left: 20px;
+  }
+
+  .created-feedback {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 1.25em;
+    animation: fadeout 5s linear;
+    opacity: 0;
   }
 }
 

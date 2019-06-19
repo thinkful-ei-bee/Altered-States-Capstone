@@ -12,6 +12,8 @@ import NewEntryRoute from '../../routes/NewEntryRoute/NewEntryRoute';
 import EntryRoute from '../../routes/EntryRoute/EntryRoute';
 import TrendRoute from '../../routes/TrendRoute/TrendRoute';
 import Footer from '../Footer/Footer'
+import LandingPageRoute from '../../routes/LandingPageRoute/LandingPageRoute';
+
 export default class App extends Component {
   state = { 
     hasError: false,
@@ -38,17 +40,21 @@ export default class App extends Component {
               component={DashboardRoute}
             />
             <PrivateRoute
-              path={'/entry/:id'}
+              path={'/entry/:id/:origin'}
               component={EntryRoute}
             />
             <PrivateRoute
               exact
               path={'/new'}
               component={NewEntryRoute} />
-                <PrivateRoute
+            <PrivateRoute
               exact
               path={'/trends'}
               component={TrendRoute}
+            />
+            <PublicOnlyRoute
+              path={'/landing'}
+              component={LandingPageRoute}
             />
             <PublicOnlyRoute
               path={'/register'}

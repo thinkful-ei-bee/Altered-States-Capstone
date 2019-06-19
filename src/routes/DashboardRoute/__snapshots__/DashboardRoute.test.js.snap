@@ -5,30 +5,21 @@ exports[`DashboardRoute renders the complete page 1`] = `
   <div
     className="entry-charts-dashboard-container"
   >
+    <Link
+      className="new-entry-button"
+      to="/new"
+    >
+      <h3>
+        + Add New Entry
+      </h3>
+    </Link>
     <div
       className="chart-instructions"
     >
       <p>
-        Here you will see data related to your mood. Try clicking "Add New Entry" below to see new data.
+        Click "Add New Entry" above to create an Entry and see mood data.
       </p>
     </div>
   </div>
-  <ul
-    className="past-entries"
-  >
-    <li>
-      <Link
-        className="new-entry-button"
-        to="/new"
-      >
-        <h3>
-          + Add New Entry
-        </h3>
-      </Link>
-    </li>
-    <li>
-      (... no entries yet!)
-    </li>
-  </ul>
 </div>
 `;

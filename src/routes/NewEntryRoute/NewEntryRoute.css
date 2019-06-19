@@ -66,14 +66,12 @@
   width: 67%;
   float: right;
   border: none;
+  cursor: pointer;
 }
 
 .entry_form button:disabled {
   background-color: gray;
-}
-
-.entry_form button:hover {
-  cursor: pointer;
+  cursor: default;
 }
 
 .entry_form a {

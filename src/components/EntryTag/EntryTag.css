@@ -1,5 +1,5 @@
 .entry-tag{
-    min-width:70%;
+    /* min-width:70%; */
     height:auto;
     font-weight: 400;
 }
@@ -21,10 +21,6 @@
     position: relative;
     top: 4px;
     right: -25px;
-}
-
-.entryTag-div {
-    /* display: inline-block; */
 }
 
 .entryTag-div h3 {

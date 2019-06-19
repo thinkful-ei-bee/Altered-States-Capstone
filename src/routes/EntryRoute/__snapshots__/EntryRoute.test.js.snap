@@ -9,6 +9,7 @@ exports[`DashboardRoute renders the complete page 1`] = `
       entry={
         Object {
           "date_created": null,
+          "deleting": false,
           "face_anger": 0,
           "face_contempt": 0,
           "face_disgust": 0,
@@ -28,8 +29,10 @@ exports[`DashboardRoute renders the complete page 1`] = `
           "tone_sadness": 0,
           "tone_tentative": 0,
           "user_id": null,
+          "zoom": false,
         }
       }
+      selfie={false}
     />
   </div>
   <hr
@@ -38,9 +41,29 @@ exports[`DashboardRoute renders the complete page 1`] = `
   <div
     className="entry-container"
   >
-    <p
-      className="entry-text-solo"
-    />
+    <div
+      className="text-selfie-div"
+    >
+      <p
+        className="entry-text"
+      />
+    </div>
+    <div
+      className="entry-buttons"
+    >
+      <HashLink
+        className="back-button"
+        to="/#entry-null"
+      >
+        <i
+          className="fa fa-arrow-left"
+        />
+      </HashLink>
+      <i
+        className="fa fa-trash"
+        onClick={[Function]}
+      />
+    </div>
   </div>
 </div>
 `;
