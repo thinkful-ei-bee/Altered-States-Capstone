@@ -8,7 +8,7 @@ exports[`DashboardRoute renders the complete page 1`] = `
     className="ne-title ne-title-top"
   >
     <h2>
-      Fri Jun 1
+      Wed Jun 19
     </h2>
     <h3>
       New Entry
@@ -45,6 +45,9 @@ exports[`DashboardRoute renders the complete page 1`] = `
         CANCEL
       </Link>
       <button
+        className="ne-submit"
+        disabled={true}
+        id="ne-submit"
         type="submit"
       >
         SUBMIT
