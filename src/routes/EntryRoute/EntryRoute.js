@@ -53,7 +53,7 @@ class EntryRoute extends Component {
 
   renderSelfie() {
     return this.state.face_url 
-    ? <img onClick={() => this.handleZoom()} className='entry-selfie' src={this.state.face_url} alt='selfie'/> : ''
+    ? <img onClick={() => this.handleZoom()} className='entry-selfie' src={this.state.face_url.replace('http://', 'https://')} alt='selfie'/> : ''
   }
 
   handleDelete() {

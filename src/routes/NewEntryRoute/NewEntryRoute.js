@@ -44,7 +44,7 @@ export default class NewEntryRoute extends Component {
 
   updateFaceUrl = async (url) => {
     await this.setState({newEntry: {...this.state.newEntry, face_url: url}})
-    document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url})`
+    document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url.replace('http://', 'https://')})`
   }
 
   updateFaceData = (faceData) => {
