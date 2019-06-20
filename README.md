@@ -5,7 +5,6 @@ track your emotions using AI.
 
 Created by Scott Williams, Enrique Montemayor, and Silas Hallahan.
 
-![miMood Dash](https://i.imgur.com/OiLQIZ1.png)
 
 ## Live App
 https://alt-states-mimood.now.sh/
@@ -41,3 +40,8 @@ Much like a traditional journal, the writer can return to their old entries and 
 * React
 * Recharts
 * Express
+
+![miMood Dash](https://i.imgur.com/OiLQIZ1.png)
+![miMood NewEntry](https://i.imgur.com/WUESWzL.png)
+![miMood Trends Mobile](https://i.imgur.com/Wo4RfP1.png)
+![miMood Landing Page](https://i.imgur.com/YXsFAZu.png)
