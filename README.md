@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## miMood Journal
 
-## Available Scripts
+miMood is a journaling app that helps you 
+track your emotions using AI.
 
-In the project directory, you can run:
+![miMood Dash](https://i.imgur.com/B1AygN1.png)
 
-### `npm start`
+## Live App
+https://alt-states-mimood.now.sh/
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## API
+IBM Watson Tone Analyzer: https://www.ibm.com/watson/services/tone-analyzer/
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Microsoft Azure Face: https://azure.microsoft.com/en-us/services/cognitive-services/face/
 
-### `npm test`
+Cloudinary: https://cloudinary.com/
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+miMood Server: https://github.com/thinkful-ei-bee/Altered-States-Capstone-Server
 
-### `npm run build`
+## Authorization
+miMood uses basic username and password authorization.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Use this test user to demo:
+testUsername testPassword
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Summary
+This app was inspired by the abundance of free artificial intelligence. One of the most exciting consequences of this is to bring humans and technology closer together. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Along with being a journalling app, miMood is an emotion tracker. Users can write entries as well as upload selfies, which are sent to 
+two seperate AIs and scanned for written tone and facial expression. 
+The data from these AIs are represented using radar charts. Users can view data from their past entries in seperate line charts for each emotion. 
 
-### `npm run eject`
+Much like a traditional journal, the writer can return to their old entries and reflect on their experiences. With miMood, an additional element of emotion is archived for a more personal narrative.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tech
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* React
+* Recharts
+* Express
