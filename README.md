@@ -41,14 +41,17 @@ Much like a traditional journal, the writer can return to their old entries and 
 * Recharts
 * Express
 
+# Landing Page
+![miMood Landing Page](https://i.imgur.com/c9vXvXn.png)
+
 # Dashboard
-![miMood Dash](https://i.imgur.com/zFVyEU1.png)
+![miMood Dash](https://i.imgur.com/rBs1B6n.png)
 
 # New Entry Page
-![miMood NewEntry](https://i.imgur.com/WUESWzL.png)
+![miMood NewEntry](https://i.imgur.com/ECYd3JF.png)
+
+# Entry Page
+![miMood Entry Page](https://i.imgur.com/vNaabiC.png)
 
 # Trends
-![miMood Trends Mobile](https://i.imgur.com/Wo4RfP1.png)
-
-# Landing Page
-![miMood Landing Page](https://i.imgur.com/YXsFAZu.png)
+![miMood Trends Mobile](https://i.imgur.com/cmBNOi1.png)
