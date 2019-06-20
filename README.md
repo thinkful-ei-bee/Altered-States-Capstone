@@ -3,7 +3,9 @@
 miMood is a journaling app that helps you 
 track your emotions using AI.
 
-![miMood Dash](https://i.imgur.com/B1AygN1.png)
+Created by Scott Williams, Enrique Montemayor, and Silas Hallahan.
+
+![miMood Dash](https://i.imgur.com/OiLQIZ1.png)
 
 ## Live App
 https://alt-states-mimood.now.sh/
