@@ -1,4 +1,4 @@
-## miMood Journal
+# miMood Journal
 
 miMood is a journaling app that helps you 
 track your emotions using AI.
@@ -22,6 +22,7 @@ miMood Server: https://github.com/thinkful-ei-bee/Altered-States-Capstone-Server
 miMood uses basic username and password authorization.
 
 Use this test user to demo:
+(Be careful! Images you upload will be visible to everybody.)
 
 * Username: miMoodDemo
 * Password: !miMoodDem0
