@@ -21,7 +21,9 @@ miMood Server: https://github.com/thinkful-ei-bee/Altered-States-Capstone-Server
 miMood uses basic username and password authorization.
 
 Use this test user to demo:
+
 Username: miMoodDemo
+
 Password: !miMoodDem0
 
 ## Summary
