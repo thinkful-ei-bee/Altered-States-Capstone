@@ -28,11 +28,9 @@ Use this test user to demo:
 * Password: !miMoodDem0
 
 ## Summary
-This app was inspired by the abundance of free artificial intelligence. One of the most exciting consequences of this is to bring humans and technology closer together. 
+We created this app as a capstone project for the Thinkful Engineering Immersion program.  Our goal was to create a useful and interesting tool that utilizes an advanced AI API.  
 
-Along with being a journalling app, miMood is an emotion tracker. Users can write entries as well as upload selfies, which are sent to 
-two seperate AIs and scanned for written tone and facial expression. 
-The data from these AIs are represented using radar charts. Users can view data from their past entries in seperate line charts for each emotion. 
+miMood is a journaling app and emotion tracker. Users can write a journal entry, upload a selfie, and select a mood value representing how they're feeling.  The written entry and selfie are analyzed by the Watson and Azure APIs respectively for writing tone and emotional expression.  We then present this analysis to the user, providing deeper insight into emotional state. Users can review past entries and see trends over time in their emotional data. 
 
 Much like a traditional journal, the writer can return to their old entries and reflect on their experiences. With miMood, an additional element of emotion is archived for a more personal narrative.
 
