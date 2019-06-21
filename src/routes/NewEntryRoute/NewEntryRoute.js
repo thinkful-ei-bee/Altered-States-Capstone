@@ -42,9 +42,9 @@ export default class NewEntryRoute extends Component {
     this.handleDisableSubmit()
   }
 
-  updateFaceUrl = async (url) => {
-    await this.setState({newEntry: {...this.state.newEntry, face_url: url}})
-    document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url.replace('http://', 'https://')})`
+  updateFaceUrl = (url) => {
+    this.setState({newEntry: {...this.state.newEntry, face_url: url}})
+    //document.getElementById('parallax').style.backgroundImage = `url(${this.state.newEntry.face_url.replace('http://', 'https://')})`
   }
 
   updateFaceData = (faceData) => {
@@ -155,7 +155,9 @@ export default class NewEntryRoute extends Component {
           <h3 >New Entry</h3>
         </div>
 
-        {this.state.newEntry.face_url && <div onClick={() => this.handleDelete()}id='parallax'></div>}
+        {this.state.newEntry.face_url && <div onClick={() => this.handleDelete()}id='selfie-image'>
+          <img src={this.state.newEntry.face_url} alt={this.state.newEntry.face_url} />
+        </div>}
 
         {!this.state.newEntry.face_url && 
           <CloudinaryWidget 
