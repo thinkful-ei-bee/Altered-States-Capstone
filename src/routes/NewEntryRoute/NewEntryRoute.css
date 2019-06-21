@@ -31,16 +31,13 @@
   margin-top: 20px;
 }
 
-#parallax {
-  min-height: 410px; 
-  background-attachment: fixed;
-  background-position-y: 38%;
-  background-position-x: center;
-  background-repeat: no-repeat;
-  background-size: initial;
-  width: 90%;
+#selfie-image {
   margin: auto;
   margin-bottom: 3%;
+}
+
+#selfie-image img {
+  width: 90%;
 }
 
 .entry_form {
@@ -136,6 +133,20 @@ textarea {
   }
 }
 
+@media only screen and (max-width: 320px) {
+  .entry_form {
+    margin-left: 6%;
+    margin-right: 6%;
+  }
+  textarea {
+    width: 299px;
+  }
+  #selfie-image img {
+    margin-left: 11%;
+    margin-right: 11%;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .new-entry-page {
     display: grid;
@@ -179,15 +190,22 @@ textarea {
     height: 180px;
     width: 150px;
   }
-  #parallax {
+  .selfie-title {
+    position: relative;
+    bottom: 10px;
+  }
+  #selfie-image {
     grid-column: 3/4;
     grid-row: 2/3;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 50px;
     background-attachment: inherit;
     background-size: 50%;
     min-height: 285px;
-    width: 318px;
+    width: 330px;
+  }
+  #selfie-image img {
+    width: 45%;
   }
   .mood-container {
     grid-column: 3/4;
