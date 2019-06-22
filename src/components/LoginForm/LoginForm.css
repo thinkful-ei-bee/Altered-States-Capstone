@@ -17,6 +17,7 @@
     background-color: white;
     box-shadow: 5px 5px 3px grey;
     margin-top:20vh;
+    position: relative;
 }
 .log-in-button{
     margin-bottom:8px;
@@ -49,6 +50,21 @@ footer a{
     font-size:small;
    
 } 
+
+.login-error {
+  color: red;
+}
+
+.log-error-container {
+  position: absolute;
+  bottom: -58px;
+  right: 0;
+  left: 0;
+  text-align: center;
+  margin: auto;
+  color: red;
+}
+
 @media only screen and (max-width: 760px) {
 
     .log-in-form{

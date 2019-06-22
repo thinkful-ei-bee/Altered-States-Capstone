@@ -37,13 +37,15 @@ class RegistrationForm extends Component {
     this.firstInput.current.focus();
   }
 
+  // <div className='auth-error-container' role="alert">{error && <p className='auth-error'>{error}</p>}</div>
+
   render() {
     const { error } = this.state;
     return (
       <div className='registration-form'>
+        <div className='auth-error-container' role='alert'>{error && error}</div>
         <h2 className='log-reg-header reg-header'>Sign Up</h2>
         <form onSubmit={this.handleSubmit}>
-          <div role="alert">{error && <p>{error}</p>}</div>
           <div className="form-label">
             <Label htmlFor="registration-name-input">
               Enter your name
