@@ -126,7 +126,7 @@ class EntryRoute extends Component {
         }
 
         <div className='entry-charts-entry-container'>
-          {this.props.match.params.origin === 'new' && <h2 className='created-feedback'>Entry Created</h2>}
+          {this.props.match && this.props.match.params.origin === 'new' && <h2 className='created-feedback'>Entry Created</h2>}
           <EntryCharts entry={this.state} selfie={selfie}/>
         </div>
 
