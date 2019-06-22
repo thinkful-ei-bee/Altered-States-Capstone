@@ -108,7 +108,7 @@ class EntryRoute extends Component {
         {this.state.zoom 
           && <ZoomBox 
             endZoom={this.endZoom.bind(this)} 
-            url={this.state.face_url}
+            url={this.state.face_url.replace('http://', 'https://')}
             />
         }
 
