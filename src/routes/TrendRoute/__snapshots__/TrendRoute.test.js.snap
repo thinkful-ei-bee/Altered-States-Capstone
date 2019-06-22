@@ -1,104 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DashboardRoute renders the complete page 1`] = `
-<div
-  className="trend-graphs"
->
-  <h2>
-    Trends
-  </h2>
-  <div
-    className="happiness-table"
+<div>
+  <h3
+    className="too-few"
   >
-    <TrendGraph
-      className="happiness"
-      data={Array []}
-      dataKey="happiness"
-    />
-  </div>
-  <div
-    className="tone-tables"
-  >
-    <h3>
-      Writing trends
-    </h3>
-    <TrendGraph
-      className="analytical"
-      data={Array []}
-      dataKey="tone_analytical"
-    />
-    <TrendGraph
-      className="confident"
-      data={Array []}
-      dataKey="tone_confident"
-    />
-    <TrendGraph
-      className="fear"
-      data={Array []}
-      dataKey="tone_fear"
-    />
-    <TrendGraph
-      className="joy"
-      data={Array []}
-      dataKey="tone_joy"
-    />
-    <TrendGraph
-      className="sadness"
-      data={Array []}
-      dataKey="tone_sadness"
-    />
-    <TrendGraph
-      className="tentative"
-      data={Array []}
-      dataKey="tone_tentative"
-    />
-  </div>
-  <div
-    className="face-tables"
-  >
-    <h3>
-      Selfie trends
-    </h3>
-    <TrendGraph
-      className="anger"
-      data={Array []}
-      dataKey="face_anger"
-    />
-    <TrendGraph
-      className="contempt"
-      data={Array []}
-      dataKey="face_contempt"
-    />
-    <TrendGraph
-      className="disgust"
-      data={Array []}
-      dataKey="face_disgust"
-    />
-    <TrendGraph
-      className="happiness"
-      data={Array []}
-      dataKey="face_happiness"
-    />
-    <TrendGraph
-      className="fear"
-      data={Array []}
-      dataKey="face_fear"
-    />
-    <TrendGraph
-      className="neutral"
-      data={Array []}
-      dataKey="face_neutral"
-    />
-    <TrendGraph
-      className="sadness"
-      data={Array []}
-      dataKey="face_sadness"
-    />
-    <TrendGraph
-      className="surprise"
-      data={Array []}
-      dataKey="face_surprise"
-    />
-  </div>
+    Please create more entries to see trends
+  </h3>
 </div>
 `;

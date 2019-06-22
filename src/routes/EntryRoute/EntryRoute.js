@@ -94,13 +94,11 @@ class EntryRoute extends Component {
 
     let selfieExists = false;
 
-    for (let i in state) {
-      if (state[i].split('_')[0] === 'face' && state[i] > 0) {
+    for (let [key, val] of Object.entries(state)) {
+      if (key.split('_')[0] === 'face' && val > 0) {
         selfieExists = true;
       }
     }
-
-    console.log('selfieExists: ', selfieExists)
     return selfieExists
   }
 
@@ -108,7 +106,6 @@ class EntryRoute extends Component {
 
   render() {
 
-    //const selfie = this.state.face_url ? true : false;
     const selfie = this.checkForFace();
 
     return (

@@ -51,13 +51,21 @@ class DashboardRoute extends Component {
     )
   }
 
+
   renderEntry(entry) {
-    const selfie = entry.face_url ? true : false;
+
+    let selfieExists = false;
+    
+    for (let [key, val] of Object.entries(entry)) {
+      if (key.split('_')[0] === 'face' && val > 0) {
+        selfieExists = true;
+      }
+    }
     return (
     
       <li key={entry.id} className='entryList-entry'>
         <Link to={`/entry/${entry.id}/dash`} >
-          <EntryCharts entry={entry} label={this.generateEntryLabel(entry)} selfie={selfie}/>
+          <EntryCharts entry={entry} label={this.generateEntryLabel(entry)} selfie={selfieExists}/>
         </Link>
       </li>
       
