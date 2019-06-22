@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DashboardRoute renders the complete page 1`] = `
-<section>
+<section
+  className="not-found"
+>
+  <img
+    alt="verySad"
+    src="verySad.png"
+  />
   <h2>
     404 - Page not found
   </h2>

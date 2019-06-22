@@ -156,7 +156,7 @@ export default class NewEntryRoute extends Component {
         </div>
 
         {this.state.newEntry.face_url && <div onClick={() => this.handleDelete()}id='selfie-image'>
-          <img src={this.state.newEntry.face_url} alt={this.state.newEntry.face_url} />
+          <img src={this.state.newEntry.face_url.replace('http://', 'https://')} alt={this.state.newEntry.face_url} />
         </div>}
 
         {!this.state.newEntry.face_url && 

@@ -12,6 +12,7 @@
     background-color: white;
     box-shadow: 5px 5px 3px grey;
     margin-top:20vh;
+    position: relative;
 }
 .registration-button{
     border:.5px solid black;
@@ -34,6 +35,21 @@
     cursor: pointer;
 } 
 
+.auth-error {
+  color: red;
+  display: inline-block;
+  width: 90%;
+}
+
+.auth-error-container {
+  position: absolute;
+  bottom: -100px;
+  right: 0;
+  left: 0;
+  text-align: center;
+  margin: auto;
+  color: red;
+}
 
 footer{
     margin-top:10px;
@@ -52,6 +68,9 @@ footer a{
         background-color: rgb(4, 168, 4);
         color:white;
    
+    }
+    .auth-error-container {
+      bottom: -100px;
     }
   
 }

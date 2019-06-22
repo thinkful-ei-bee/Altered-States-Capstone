@@ -89,11 +89,24 @@ class EntryRoute extends Component {
     this.setState({zoom: false})
   }
 
+  checkForFace = () => {
+    const state = this.state;
+
+    let selfieExists = false;
+
+    for (let [key, val] of Object.entries(state)) {
+      if (key.split('_')[0] === 'face' && val > 0) {
+        selfieExists = true;
+      }
+    }
+    return selfieExists
+  }
+
 
 
   render() {
 
-    const selfie = this.state.face_url ? true : false;
+    const selfie = this.checkForFace();
 
     return (
       <div>
@@ -108,12 +121,12 @@ class EntryRoute extends Component {
         {this.state.zoom 
           && <ZoomBox 
             endZoom={this.endZoom.bind(this)} 
-            url={this.state.face_url}
+            url={this.state.face_url.replace('http://', 'https://')}
             />
         }
 
         <div className='entry-charts-entry-container'>
-          {this.props.match.params.origin === 'new' && <h2 className='created-feedback'>Entry Created</h2>}
+          {this.props.match && this.props.match.params.origin === 'new' && <h2 className='created-feedback'>Entry Created</h2>}
           <EntryCharts entry={this.state} selfie={selfie}/>
         </div>
 
