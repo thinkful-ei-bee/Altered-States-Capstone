@@ -22,6 +22,9 @@ class CloudinaryWidget extends Component {
   handleAnalysis(url) {
     EntryService.postSelfieToAzure(url)
       .then(res => {
+        if (!res.length) {
+          return
+        }
         const faceRes = res[0].faceAttributes.emotion
 
         for (let i in faceRes) {

@@ -89,11 +89,27 @@ class EntryRoute extends Component {
     this.setState({zoom: false})
   }
 
+  checkForFace = () => {
+    const state = this.state;
+
+    let selfieExists = false;
+
+    for (let i in state) {
+      if (state[i].split('_')[0] === 'face' && state[i] > 0) {
+        selfieExists = true;
+      }
+    }
+
+    console.log('selfieExists: ', selfieExists)
+    return selfieExists
+  }
+
 
 
   render() {
 
-    const selfie = this.state.face_url ? true : false;
+    //const selfie = this.state.face_url ? true : false;
+    const selfie = this.checkForFace();
 
     return (
       <div>
