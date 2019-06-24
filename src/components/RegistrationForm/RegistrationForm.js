@@ -23,6 +23,7 @@ class RegistrationForm extends Component {
 
     ev.preventDefault()
 
+    // eslint-disable-next-line
     const REGEX = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
     let { name, username, password } = this.state;
 
