@@ -37,7 +37,7 @@
   margin: auto;
   font-size: 1.5em;
   margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 5px;
   font-weight: bold;
 }
 
@@ -114,6 +114,7 @@ tspan {
   .entry-label {
     grid-column: 1/2;
     grid-row: 1/2;
+    white-space: nowrap;
   }
   
   .entry-label h3 {
@@ -174,4 +175,12 @@ tspan {
     margin: auto;
     margin-top: 10px;
   }
+}
+
+@media only screen and (max-width: 350px) {
+
+  tspan {
+    font-size: .5em;
+  }
+
 }
