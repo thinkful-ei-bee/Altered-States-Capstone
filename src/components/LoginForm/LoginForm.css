@@ -57,7 +57,7 @@ footer a{
 
 .log-error-container {
   position: absolute;
-  bottom: -58px;
+  top: -60px;
   right: 0;
   left: 0;
   text-align: center;

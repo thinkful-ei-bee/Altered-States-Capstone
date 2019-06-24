@@ -70,7 +70,9 @@
   }
 
   .nav-links nav{
+    display: inline-block;
     padding-right: 0;
     padding-left: 0;
+    width: 160px;
   }
 }

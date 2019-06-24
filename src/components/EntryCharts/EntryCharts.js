@@ -91,7 +91,8 @@ generateEmoji() {
     const faceData = this.generateEmotionData()
 
     const isMobile = window.innerWidth < 760;
-    const radius = isMobile ? 45 : 80;
+    const isTiny = window.innerWidth < 370;
+    const radius = isMobile ? (isTiny ? 35 : 45) : 80;
     
     let entryId;
     const { entry } = this.props

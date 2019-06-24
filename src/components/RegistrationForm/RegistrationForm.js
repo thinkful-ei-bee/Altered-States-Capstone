@@ -10,22 +10,59 @@ class RegistrationForm extends Component {
     onRegistrationSuccess: () => {}
   };
 
-  state = { error: null };
+  state = { 
+    error: null,
+    name: '',
+    username: '',
+    password: '',
+  };
 
   firstInput = React.createRef();
 
-  handleSubmit = ev => {
-    ev.preventDefault();
-    const { name, username, password } = ev.target;
+  handleSubmit = (ev) => {
+
+    ev.preventDefault()
+
+    // eslint-disable-next-line
+    const REGEX = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
+    let { name, username, password } = this.state;
+
+    if (!name || !username || !password) {
+      this.setState({ error: 'Please fill out all fields' })
+      return;
+    }
+
+    if (password.length < 7) {
+      this.setState({ error: 'Password must be at least 6 characters' })
+      return;
+    }
+
+    if (password.length > 72) {
+      this.setState({ error: 'Password cannot be longer than 72 characters' })
+      return;
+    }
+
+    if (!REGEX.test(password)) {
+      this.setState({ error: 'Password must contain an uppercase and lowercase letter, a number, and a special character' })
+      return;
+    }
+
+    if (password.startsWith(' ') || password.endsWith(' ')) {
+      this.setState({ error: 'Password must not begin or end with spaces' })
+      return;
+    }
+
     AuthApiService.postUser({
-      name: name.value,
-      username: username.value,
-      password: password.value
+      name: name,
+      username: username,
+      password: password
     })
       .then(user => {
-        name.value = "";
-        username.value = "";
-        password.value = "";
+        this.setState({ 
+          name: '',
+          username: '',
+          password: ''
+        })
         this.props.onRegistrationSuccess();
       })
       .catch(res => {
@@ -37,6 +74,10 @@ class RegistrationForm extends Component {
     this.firstInput.current.focus();
   }
 
+  handleChange = e => { 
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   // <div className='auth-error-container' role="alert">{error && <p className='auth-error'>{error}</p>}</div>
 
   render() {
@@ -45,7 +86,7 @@ class RegistrationForm extends Component {
       <div className='registration-form'>
         <div className='auth-error-container' role='alert'>{error && error}</div>
         <h2 className='log-reg-header reg-header'>Sign Up</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} onChange={event => this.handleChange(event)}>
           <div className="form-label">
             <Label htmlFor="registration-name-input">
               Enter your name
