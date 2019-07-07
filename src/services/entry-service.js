@@ -20,14 +20,30 @@ const EntryService = {
     })
   },
 
-  postSelfieToAzure(url) {
-    return fetch(config.FACE_ENDPOINT, {
+  // postSelfieToAzure(url) {
+  //   return fetch(config.FACE_ENDPOINT, {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //       'Ocp-Apim-Subscription-Key': config.FACE_KEY
+  //     },
+  //     body: JSON.stringify({ url })
+  //   })
+  //   .then(res => {
+  //     return (!res.ok)
+  //       ? res.json().then(e => Promise.reject(e))
+  //       : res.json()
+  //   })
+  // },
+  
+  postSelfieToAzure(selfie_url) {
+    return fetch(`${config.API_ENDPOINT}/entry/face`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'Ocp-Apim-Subscription-Key': config.FACE_KEY
+        'authorization': `Bearer ${TokenService.getAuthToken()}`
       },
-      body: JSON.stringify({ url })
+      body: JSON.stringify({ selfie_url })
     })
     .then(res => {
       return (!res.ok)
